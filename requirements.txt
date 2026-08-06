@@ -1,0 +1,17 @@
+torch
+faiss-cpu
+sentence-transformers
+transformers
+datasets
+scikit-learn
+pandas
+matplotlib
+seaborn
+shap
+gensim
+groq
+python-dotenv
+langdetect
+accelerate
+streamlit
+pyLDAvis
