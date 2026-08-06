@@ -1,0 +1,9 @@
+question,n_expected,hit@5 (bi-encoder),hit@5 (+ reranker)
+Which games do players say run badly or crash on PC?,8,1,1
+What is a good cozy relaxing game?,8,1,1
+Which games have an emotional story that made players cry?,8,1,1
+What do players think about grinding in online games?,8,1,1
+Which shooter games do players recommend for playing with fr,8,1,1
+What do reviews say about kernel level anticheat?,8,1,1
+Which strategy games are worth buying according to players?,8,0,0
+What sports or racing games do players enjoy most?,8,1,1

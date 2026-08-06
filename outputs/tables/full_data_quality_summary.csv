@@ -1,0 +1,10 @@
+check,count,rate,treatment_or_risk
+raw_rows,992153,1.0,Reference row count
+missing_review,503,0.0005069782583936147,Removed before modelling
+missing_username,81,8.164063405543298e-05,Username is not a model feature
+exact_duplicate_rows,1,1.007909062412753e-06,One copy retained
+repeated_review_text_beyond_first,82416,0.08306783328780944,Not removed automatically; many are valid generic phrases
+english_rows_after_basic_validity,843094,0.8497620830658175,Canonical analysis population
+date_year_imputed,192431,0.2282438257181287,2024 assumed; not used as intended classifier input
+unparsed_review_date,0,0.0,Excluded only from time figures
+missing_primary_genre,57387,0.06806714316553077,Kept for non-genre analyses

@@ -1,0 +1,3 @@
+representation,input_text,accuracy,macro_f1,negative_f1
+TF-IDF (same text as SBERT),model_text,0.9011995727549093,0.8483834945808293,0.7588972431077694
+Sentence-BERT (384d),model_text,0.8498479993426998,0.7863694006695658,0.6699178181161384

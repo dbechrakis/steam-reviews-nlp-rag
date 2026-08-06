@@ -1,0 +1,3 @@
+model,games_mentioned,grounded,hallucinated
+llama-3.3-70b-versatile,18,17,1
+openai/gpt-oss-120b,8,7,1

@@ -1,0 +1,6 @@
+Metric,Value
+Vocabulary Size,14898
+Embedding Dimension,100
+Context Window,5
+Epochs,15
+Minimum Word Frequency,5
