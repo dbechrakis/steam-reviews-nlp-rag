@@ -1,52 +1,80 @@
-# Steam Game Reviews — NLP, DistilBERT & RAG Pipeline
+# Steam Game Reviews — NLP, DistilBERT & RAG
 
-End-to-end NLP project on ~87K Steam game reviews: sentiment classification, semantic search, an explainable DistilBERT classifier, topic modelling, and a RAG-based Q&A system over the review corpus.
+An applied NLP case study on ~87K Steam game reviews, combining **sentiment classification, semantic search, topic modelling, explainability, and retrieval-augmented generation**.
 
-M.Sc. Data Science group project (ITC — NLP course). Built with Python, PyTorch, Hugging Face Transformers, FAISS, and Streamlit.
+The project is designed around a practical question: **how can unstructured customer feedback be converted into searchable, measurable product insight?**
 
-## What's in here
+## Executive summary
 
-| Notebook | What it does |
+The workflow combines classical NLP methods with transformer-based modelling and a RAG application:
+
+**Raw reviews → preprocessing → embeddings / classification → topic discovery → retrieval → grounded Q&A**
+
+### Key results
+
+| Approach | Accuracy | Macro F1 |
+|---|---:|---:|
+| TF-IDF | 89.3% | 0.836 |
+| Word2Vec | 85.1% | 0.789 |
+| Sentence-BERT | 85.0% | 0.786 |
+| **Fine-tuned DistilBERT** | **92.9%** | **0.887** |
+
+For the RAG evaluation, the strongest tested configuration produced **17/18 grounded answers** on the evaluation set.
+
+## What the project demonstrates
+
+- **Customer-feedback analytics:** turning large-scale reviews into structured sentiment and topic signals
+- **NLP modelling:** TF-IDF, Word2Vec, Sentence-BERT and fine-tuned DistilBERT
+- **Explainable AI:** SHAP-based token-level interpretation of model behaviour
+- **Semantic search:** dense embeddings and FAISS retrieval
+- **RAG:** retrieval-augmented Q&A over the review corpus
+- **Decision support:** making unstructured feedback easier to query and investigate
+
+## Project workflow
+
+| Stage | Output |
 |---|---|
-| `00_Full_Data_Preparation` | Cleans and merges the raw Kaggle review/game datasets |
-| `01_Data_Loading_and_Preprocessing` | Tokenization, language detection, text normalization |
-| `02_Feature_Engineering_and_Text_Visualization` | TF-IDF, word frequency, EDA visualizations |
-| `03_Document_Embeddings_and_Semantic_Analysis` | Word2Vec, Sentence-BERT embeddings, semantic similarity |
-| `04_DistilBERT_Classifier_and_XAI` | Fine-tuned DistilBERT sentiment classifier + SHAP explainability |
-| `05_RAG_System` | Retrieval-augmented Q&A over the review corpus (FAISS + Groq LLMs) |
-| `06_Topic_Modelling` | LDA topic modelling across the review set |
+| Data preparation | Clean review corpus |
+| Text analytics | TF-IDF, word frequencies, EDA |
+| Representation | Word2Vec and Sentence-BERT embeddings |
+| Classification | DistilBERT sentiment model |
+| Explainability | SHAP token importance |
+| Topic modelling | LDA topics and prevalence |
+| Retrieval | FAISS semantic search |
+| Decision layer | Streamlit RAG application |
 
-`app.py` / `rag_backend.py` — Streamlit app serving the RAG system as an interactive Q&A demo.
+## Interactive application
 
-## Key results
+`app.py` and `rag_backend.py` provide a Streamlit interface for querying the review corpus through the RAG pipeline.
 
-**Sentiment classification** — fine-tuned DistilBERT clearly outperforms classical baselines:
+The application is intended as a demonstration of how unstructured customer feedback can become an **interactive analytics interface**, rather than simply a model benchmark.
 
-| Representation | Accuracy | Macro F1 |
-|---|---|---|
-| TF-IDF (1-2 grams) | 89.3% | 0.836 |
-| Word2Vec (mean, 100d) | 85.1% | 0.789 |
-| Sentence-BERT (384d) | 85.0% | 0.786 |
-| **DistilBERT (fine-tuned, 86.7K reviews)** | **92.9%** | **0.887** |
-
-**RAG groundedness** — of two candidate LLMs tested for answer generation, Llama-3.3-70B produced 17/18 grounded (non-hallucinated) answers on the eval set, vs. 7/8 for GPT-OSS-120B.
-
-## A few visuals
+## Visual analysis
 
 ![DistilBERT confusion matrix](outputs/figures/distilbert_confusion_matrix.png)
 ![t-SNE of review embeddings by sentiment](outputs/figures/tsne_sentiment.png)
 ![SHAP global token importance](outputs/figures/shap_global_tokens.png)
 ![Topic modelling — top words per topic](outputs/figures/lda_topic_words.png)
 
-More figures in [`outputs/figures/`](outputs/figures/) — class balance, embedding comparisons, PCA/t-SNE projections, top positive/negative words, and topic prevalence.
+More figures are available in [`outputs/figures/`](outputs/figures/).
 
-## Tech stack
+## Repository structure
 
-Python · PyTorch · Hugging Face Transformers (DistilBERT) · Sentence-Transformers · FAISS · SHAP · Gensim (LDA) · scikit-learn · Streamlit · Groq API (Llama-3.3-70B for RAG generation)
+The notebooks progress from data preparation through modelling and application development:
 
-## Running it locally
+```text
+00  Data preparation
+01  Loading & preprocessing
+02  Feature engineering & visualization
+03  Embeddings & semantic analysis
+04  DistilBERT classification & XAI
+05  RAG system
+06  Topic modelling
+```
 
-The notebooks already contain their outputs — nothing needs to be re-run just to review the work. To reproduce:
+## Reproduce locally
+
+Install the main dependencies:
 
 ```bash
 pip install torch faiss-cpu sentence-transformers transformers datasets \
@@ -54,10 +82,17 @@ pip install torch faiss-cpu sentence-transformers transformers datasets \
     groq python-dotenv langdetect accelerate streamlit pyLDAvis
 ```
 
-You'll also need the raw Kaggle Steam reviews dataset (not included here — too large) and a free [Groq API key](https://console.groq.com) for the RAG notebook and Streamlit app.
+The raw Kaggle dataset and the large FAISS index are intentionally excluded from the repository. A Groq API key is required for the RAG generation layer.
 
-> Note: the FAISS index and full review corpus used by the RAG backend (~100MB) are excluded from this repo for size reasons. `outputs/tables/` has the evaluation results referenced above.
+## Tech stack
+
+**Python · PyTorch · Hugging Face Transformers · DistilBERT · Sentence-Transformers · FAISS · SHAP · Gensim · scikit-learn · Streamlit · Groq API**
+
+## Context
+
+Applied NLP portfolio case study developed during an MSc Data Science programme at **The American College of Greece**. The academic context is retained for transparency; the repository is structured around the analytical workflow and its practical use cases.
 
 ## Author
 
-Dimitris Bechrakis — M.Sc. Data Science, The American College of Greece · [GitHub](https://github.com/dbechrakis)
+**Dimitris Bechrakis**  
+Business & Data Analyst | M.Sc. Data Science
