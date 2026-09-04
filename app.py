@@ -96,7 +96,7 @@ st.markdown(
     <section class="hero">
       <div class="eyebrow">Steam review intelligence · evidence first</div>
       <h1>Steam Game Review Explorer</h1>
-      <p>Ask for a kind of game, a player concern, or a recommendation. Every answer is grounded in retrieved Steam reviews and cites its evidence.</p>
+      <p>Ask for a kind of game, a player concern, or a recommendation. Answers use retrieved Steam reviews and are prompted to cite them. Check the evidence: generated claims can still be unsupported.</p>
     </section>
     """,
     unsafe_allow_html=True,
