@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import os
+import logging
+import time
 from html import escape
 from pathlib import Path
 
@@ -10,6 +12,7 @@ import streamlit as st
 from dotenv import load_dotenv
 
 from rag_backend import SteamReviewRAG
+from artifact_loader import ensure_artifacts
 
 
 PROJECT_DIR = Path(__file__).resolve().parent
@@ -38,6 +41,7 @@ st.markdown(
 
 @st.cache_resource(show_spinner="Loading the local retrieval index…")
 def load_backend() -> SteamReviewRAG:
+    ensure_artifacts(PROJECT_DIR)
     return SteamReviewRAG.load(PROJECT_DIR)
 
 
@@ -66,7 +70,8 @@ try:
     backend = load_backend()
 except Exception as exc:
     st.error("The local RAG artifacts could not be loaded.")
-    st.exception(exc)
+    logging.exception("RAG startup failed")
+    st.info("The review archive may be temporarily unavailable. Please try again later.")
     st.stop()
 
 if "messages" not in st.session_state:
@@ -83,13 +88,14 @@ with st.sidebar:
     evidence_count = st.slider("Evidence reviews", min_value=3, max_value=8, value=5)
     key = get_api_key()
     if key:
-        st.success("Generation is configured")
+        st.success("AI answers enabled")
     else:
-        st.info("Retrieval works locally. Add `GROQ_API_KEY` to `.env` to generate answers.")
+        st.info("Evidence-only mode: search works; AI answers are not configured.")
     if st.button("Clear conversation", use_container_width=True):
         st.session_state.messages = []
         st.rerun()
     st.caption(f"Retrieval device: {backend.device.upper()}")
+    st.markdown("[Project & team credit](https://github.com/dbechrakis/steam-reviews-nlp-rag)")
 
 st.markdown(
     """
@@ -118,7 +124,17 @@ for message in st.session_state.messages:
         if message["role"] == "assistant" and message.get("evidence") is not None:
             show_evidence(message["evidence"])
 
-if question := st.chat_input("e.g. What is a calm game to play after work?"):
+st.caption("MSc team project · Portfolio edition maintained by Dimitrios Bechrakis. Each question is searched independently. Questions and selected review excerpts are sent to Groq when AI answers are enabled.")
+
+if question := st.chat_input("e.g. What is a calm game to play after work?", max_chars=600):
+    question = question.strip()
+    if not question:
+        st.stop()
+    if time.monotonic() - st.session_state.get("last_request", 0) < 5:
+        st.warning("Please wait a few seconds before another question.")
+        st.stop()
+    st.session_state.last_request = time.monotonic()
+    st.session_state.messages = st.session_state.messages[-10:]
     st.session_state.messages.append({"role": "user", "content": question})
     with st.chat_message("user"):
         st.markdown(question)
@@ -127,19 +143,19 @@ if question := st.chat_input("e.g. What is a calm game to play after work?"):
         with st.spinner("Retrieving and reranking player evidence…"):
             try:
                 evidence = backend.retrieve_and_rerank(question, evidence_count)
-                if key:
+            except Exception as exc:
+                logging.exception("Retrieval failed")
+                st.error("Review search is temporarily unavailable. Please try again later.")
+                st.stop()
+            answer = "Explore the retrieved player reviews below. AI-written answers are currently unavailable."
+            if key:
+                try:
                     answer = backend.generate_answer(
                         question, evidence, key, backend.config["groq_models"][selected_label]
                     )
-                else:
-                    answer = (
-                        "I found the evidence below. Add `GROQ_API_KEY` to `.env` to enable "
-                        "a grounded written answer."
-                    )
-            except Exception as exc:
-                st.error("The request could not be completed. Check the local model files or API key.")
-                st.exception(exc)
-                st.stop()
+                except Exception:
+                    logging.warning("Generation unavailable; retaining retrieved evidence")
+                    st.warning("The answer service is unavailable or has reached its limit. Your review evidence is still available below.")
         st.markdown(answer)
         show_evidence(evidence)
     st.session_state.messages.append({"role": "assistant", "content": answer, "evidence": evidence})

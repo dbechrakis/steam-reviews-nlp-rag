@@ -7,3 +7,5 @@ outputs/rag/*.bin
 outputs/rag/*.csv
 
 .venv/
+.streamlit/secrets.toml
+outputs/rag/

@@ -51,6 +51,11 @@ class SteamReviewRAG:
                 f"RAG index has {index.ntotal:,} vectors but the corpus has {len(corpus):,} rows. "
                 "Use matching artifacts from the same notebook run."
             )
+        required_columns = {"game_name", "review", "recommendation"}
+        if not required_columns.issubset(corpus.columns) or corpus.empty:
+            raise ValueError("Invalid review corpus schema")
+        if corpus[list(required_columns)].isna().any().any():
+            raise ValueError("Missing review evidence fields")
         return cls(project_dir, config, index, corpus, preferred_device())
 
     def _load_models(self) -> None:
@@ -104,7 +109,7 @@ class SteamReviewRAG:
     def generate_answer(self, question: str, evidence: pd.DataFrame, api_key: str, model_name: str) -> str:
         from groq import Groq
 
-        client = Groq(api_key=api_key)
+        client = Groq(api_key=api_key, timeout=30, max_retries=1)
         response = client.chat.completions.create(
             model=model_name,
             messages=[

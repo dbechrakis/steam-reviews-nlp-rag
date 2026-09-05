@@ -93,6 +93,19 @@ The repository includes confusion-matrix, embedding, SHAP and topic-modelling ou
 
 ## Reproducibility
 
+### Interactive application
+
+The Streamlit app is prepared for Community Cloud deployment. Follow the
+[deployment guide](DEPLOYMENT.md) with entrypoint `deploy/streamlit_app.py`.
+It automatically fetches the original team's matching retrieval artifacts from
+[Nebuchedeser's Space](https://huggingface.co/spaces/Nebuchedeser/steam-game-review-explorer)
+at a fixed, integrity-checked revision. That source application was paused when
+inspected; its public files remain the source for this portfolio edition.
+The new deployment has not yet been published. No live URL is claimed here.
+
+Without a Groq key, visitors can inspect retrieved reviews. With a server-side
+key, the app also generates answers with prompted citations.
+
 [Input files and execution order](REPRODUCING.md)
 
 The notebooks include their generated outputs for review. The raw Kaggle dataset and the large FAISS index are intentionally excluded from the repository. A Groq API key is required for the RAG generation layer.
