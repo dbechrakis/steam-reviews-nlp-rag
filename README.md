@@ -1,5 +1,7 @@
 # Steam Reviews — NLP, Explainability & RAG
 
+[![Evidence checks](https://github.com/dbechrakis/steam-reviews-nlp-rag/actions/workflows/evidence.yml/badge.svg)](https://github.com/dbechrakis/steam-reviews-nlp-rag/actions/workflows/evidence.yml)
+
 An end-to-end **customer-feedback analytics** project using a **120,000-review modelling sample** from **843,094 prepared English reviews** to classify sentiment, discover themes, perform semantic search, explain model predictions, and build a retrieval-augmented Q&A system.
 
 The project demonstrates how unstructured customer feedback can be transformed into **measurable signals and an interactive decision-support workflow**.
@@ -105,3 +107,7 @@ Applied NLP portfolio case study developed during an MSc Data Science programme 
 
 **Dimitris Bechrakis**  
 Business & Data Analyst | M.Sc. Data Science
+
+## Licensing
+
+See [licensing scope](LICENSING.md) for the MIT-licensed verification code and the separately governed project materials.
