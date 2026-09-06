@@ -18,3 +18,15 @@ Changes were prepared with AI assistance and should be understood and reviewed b
 - Full semantic search remains unverified in this environment because model
   downloads encountered network timeouts. Groq generation is not tested without
   the owner's key. Community Cloud resource limits must be checked after deploy.
+
+## Public deployment verification
+
+Review date: 2026-09-06 (UTC).
+
+- The owner verified the public Streamlit deployment using the prompt
+  `What is a calm game to play after work?`.
+- Retrieval returned five player reviews and GPT-OSS 120B produced a cited answer.
+- A screenshot of the successful result is saved at
+  `outputs/figures/live_app_gpt_oss.png`.
+- The unavailable `llama-3.3-70b-versatile` option was removed after Groq returned
+  `404 model_not_found`; the interface now exposes only the verified GPT-OSS model.

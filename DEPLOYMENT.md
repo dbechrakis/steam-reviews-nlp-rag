@@ -15,6 +15,8 @@ GROQ_API_KEY = "YOUR_OWN_GROQ_KEY"
 
 7. Deploy. Initial installation and model downloads can take several minutes.
 
+Current public deployment: https://dbechrakis-steam-explorer.streamlit.app/
+
 Do not commit the real key or share screenshots of it. Without a key, the app
 still retrieves and displays reviews. A configured key is not proof that the
 provider accepted it: test a question and verify an AI answer plus evidence.
@@ -48,7 +50,8 @@ download. This deployment is therefore not an independent data archive.
 
 - Each question is retrieved independently; the visible conversation is not passed as model memory.
 - No API key is accepted from visitors or displayed to them.
-- Questions and selected review excerpts are sent to Groq for generation.
+- Questions and selected review excerpts are sent to Groq for generation with
+  `openai/gpt-oss-120b`, the model verified on the public deployment.
 - Generation failures retain retrieved evidence; retrieval failures display a friendly error.
 - There is a five-second per-session cooldown and a 600-character question limit.
   These are modest demo controls, not global abuse protection. Use provider-side

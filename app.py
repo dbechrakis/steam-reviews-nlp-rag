@@ -17,6 +17,8 @@ from generation_diagnostics import generation_diagnostic
 
 
 PROJECT_DIR = Path(__file__).resolve().parent
+ANSWER_MODEL_LABEL = "GPT-OSS 120B"
+ANSWER_MODEL_ID = "openai/gpt-oss-120b"
 
 st.set_page_config(page_title="Steam Game Review Explorer", page_icon="🎮", layout="wide")
 
@@ -80,16 +82,11 @@ if "messages" not in st.session_state:
 
 with st.sidebar:
     st.markdown("### Control room")
-    model_labels = list(backend.config["groq_models"])
-    default_value = "openai/gpt-oss-120b"
-    default_index = next(
-        (i for i, label in enumerate(model_labels) if backend.config["groq_models"][label] == default_value), 0
-    )
-    selected_label = st.selectbox("Answer model", model_labels, index=default_index, key="answer_model_v2")
+    st.caption(f"Answer model: {ANSWER_MODEL_LABEL}")
     evidence_count = st.slider("Evidence reviews", min_value=3, max_value=8, value=5)
     key = get_api_key()
     if key:
-        st.info("AI key configured · availability depends on the selected model")
+        st.info("AI answers enabled")
     else:
         st.info("Evidence-only mode: search works; AI answers are not configured.")
     if st.button("Clear conversation", use_container_width=True):
@@ -152,10 +149,10 @@ if question := st.chat_input("e.g. What is a calm game to play after work?", max
             if key:
                 try:
                     answer = backend.generate_answer(
-                        question, evidence, key, backend.config["groq_models"][selected_label]
+                        question, evidence, key, ANSWER_MODEL_ID
                     )
                 except Exception as exc:
-                    st.warning(generation_diagnostic(exc, backend.config["groq_models"][selected_label]))
+                    st.warning(generation_diagnostic(exc, ANSWER_MODEL_ID))
         st.markdown(answer)
         show_evidence(evidence)
     st.session_state.messages.append({"role": "assistant", "content": answer, "evidence": evidence})

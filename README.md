@@ -6,6 +6,14 @@ An end-to-end **customer-feedback analytics** project using a **120,000-review m
 
 The project demonstrates how unstructured customer feedback can be transformed into **measurable signals and an interactive decision-support workflow**.
 
+## Live application
+
+**[Open the Steam Game Review Explorer →](https://dbechrakis-steam-explorer.streamlit.app/)**
+
+[![Steam Game Review Explorer answering with cited player reviews](outputs/figures/live_app_gpt_oss.png)](https://dbechrakis-steam-explorer.streamlit.app/)
+
+Search a curated corpus of **41,170 reviews across 241 games**. The application retrieves and reranks relevant player evidence, then uses **GPT-OSS 120B through Groq** to produce an answer with numbered citations. The evidence remains inspectable if generation is temporarily unavailable.
+
 ## Business questions
 
 - What is the overall sentiment of player feedback?
@@ -95,16 +103,16 @@ The repository includes confusion-matrix, embedding, SHAP and topic-modelling ou
 
 ### Interactive application
 
-The Streamlit app is prepared for Community Cloud deployment. Follow the
-[deployment guide](DEPLOYMENT.md) with entrypoint `deploy/streamlit_app.py`.
+The Streamlit app is [deployed publicly](https://dbechrakis-steam-explorer.streamlit.app/). The
+[deployment guide](DEPLOYMENT.md) documents the entrypoint `deploy/streamlit_app.py`
+and the reproducible setup.
 It automatically fetches the original team's matching retrieval artifacts from
 [Nebuchedeser's Space](https://huggingface.co/spaces/Nebuchedeser/steam-game-review-explorer)
 at a fixed, integrity-checked revision. That source application was paused when
 inspected; its public files remain the source for this portfolio edition.
-The new deployment has not yet been published. No live URL is claimed here.
-
-Without a Groq key, visitors can inspect retrieved reviews. With a server-side
-key, the app also generates answers with prompted citations.
+Without a Groq key, the application can still expose retrieved reviews. The public
+deployment uses a server-side key and the verified GPT-OSS model for answers with
+prompted citations; visitors never enter or see that credential.
 
 [Input files and execution order](REPRODUCING.md)
 
