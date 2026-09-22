@@ -1,4 +1,4 @@
-"""Retrieval and grounded-answer utilities for the Steam review app."""
+"""Two-stage retrieval and grounded-answer utilities for Steam reviews."""
 
 from __future__ import annotations
 
@@ -7,13 +7,15 @@ from dataclasses import dataclass
 from pathlib import Path
 
 import faiss
-import numpy as np
 import pandas as pd
 import torch
 from sentence_transformers import CrossEncoder, SentenceTransformer
 
+from steam_review_rag.prompting import build_grounded_prompt
+
 
 def preferred_device() -> str:
+    """Choose the best locally available inference device."""
     if torch.cuda.is_available():
         return "cuda"
     if torch.backends.mps.is_available():
@@ -33,6 +35,7 @@ class SteamReviewRAG:
 
     @classmethod
     def load(cls, project_dir: Path) -> "SteamReviewRAG":
+        """Load and validate a matching configuration, corpus, and FAISS index."""
         rag_dir = project_dir / "outputs" / "rag"
         required = {
             "configuration": rag_dir / "rag_config.json",
@@ -48,9 +51,10 @@ class SteamReviewRAG:
         index = faiss.read_index(str(required["FAISS index"]))
         if index.ntotal != len(corpus):
             raise ValueError(
-                f"RAG index has {index.ntotal:,} vectors but the corpus has {len(corpus):,} rows. "
-                "Use matching artifacts from the same notebook run."
+                f"RAG index has {index.ntotal:,} vectors but the corpus has "
+                f"{len(corpus):,} rows. Use matching artifacts from the same notebook run."
             )
+
         required_columns = {"game_name", "review", "recommendation"}
         if not required_columns.issubset(corpus.columns) or corpus.empty:
             raise ValueError("Invalid review corpus schema")
@@ -64,9 +68,16 @@ class SteamReviewRAG:
                 self.config["embedding_model"], device=self.device
             )
         if self.reranker is None:
-            self.reranker = CrossEncoder(self.config["reranker_model"], device=self.device)
+            self.reranker = CrossEncoder(
+                self.config["reranker_model"], device=self.device
+            )
 
-    def retrieve_and_rerank(self, question: str, evidence_count: int | None = None) -> pd.DataFrame:
+    def retrieve_and_rerank(
+        self,
+        question: str,
+        evidence_count: int | None = None,
+    ) -> pd.DataFrame:
+        """Retrieve semantic candidates and rerank them for the user question."""
         question = question.strip()
         if not question:
             return self.corpus.iloc[0:0].copy()
@@ -79,7 +90,9 @@ class SteamReviewRAG:
         final_k = max(1, min(final_k, retrieve_k))
 
         query_vector = self.embedding_model.encode(
-            [question], normalize_embeddings=True, convert_to_numpy=True
+            [question],
+            normalize_embeddings=True,
+            convert_to_numpy=True,
         ).astype("float32")
         scores, row_ids = self.index.search(query_vector, retrieve_k)
         candidates = self.corpus.iloc[row_ids[0]].copy().reset_index(drop=True)
@@ -87,26 +100,28 @@ class SteamReviewRAG:
 
         pairs = list(zip([question] * len(candidates), candidates["review"].tolist()))
         candidates["rerank_score"] = self.reranker.predict(
-            pairs, batch_size=32, show_progress_bar=False
+            pairs,
+            batch_size=32,
+            show_progress_bar=False,
         )
-        return candidates.sort_values("rerank_score", ascending=False).head(final_k).reset_index(drop=True)
+        return (
+            candidates.sort_values("rerank_score", ascending=False)
+            .head(final_k)
+            .reset_index(drop=True)
+        )
 
     def build_prompt(self, question: str, evidence: pd.DataFrame) -> str:
-        blocks = []
-        for number, row in evidence.reset_index(drop=True).iterrows():
-            review = " ".join(str(row["review"]).split())[:900]
-            blocks.append(
-                f"[{number + 1}] Game: {row['game_name']}\n"
-                f"Player verdict: {row['recommendation']}\n"
-                f"Review evidence: {review}"
-            )
-        context = "\n\n".join(blocks)
-        return (
-            f"Player-review evidence:\n\n{context}\n\nQuestion: {question}\n\n"
-            "Answer only from the evidence above."
-        )
+        """Build the grounded generation prompt from retrieved evidence."""
+        return build_grounded_prompt(question, evidence.to_dict("records"))
 
-    def generate_answer(self, question: str, evidence: pd.DataFrame, api_key: str, model_name: str) -> str:
+    def generate_answer(
+        self,
+        question: str,
+        evidence: pd.DataFrame,
+        api_key: str,
+        model_name: str,
+    ) -> str:
+        """Generate one evidence-constrained answer through Groq."""
         from groq import Groq
 
         client = Groq(api_key=api_key, timeout=30, max_retries=1)

@@ -1,3 +1,4 @@
+-e .
 torch
 faiss-cpu
 sentence-transformers

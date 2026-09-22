@@ -1,10 +1,21 @@
 # Validation record
 
-Review date: 2026-09-05 (UTC).
+Latest structural review: 2026-09-22 (UTC).
 
 Checked saved CSV arithmetic, sample sizes and evaluation implementation; no retraining or live generation.
 
 Changes were prepared with AI assistance and should be understood and reviewed by the repository owner. Historical records are not labelled as freshly reproduced results.
+
+## September 2026 product-structure verification
+
+- Reorganized the application into an installable `src/steam_review_rag` package.
+- Preserved the Community Cloud entry point and root `app.py` compatibility path.
+- Added focused tests for artifact integrity, evidence-prompt construction, and safe provider diagnostics.
+- Revalidated all committed Python syntax, notebook structure, and saved result arithmetic.
+- Installed the exact pinned CPU deployment dependencies under Python 3.12.
+- Downloaded and hash-verified the three pinned retrieval artifacts again.
+- Loaded the real 41,170-row corpus and matching FAISS index through Streamlit AppTest; the refactored deployment entry point started without exceptions and exposed the chat input.
+- Did not download ML models, call Groq, retrain models, or modify recorded model results during this structural review.
 
 ## Streamlit deployment preparation
 

@@ -1,32 +1,58 @@
-# Steam Reviews — NLP, Explainability & RAG
+# Steam Review Intelligence — NLP, Explainability & RAG
 
 [![Evidence checks](https://github.com/dbechrakis/steam-reviews-nlp-rag/actions/workflows/evidence.yml/badge.svg)](https://github.com/dbechrakis/steam-reviews-nlp-rag/actions/workflows/evidence.yml)
 
-An end-to-end **customer-feedback analytics** project using a **120,000-review modelling sample** from **843,094 prepared English reviews** to classify sentiment, discover themes, perform semantic search, explain model predictions, and build a retrieval-augmented Q&A system.
+An end-to-end NLP product that transforms large-scale Steam player feedback into sentiment signals, semantic retrieval, explainability, topic analysis, and evidence-grounded answers.
 
-The project demonstrates how unstructured customer feedback can be transformed into **measurable signals and an interactive decision-support workflow**.
+**Stack:** Python · PyTorch · Transformers · Sentence-Transformers · FAISS · SHAP · Groq · Streamlit
 
-## Live application
+## Live product
 
 **[Open the Steam Game Review Explorer →](https://dbechrakis-steam-explorer.streamlit.app/)**
 
 [![Steam Game Review Explorer answering with cited player reviews](outputs/figures/live_app_gpt_oss.png)](https://dbechrakis-steam-explorer.streamlit.app/)
 
-Search a curated corpus of **41,170 reviews across 241 games**. The application retrieves and reranks relevant player evidence, then uses **GPT-OSS 120B through Groq** to produce an answer with numbered citations. The evidence remains inspectable if generation is temporarily unavailable.
+The application searches a curated corpus of **41,170 reviews across 241 games**. It retrieves semantic candidates, reranks them for relevance, and can generate an answer with numbered review citations through GPT-OSS 120B. Retrieved evidence remains visible when generation is unavailable.
 
-## Business questions
+## Business problem
+
+Large review collections are difficult to use for decisions because feedback is unstructured, repetitive, and spread across many products. This project asks how player feedback can be converted into inspectable evidence for questions such as:
 
 - What is the overall sentiment of player feedback?
-- Which themes appear repeatedly across reviews?
-- Can similar reviews be retrieved semantically rather than by keyword alone?
-- Which features drive sentiment predictions?
-- Can a grounded RAG system answer questions using the review corpus as evidence?
+- Which themes recur across positive and negative reviews?
+- Can relevant reviews be found semantically instead of through keyword matching?
+- Which text features influence sentiment predictions?
+- Can generated answers remain traceable to real player evidence?
 
-## Key results
+## Product architecture
+
+```mermaid
+flowchart TD
+    A["Steam reviews"] --> B["Cleaning + language checks"]
+    B --> C["NLP models + evaluation"]
+    C --> D["FAISS index + corpus"]
+    D --> E["Bi-encoder retrieval"]
+    E --> F["Cross-encoder reranking"]
+    F --> G["Grounded answer + evidence"]
+```
+
+The repository separates historical experimentation from the deployed product:
+
+| Layer | Responsibility |
+|---|---|
+| `notebooks/` | Data preparation, EDA, embeddings, classification, XAI, RAG evaluation, topics |
+| `src/steam_review_rag/` | Reusable artifact, retrieval, prompting, diagnostics, and app code |
+| `deploy/` | Lean CPU-only Community Cloud entry point and pinned dependencies |
+| `outputs/` | Recorded figures and inspectable result tables |
+| `tests/` | Fast tests that require no model downloads or API credentials |
+
+See [architecture and contracts](docs/architecture.md) for the runtime boundaries and failure behavior.
+
+## Modelling and evaluation
 
 ### Sentiment classification
 
-The DistilBERT fitting subset contains 86,739 reviews; the shared held-out-game test set contains 24,342. These are different populations, not alternative total dataset sizes. [Sample accounting](outputs/tables/full_data_and_sample_summary.csv).
+The canonical modelling sample contains 120,000 reviews. DistilBERT was fitted on 86,739 reviews and evaluated on a shared **24,342-review held-out-game test set**, reducing direct game overlap between training and evaluation.
 
 | Model / representation | Accuracy | Macro F1 |
 |---|---:|---:|
@@ -35,100 +61,98 @@ The DistilBERT fitting subset contains 86,739 reviews; the shared held-out-game 
 | Sentence-BERT | 85.0% | 0.786 |
 | **Fine-tuned DistilBERT** | **92.9%** | **0.887** |
 
-The original representation comparison uses different text preprocessing for TF-IDF/Word2Vec and Sentence-BERT. The saved same-text TF-IDF control reaches **90.12% accuracy / 0.8484 macro F1**; see [controlled comparison](outputs/tables/embedding_comparison_controlled.csv). These comparisons do not isolate model architecture alone.
+The original representation comparison used different preprocessing for TF-IDF/Word2Vec and Sentence-BERT. A saved same-text TF-IDF control reached **90.12% accuracy / 0.8484 macro F1**. The table therefore compares complete pipelines; it does not isolate architecture alone.
+
+[Sample accounting](outputs/tables/full_data_and_sample_summary.csv) · [Controlled comparison](outputs/tables/embedding_comparison_controlled.csv)
 
 ![Recorded classification comparison](outputs/figures/task1_model_comparison.png)
 
 ### RAG evaluation
 
-The saved Llama run contains **17/18 recognized game-name mentions present in retrieved evidence**, across **five prompts**. This is a name-presence check, not answer-level factuality or claim-level groundedness. It can miss invented names absent from the corpus and cannot detect unsupported claims about a correctly named game.
+The recorded Llama evaluation found **17 of 18 recognized game-name mentions in retrieved evidence** across five prompts. This is a limited name-presence check, not claim-level factuality. It cannot prove that every statement about a correctly named game is supported.
 
-[Recorded generator counts](outputs/tables/rag_model_comparison.csv) · [Evaluation implementation](05_RAG_System.ipynb)
+[Generator counts](outputs/tables/rag_model_comparison.csv) · [Retrieval evaluation](outputs/tables/rag_retrieval_eval.csv) · [Evaluation notebook](notebooks/05_RAG_System.ipynb)
 
-These are recorded historical results; training and live generation have not been rerun in this review.
+These are recorded historical results. The September 2026 review checked saved evidence and evaluation code but did not retrain the transformer or regenerate historical answers.
 
-## My contribution
+## Runtime flow
 
-The original notebooks identify me (Mitsos / Dimitrios Bechrakis) as owner of:
+1. Fixed-revision artifacts are downloaded from the original team deployment.
+2. File sizes and cryptographic hashes are verified before loading.
+3. A SentenceTransformer embeds the user's question.
+4. FAISS retrieves candidate reviews.
+5. A cross-encoder reranks candidates.
+6. The top evidence is shown directly to the user.
+7. When a server-side Groq key is configured, GPT-OSS receives the question and selected excerpts and produces a prompted evidence-only answer.
 
-- **Notebook 03:** document embeddings, representation comparison and semantic search.
-- **Notebook 04:** DistilBERT fine-tuning, held-out-game evaluation and SHAP explanations.
-- **Notebook 05:** two-stage retrieval, RAG evaluation and application artifact export.
+Generation is deliberately optional. Retrieval evidence remains available after provider failures, and safe diagnostics avoid logging prompts, responses, or credentials.
 
-This attribution follows the notebook ownership notes; it does not imply sole authorship of the complete project.
-
-## Analytics workflow
+## Repository structure
 
 ```text
-Raw Reviews
-    ↓
-Cleaning & Language Detection
-    ↓
-EDA / TF-IDF / Embeddings
-    ↓
-Semantic Search + Topic Modelling
-    ↓
-DistilBERT Sentiment Classification
-    ↓
-SHAP Explainability
-    ↓
-FAISS Retrieval
-    ↓
-RAG Q&A Application
+steam-reviews-nlp-rag/
+├── notebooks/                  # Ordered research and modelling workflow
+├── src/steam_review_rag/
+│   ├── app.py                  # Streamlit product UI
+│   ├── artifacts.py            # Pinned download + integrity checks
+│   ├── diagnostics.py          # Safe provider-failure handling
+│   ├── prompting.py            # Pure grounded-prompt construction
+│   └── retrieval.py            # FAISS retrieval, reranking, generation
+├── deploy/                     # Community Cloud entry point + lean requirements
+├── outputs/
+│   ├── figures/                # Recorded visual evidence
+│   └── tables/                 # Inspectable evaluation results
+├── tests/                      # Artifact, prompt, and diagnostic tests
+├── ci/                         # Evidence/syntax validation
+├── app.py                      # Backward-compatible local entry point
+├── pyproject.toml              # Installable package metadata
+└── requirements.txt            # Full notebook environment
 ```
 
-## Project components
+## Run the application locally
 
-| Component | Purpose |
-|---|---|
-| Data preparation | Cleaning, language detection and normalization |
-| Text analytics | TF-IDF, word frequencies and exploratory analysis |
-| Embeddings | Word2Vec and Sentence-BERT semantic representations |
-| Classification | DistilBERT sentiment model and baselines |
-| Explainability | SHAP analysis of model behaviour |
-| Topic modelling | LDA-based discovery of recurring themes |
-| Retrieval | FAISS semantic search over review embeddings |
-| RAG | Grounded Q&A over the review corpus |
-| Application | Streamlit interface for interactive exploration |
+For the lean application environment:
 
-## Visual analysis
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r deploy/requirements.txt
+PYTHONPATH=src python -m steam_review_rag.artifacts
+python -m streamlit run deploy/streamlit_app.py
+```
 
-The repository includes confusion-matrix, embedding, SHAP and topic-modelling outputs under `outputs/figures/`.
+Add `GROQ_API_KEY` through the environment or an untracked `.env` to enable generated answers. Without a key, retrieval and evidence inspection still work.
 
-## Tech stack
+For the complete notebook environment and required source files, follow [REPRODUCING.md](REPRODUCING.md). Deployment details and operational limitations are documented in [DEPLOYMENT.md](DEPLOYMENT.md).
 
-**Python · PyTorch · Hugging Face Transformers · DistilBERT · Sentence-Transformers · FAISS · SHAP · Gensim · scikit-learn · Streamlit**
+## Validation and guardrails
 
-## Reproducibility
+- Artifacts are pinned to a fixed source revision and validated by size and checksum.
+- Corpus schema and FAISS row counts are checked before retrieval.
+- Questions are limited to 600 characters with a five-second per-session cooldown.
+- Visitors cannot provide or view the server-side API key.
+- Provider exception details are converted to allow-listed diagnostics.
+- CI validates notebook structure, saved result arithmetic, Python syntax, artifact checks, prompts, and failure messages.
+- Generated citations remain fallible and should be checked against the displayed reviews.
 
-### Interactive application
+See [VALIDATION.md](VALIDATION.md) for exactly what was and was not rerun.
 
-The Streamlit app is [deployed publicly](https://dbechrakis-steam-explorer.streamlit.app/). The
-[deployment guide](DEPLOYMENT.md) documents the entrypoint `deploy/streamlit_app.py`
-and the reproducible setup.
-It automatically fetches the original team's matching retrieval artifacts from
-[Nebuchedeser's Space](https://huggingface.co/spaces/Nebuchedeser/steam-game-review-explorer)
-at a fixed, integrity-checked revision. That source application was paused when
-inspected; its public files remain the source for this portfolio edition.
-Without a Groq key, the application can still expose retrieved reviews. The public
-deployment uses a server-side key and the verified GPT-OSS model for answers with
-prompted citations; visitors never enter or see that credential.
+## Contribution and provenance
 
-[Input files and execution order](REPRODUCING.md)
+The original notebooks identify Dimitrios Bechrakis as owner of:
 
-The notebooks include their generated outputs for review. The raw Kaggle dataset and the large FAISS index are intentionally excluded from the repository. A Groq API key is required for the RAG generation layer.
+- **Notebook 03:** document embeddings, representation comparison, and semantic search;
+- **Notebook 04:** DistilBERT fine-tuning, held-out-game evaluation, and SHAP explanations;
+- **Notebook 05:** two-stage retrieval, RAG evaluation, and application-artifact export.
 
-Never commit API credentials or `.env` files.
+The portfolio edition packages and documents the team's workflow while retaining that attribution. It does not claim sole authorship of the complete academic project or ownership of the teammate-hosted artifacts.
 
-## Context
+Applied NLP case study developed during the MSc Data Science programme at **The American College of Greece**.
 
-Applied NLP portfolio case study developed during an MSc Data Science programme at **The American College of Greece**. The academic context is retained for transparency; the repository is presented around the analytical problem, methodology, results and application.
+**Dimitris Bechrakis**
 
-## Author
-
-**Dimitris Bechrakis**  
-Business & Data Analyst | M.Sc. Data Science
+Business Analyst | Commercial Analytics · Data Products · Applied Data Science
 
 ## Licensing
 
-See [licensing scope](LICENSING.md) for the MIT-licensed verification code and the separately governed project materials.
+See [LICENSING.md](LICENSING.md) for the MIT-licensed verification code and separately governed project materials.

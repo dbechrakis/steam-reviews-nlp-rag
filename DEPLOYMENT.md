@@ -27,7 +27,7 @@ for Community Cloud: select `deploy/streamlit_app.py` to use the lean dependency
 
 ## What downloads automatically
 
-`artifact_loader.py` downloads ~110 MB from the original team deployment:
+`steam_review_rag.artifacts` downloads ~110 MB from the original team deployment:
 https://huggingface.co/spaces/Nebuchedeser/steam-game-review-explorer
 
 Revision: `c9a4d43b9422edde3fe85b20cc8f4645e258ac02`.
@@ -64,7 +64,7 @@ download. This deployment is therefore not an independent data archive.
 
 ```bash
 python -m pip install -r deploy/requirements.txt
-python artifact_loader.py
+PYTHONPATH=src python -m steam_review_rag.artifacts
 python -m streamlit run deploy/streamlit_app.py
 ```
 
