@@ -1,0 +1,199 @@
+"""Streamlit interface for evidence-grounded Steam game recommendations."""
+
+from __future__ import annotations
+
+from html import escape
+import logging
+import os
+from pathlib import Path
+import time
+
+from dotenv import load_dotenv
+import streamlit as st
+
+from steam_review_rag.artifacts import ensure_artifacts
+from steam_review_rag.diagnostics import generation_diagnostic
+from steam_review_rag.retrieval import SteamReviewRAG
+
+
+ANSWER_MODEL_LABEL = "GPT-OSS 120B"
+ANSWER_MODEL_ID = "openai/gpt-oss-120b"
+
+
+@st.cache_resource(show_spinner="Loading the local retrieval index…")
+def load_backend(project_dir: str) -> SteamReviewRAG:
+    """Ensure and cache the retrieval backend for one project directory."""
+    root = Path(project_dir)
+    ensure_artifacts(root)
+    return SteamReviewRAG.load(root)
+
+
+def get_api_key(project_dir: Path) -> str | None:
+    """Read the server-side Groq key without exposing it to app visitors."""
+    load_dotenv(project_dir / ".env")
+    value = os.getenv("GROQ_API_KEY")
+    if value:
+        return value.strip()
+    try:
+        return st.secrets.get("GROQ_API_KEY")
+    except Exception:
+        return None
+
+
+def show_evidence(evidence) -> None:
+    """Render inspectable review evidence beneath an answer."""
+    with st.expander(f"Evidence used ({len(evidence)} player reviews)", expanded=False):
+        for position, row in evidence.iterrows():
+            label = (
+                f"<div class='evidence-label'>[{position + 1}] "
+                f"{escape(str(row['game_name']))} · "
+                f"{escape(str(row['recommendation']))}</div>"
+            )
+            st.markdown(label, unsafe_allow_html=True)
+            st.caption(
+                f"Semantic score {row['bi_score']:.3f} · "
+                f"reranker score {row['rerank_score']:.2f}"
+            )
+            st.write(str(row["review"]))
+            if position < len(evidence) - 1:
+                st.divider()
+
+
+def main(project_dir: Path) -> None:
+    """Render the complete Streamlit application."""
+    st.set_page_config(
+        page_title="Steam Game Review Explorer",
+        page_icon="🎮",
+        layout="wide",
+    )
+    st.markdown(
+        """
+        <style>
+          :root { --ink: #171b1e; --paper: #f4f0e7; --coral: #e95d3c; --blue: #155e75; }
+          .stApp { background: var(--paper); }
+          .hero { border-bottom: 3px solid var(--ink); padding: 0.8rem 0 1.4rem; margin-bottom: 1.2rem; }
+          .eyebrow { color: var(--coral); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
+          .hero h1 { font-family: Georgia, serif; font-size: clamp(2.2rem, 5vw, 4.4rem); letter-spacing: -0.06em; margin: 0.1rem 0; color: var(--ink); }
+          .hero p { max-width: 50rem; color: #4d5557; font-size: 1.05rem; margin: 0; }
+          .metric-strip { display: flex; gap: 1.5rem; margin: 0.8rem 0 1.5rem; flex-wrap: wrap; }
+          .metric { border-left: 3px solid var(--coral); padding: 0.1rem 0 0.1rem 0.65rem; min-width: 9rem; }
+          .metric strong { display: block; font-size: 1.25rem; color: var(--ink); }
+          .metric span { color: #596164; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; }
+          .evidence-label { color: var(--blue); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    try:
+        backend = load_backend(str(project_dir))
+    except Exception:
+        st.error("The local RAG artifacts could not be loaded.")
+        logging.exception("RAG startup failed")
+        st.info("The review archive may be temporarily unavailable. Please try again later.")
+        st.stop()
+
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+
+    with st.sidebar:
+        st.markdown("### Control room")
+        st.caption(f"Answer model: {ANSWER_MODEL_LABEL}")
+        evidence_count = st.slider("Evidence reviews", min_value=3, max_value=8, value=5)
+        key = get_api_key(project_dir)
+        if key:
+            st.info("AI answers enabled")
+        else:
+            st.info("Evidence-only mode: search works; AI answers are not configured.")
+        if st.button("Clear conversation", use_container_width=True):
+            st.session_state.messages = []
+            st.rerun()
+        st.caption(f"Retrieval device: {backend.device.upper()}")
+        st.markdown(
+            "[Project & team credit]"
+            "(https://github.com/dbechrakis/steam-reviews-nlp-rag)"
+        )
+
+    st.markdown(
+        """
+        <section class="hero">
+          <div class="eyebrow">Steam review intelligence · evidence first</div>
+          <h1>Steam Game Review Explorer</h1>
+          <p>Ask for a kind of game, a player concern, or a recommendation. Answers use retrieved Steam reviews and are prompted to cite them. Check the evidence: generated claims can still be unsupported.</p>
+        </section>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.markdown(
+        f"""
+        <div class="metric-strip">
+          <div class="metric"><strong>{len(backend.corpus):,}</strong><span>curated reviews</span></div>
+          <div class="metric"><strong>{backend.corpus['game_name'].nunique():,}</strong><span>games represented</span></div>
+          <div class="metric"><strong>2-stage</strong><span>retrieve + rerank</span></div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+            if message["role"] == "assistant" and message.get("evidence") is not None:
+                show_evidence(message["evidence"])
+
+    st.caption(
+        "MSc team project · Portfolio edition maintained by Dimitrios Bechrakis. "
+        "Each question is searched independently. Questions and selected review "
+        "excerpts are sent to Groq when AI answers are enabled."
+    )
+
+    question = st.chat_input(
+        "e.g. What is a calm game to play after work?",
+        max_chars=600,
+    )
+    if not question:
+        return
+
+    question = question.strip()
+    if not question:
+        st.stop()
+    if time.monotonic() - st.session_state.get("last_request", 0) < 5:
+        st.warning("Please wait a few seconds before another question.")
+        st.stop()
+
+    st.session_state.last_request = time.monotonic()
+    st.session_state.messages = st.session_state.messages[-10:]
+    st.session_state.messages.append({"role": "user", "content": question})
+    with st.chat_message("user"):
+        st.markdown(question)
+
+    with st.chat_message("assistant"):
+        with st.spinner("Retrieving and reranking player evidence…"):
+            try:
+                evidence = backend.retrieve_and_rerank(question, evidence_count)
+            except Exception:
+                logging.exception("Retrieval failed")
+                st.error("Review search is temporarily unavailable. Please try again later.")
+                st.stop()
+
+            answer = (
+                "Explore the retrieved player reviews below. "
+                "AI-written answers are currently unavailable."
+            )
+            if key:
+                try:
+                    answer = backend.generate_answer(
+                        question,
+                        evidence,
+                        key,
+                        ANSWER_MODEL_ID,
+                    )
+                except Exception as exc:
+                    st.warning(generation_diagnostic(exc, ANSWER_MODEL_ID))
+
+        st.markdown(answer)
+        show_evidence(evidence)
+
+    st.session_state.messages.append(
+        {"role": "assistant", "content": answer, "evidence": evidence}
+    )
