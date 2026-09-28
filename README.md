@@ -1,6 +1,6 @@
 # Steam Review Intelligence — NLP, Explainability & RAG
 
-[![Evidence checks](https://github.com/dbechrakis/steam-reviews-nlp-rag/actions/workflows/evidence.yml/badge.svg)](https://github.com/dbechrakis/steam-reviews-nlp-rag/actions/workflows/evidence.yml)
+[![Code, tests and evidence](https://github.com/dbechrakis/steam-reviews-nlp-rag/actions/workflows/evidence.yml/badge.svg)](https://github.com/dbechrakis/steam-reviews-nlp-rag/actions/workflows/evidence.yml)
 
 An end-to-end NLP product that transforms large-scale Steam player feedback into sentiment signals, semantic retrieval, explainability, topic analysis, and evidence-grounded answers.
 
@@ -47,6 +47,8 @@ The repository separates historical experimentation from the deployed product:
 | `tests/` | Fast tests that require no model downloads or API credentials |
 
 See [architecture and contracts](docs/architecture.md) for the runtime boundaries and failure behavior.
+
+**Why this design:** FAISS retrieves candidates, a cross-encoder reranks a bounded set, and the UI keeps the original review excerpts visible alongside optional generation. The [design decisions](docs/architecture.md#design-decisions) explain the latency and evidence trade-offs, provider fallback, and what the small offline evaluation does and does not support.
 
 ## Modelling and evaluation
 

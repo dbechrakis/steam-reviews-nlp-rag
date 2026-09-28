@@ -40,3 +40,15 @@ flowchart TD
 - Retrieval failures stop the request with a user-safe message.
 - Generation failures preserve and display retrieved reviews.
 - The app functions in evidence-only mode when no Groq key is configured.
+
+## Design decisions
+
+| Choice | Reason and trade-off |
+|---|---|
+| FAISS candidate retrieval before cross-encoder reranking | Vector search narrows the corpus cheaply; the cross-encoder compares the question with each candidate more carefully. Reranking the full corpus would be much slower. |
+| Show excerpts even when generation fails | Searchable player evidence is the core product. A missing key or provider error removes the optional answer, not the retrieved reviews. |
+| Pin and verify artifacts | A fixed remote revision plus expected hashes prevents a silent index/corpus swap. Integrity does not prove the source corpus is representative or that its labels are correct. |
+| Bound candidates and excerpt lengths | Limits keep CPU inference and provider payloads manageable; relevant context may still be missed or truncated. The repo has no measured production latency or cost SLO. |
+| Evaluate retrieval separately from generation | Saved retrieval and name-presence checks expose distinct failure points. Five prompts and 17/18 recognized game mentions are limited evidence; they do not establish claim-level groundedness. |
+
+At 10× corpus size, index storage and CPU reranking latency need benchmarking before choosing a larger candidate pool. If claim-level factuality matters, evaluate answer statements against cited excerpts with a labeled set and human review. The current citation prompt is a request to the generator, not a proof that every claim is supported.
