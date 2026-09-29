@@ -14,6 +14,14 @@ An end-to-end NLP product that transforms large-scale Steam player feedback into
 
 The application searches a curated corpus of **41,170 reviews across 241 games**. It retrieves semantic candidates, reranks them for relevance, and can generate an answer with numbered review citations through GPT-OSS 120B. Retrieved evidence remains visible when generation is unavailable.
 
+## Decision in 60 seconds
+
+| Question | Evidence | Decision supported | Boundary |
+|---|---|---|---|
+| What player feedback deserves closer product investigation? | Search and reranking expose original reviews alongside optional cited answers. Historical sentiment modelling reached **0.887 macro F1** on a held-out-game set. | Find recurring complaints or praise, inspect the underlying review excerpts, and form a product hypothesis for further validation. | The five-prompt RAG check measured game-name presence in retrieved evidence, **not** claim-level factuality. No product change or commercial impact was measured. |
+
+For a concrete walkthrough, open the live explorer, ask about a game's player feedback, and inspect the displayed source reviews before using any generated summary. The answer is a research aid, not a verified conclusion about all players.
+
 ## Business problem
 
 Large review collections are difficult to use for decisions because feedback is unstructured, repetitive, and spread across many products. This project asks how player feedback can be converted into inspectable evidence for questions such as:
