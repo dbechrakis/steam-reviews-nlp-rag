@@ -1,0 +1,1162 @@
+{
+  "version": "1.0",
+  "authoring": "Portfolio evaluation questions authored with AI assistance from the pinned review corpus; not real user queries. Topic anchors selected by explicit game/topic matching and are incomplete relevance labels. Human relevance judgments remain pending.",
+  "corpus_sha256": "0cd69805eac314790744c1baa611d54fe879f6e78db4ea221e9cfe5db55395b4",
+  "model_revisions": {
+    "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
+    "reranker_revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a"
+  },
+  "split_rule": "Named-game and topic questions partitioned by game: first 10 games development, remaining 10 holdout. Comparisons remain within their split. Unsupported questions split 5/5. No tuning performed on this baseline.",
+  "queries": [
+    {
+      "query_id": "game-01",
+      "split": "development",
+      "category": "named_game",
+      "question": "What do player reviews say about Portal 2?",
+      "target_games": [
+        "Portal 2"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-01-1",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about puzzle design in Portal 2?",
+      "target_games": [
+        "Portal 2"
+      ],
+      "anchor_review_ids": [
+        "166763"
+      ],
+      "anchors": [
+        {
+          "review_id": "166763",
+          "review_sha256": "7c19d62e2d3d53982124db6f52b5b33e2082a93474b8a7dde366619d683afc70"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-01-2",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about cooperative play in Portal 2?",
+      "target_games": [
+        "Portal 2"
+      ],
+      "anchor_review_ids": [
+        "164427"
+      ],
+      "anchors": [
+        {
+          "review_id": "164427",
+          "review_sha256": "c46bcf28021e5e13ab50dc35f72dc1fc90a2a99b55b469f1b1312acba1deeaf6"
+        }
+      ]
+    },
+    {
+      "query_id": "game-02",
+      "split": "development",
+      "category": "named_game",
+      "question": "What do player reviews say about Hades?",
+      "target_games": [
+        "Hades"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-02-1",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about combat in Hades?",
+      "target_games": [
+        "Hades"
+      ],
+      "anchor_review_ids": [
+        "183396"
+      ],
+      "anchors": [
+        {
+          "review_id": "183396",
+          "review_sha256": "9dc71bfdf2c8f6a3790d55e6b8c5c30d635430e2838ed03622eb2f422ee109be"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-02-2",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about story and characters in Hades?",
+      "target_games": [
+        "Hades"
+      ],
+      "anchor_review_ids": [
+        "183396"
+      ],
+      "anchors": [
+        {
+          "review_id": "183396",
+          "review_sha256": "9dc71bfdf2c8f6a3790d55e6b8c5c30d635430e2838ed03622eb2f422ee109be"
+        }
+      ]
+    },
+    {
+      "query_id": "game-03",
+      "split": "development",
+      "category": "named_game",
+      "question": "What do player reviews say about Terraria?",
+      "target_games": [
+        "Terraria"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-03-1",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about building in Terraria?",
+      "target_games": [
+        "Terraria"
+      ],
+      "anchor_review_ids": [
+        "149364"
+      ],
+      "anchors": [
+        {
+          "review_id": "149364",
+          "review_sha256": "ac8d88d02f141249bc4e2080f7948a96c51883f4f59b1eea0357b2ba648dbe2a"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-03-2",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about replayability in Terraria?",
+      "target_games": [
+        "Terraria"
+      ],
+      "anchor_review_ids": [
+        "147494"
+      ],
+      "anchors": [
+        {
+          "review_id": "147494",
+          "review_sha256": "2e15316a9d13e9a5195918b3521a5b5bbe4f311fb71678341de46a7ab81c58a1"
+        }
+      ]
+    },
+    {
+      "query_id": "game-04",
+      "split": "development",
+      "category": "named_game",
+      "question": "What do player reviews say about Stardew Valley?",
+      "target_games": [
+        "Stardew Valley"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-04-1",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about relaxing gameplay in Stardew Valley?",
+      "target_games": [
+        "Stardew Valley"
+      ],
+      "anchor_review_ids": [
+        "410282"
+      ],
+      "anchors": [
+        {
+          "review_id": "410282",
+          "review_sha256": "bbf502ea3565953be6e272427eb17be76f74d35b0453a9605204c0c026568388"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-04-2",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about farming in Stardew Valley?",
+      "target_games": [
+        "Stardew Valley"
+      ],
+      "anchor_review_ids": [
+        "408846"
+      ],
+      "anchors": [
+        {
+          "review_id": "408846",
+          "review_sha256": "c010e9dae301425582f7b3541b5d334cc93e58931da1f2676a6c40cc719a083e"
+        }
+      ]
+    },
+    {
+      "query_id": "game-05",
+      "split": "development",
+      "category": "named_game",
+      "question": "What do player reviews say about Slay the Spire?",
+      "target_games": [
+        "Slay the Spire"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-05-1",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about card combinations in Slay the Spire?",
+      "target_games": [
+        "Slay the Spire"
+      ],
+      "anchor_review_ids": [
+        "476133"
+      ],
+      "anchors": [
+        {
+          "review_id": "476133",
+          "review_sha256": "3ac77e5920a089069523d206de6339fdde6e61a2de2413018c3044860d38e259"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-05-2",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about difficulty in Slay the Spire?",
+      "target_games": [
+        "Slay the Spire"
+      ],
+      "anchor_review_ids": [
+        "477272"
+      ],
+      "anchors": [
+        {
+          "review_id": "477272",
+          "review_sha256": "0a296e7a564a4394dcfecba72615078adc88b8c5c41147fb26fd4f3faf2fabd8"
+        }
+      ]
+    },
+    {
+      "query_id": "game-06",
+      "split": "development",
+      "category": "named_game",
+      "question": "What do player reviews say about ELDEN RING?",
+      "target_games": [
+        "ELDEN RING"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-06-1",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about exploration in ELDEN RING?",
+      "target_games": [
+        "ELDEN RING"
+      ],
+      "anchor_review_ids": [
+        "13145"
+      ],
+      "anchors": [
+        {
+          "review_id": "13145",
+          "review_sha256": "225e6a7ff69288b776f9d49bc83caeb1f713ac6b2ec3b11f9a52ea6d9fc72a6d"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-06-2",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about boss fights in ELDEN RING?",
+      "target_games": [
+        "ELDEN RING"
+      ],
+      "anchor_review_ids": [
+        "13145"
+      ],
+      "anchors": [
+        {
+          "review_id": "13145",
+          "review_sha256": "225e6a7ff69288b776f9d49bc83caeb1f713ac6b2ec3b11f9a52ea6d9fc72a6d"
+        }
+      ]
+    },
+    {
+      "query_id": "game-07",
+      "split": "development",
+      "category": "named_game",
+      "question": "What do player reviews say about Valheim?",
+      "target_games": [
+        "Valheim"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-07-1",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about base building in Valheim?",
+      "target_games": [
+        "Valheim"
+      ],
+      "anchor_review_ids": [
+        "209207"
+      ],
+      "anchors": [
+        {
+          "review_id": "209207",
+          "review_sha256": "55725b33a67db93217506267bbca4cdb4ec5ae44f11bcbc6aa5efbfe884b42d0"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-07-2",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about survival in Valheim?",
+      "target_games": [
+        "Valheim"
+      ],
+      "anchor_review_ids": [
+        "209207"
+      ],
+      "anchors": [
+        {
+          "review_id": "209207",
+          "review_sha256": "55725b33a67db93217506267bbca4cdb4ec5ae44f11bcbc6aa5efbfe884b42d0"
+        }
+      ]
+    },
+    {
+      "query_id": "game-08",
+      "split": "development",
+      "category": "named_game",
+      "question": "What do player reviews say about Stellaris?",
+      "target_games": [
+        "Stellaris"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-08-1",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about downloadable content in Stellaris?",
+      "target_games": [
+        "Stellaris"
+      ],
+      "anchor_review_ids": [
+        "560765"
+      ],
+      "anchors": [
+        {
+          "review_id": "560765",
+          "review_sha256": "95fc41e82619e20acfa400f5bd52d0420c12f4ec6eb0cb8739c96d04224d2036"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-08-2",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about strategy in Stellaris?",
+      "target_games": [
+        "Stellaris"
+      ],
+      "anchor_review_ids": [
+        "561785"
+      ],
+      "anchors": [
+        {
+          "review_id": "561785",
+          "review_sha256": "faf124bc54d60da85cb23e1d89f76ac86b9fefec9de70c2d37b63846886acdcd"
+        }
+      ]
+    },
+    {
+      "query_id": "game-09",
+      "split": "development",
+      "category": "named_game",
+      "question": "What do player reviews say about Subnautica?",
+      "target_games": [
+        "Subnautica"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-09-1",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about exploration in Subnautica?",
+      "target_games": [
+        "Subnautica"
+      ],
+      "anchor_review_ids": [
+        "301834"
+      ],
+      "anchors": [
+        {
+          "review_id": "301834",
+          "review_sha256": "e9be91ec569a3a13f2aff5783f6e2c01a80af3a315b1066164971d0a5cda3663"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-09-2",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about atmosphere in Subnautica?",
+      "target_games": [
+        "Subnautica"
+      ],
+      "anchor_review_ids": [
+        "299616"
+      ],
+      "anchors": [
+        {
+          "review_id": "299616",
+          "review_sha256": "07b2c520df31c45024b6e9face46d7acf8966668592466133dfc80f532bbdefd"
+        }
+      ]
+    },
+    {
+      "query_id": "game-10",
+      "split": "development",
+      "category": "named_game",
+      "question": "What do player reviews say about Warframe?",
+      "target_games": [
+        "Warframe"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-10-1",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about grinding in Warframe?",
+      "target_games": [
+        "Warframe"
+      ],
+      "anchor_review_ids": [
+        "45648"
+      ],
+      "anchors": [
+        {
+          "review_id": "45648",
+          "review_sha256": "d9415566bdf7e3add959ff279439a9b7b25cb9b8a0f145570dda1ebcf3a9ed4a"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-10-2",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about combat in Warframe?",
+      "target_games": [
+        "Warframe"
+      ],
+      "anchor_review_ids": [
+        "47025"
+      ],
+      "anchors": [
+        {
+          "review_id": "47025",
+          "review_sha256": "2ae7c2eaedb77ca19da0b45d1374cca953898f6b83dc9b21ec220228fafb2fcf"
+        }
+      ]
+    },
+    {
+      "query_id": "game-11",
+      "split": "holdout",
+      "category": "named_game",
+      "question": "What do player reviews say about Cities: Skylines II?",
+      "target_games": [
+        "Cities: Skylines II"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-11-1",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about performance in Cities: Skylines II?",
+      "target_games": [
+        "Cities: Skylines II"
+      ],
+      "anchor_review_ids": [
+        "591880"
+      ],
+      "anchors": [
+        {
+          "review_id": "591880",
+          "review_sha256": "74c92fd67b09439fb8246feab395135a35b0e6ecafa3e86ce5ebeef744ba0f99"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-11-2",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about simulation in Cities: Skylines II?",
+      "target_games": [
+        "Cities: Skylines II"
+      ],
+      "anchor_review_ids": [
+        "591511"
+      ],
+      "anchors": [
+        {
+          "review_id": "591511",
+          "review_sha256": "25a6d39372dac6c2b0a9f5a2c7e156266a19564085cfd7afeca072284199511c"
+        }
+      ]
+    },
+    {
+      "query_id": "game-12",
+      "split": "holdout",
+      "category": "named_game",
+      "question": "What do player reviews say about Dragon's Dogma 2?",
+      "target_games": [
+        "Dragon's Dogma 2"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-12-1",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about performance in Dragon's Dogma 2?",
+      "target_games": [
+        "Dragon's Dogma 2"
+      ],
+      "anchor_review_ids": [
+        "77254"
+      ],
+      "anchors": [
+        {
+          "review_id": "77254",
+          "review_sha256": "c8adbb97ccc0c984c64fd7568901b4568edae32beae821a68a8b08067b57f4cd"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-12-2",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about combat in Dragon's Dogma 2?",
+      "target_games": [
+        "Dragon's Dogma 2"
+      ],
+      "anchor_review_ids": [
+        "77212"
+      ],
+      "anchors": [
+        {
+          "review_id": "77212",
+          "review_sha256": "ee7cb7dd3c41bad1ff0680fe6f803cd69fe1cac90b65f6d7e0fbf1799d92cc5b"
+        }
+      ]
+    },
+    {
+      "query_id": "game-13",
+      "split": "holdout",
+      "category": "named_game",
+      "question": "What do player reviews say about Fallout 76?",
+      "target_games": [
+        "Fallout 76"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-13-1",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about bugs in Fallout 76?",
+      "target_games": [
+        "Fallout 76"
+      ],
+      "anchor_review_ids": [
+        "442722"
+      ],
+      "anchors": [
+        {
+          "review_id": "442722",
+          "review_sha256": "cfac28c3de680b69218bea0d8575d3dad849f81b9ad247141c80a9ec40704c05"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-13-2",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about playing with friends in Fallout 76?",
+      "target_games": [
+        "Fallout 76"
+      ],
+      "anchor_review_ids": [
+        "440759"
+      ],
+      "anchors": [
+        {
+          "review_id": "440759",
+          "review_sha256": "2948dacb2d4fa69d7baea101850d1b9db9b0d9a424783f14d8c44ecafd87f714"
+        }
+      ]
+    },
+    {
+      "query_id": "game-14",
+      "split": "holdout",
+      "category": "named_game",
+      "question": "What do player reviews say about Frostpunk?",
+      "target_games": [
+        "Frostpunk"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-14-1",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about difficulty in Frostpunk?",
+      "target_games": [
+        "Frostpunk"
+      ],
+      "anchor_review_ids": [
+        "545370"
+      ],
+      "anchors": [
+        {
+          "review_id": "545370",
+          "review_sha256": "190a6c3d7db01c6c6cd307d38c36b8ddcba45b250dc9bb2839e555d36caa2cbb"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-14-2",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about moral choices in Frostpunk?",
+      "target_games": [
+        "Frostpunk"
+      ],
+      "anchor_review_ids": [
+        "544038"
+      ],
+      "anchors": [
+        {
+          "review_id": "544038",
+          "review_sha256": "b210b551e2366b4d07165736ff3f4941a376a5f60fadf91c3a13a95d5db198fb"
+        }
+      ]
+    },
+    {
+      "query_id": "game-15",
+      "split": "holdout",
+      "category": "named_game",
+      "question": "What do player reviews say about 7 Days to Die?",
+      "target_games": [
+        "7 Days to Die"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-15-1",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about survival in 7 Days to Die?",
+      "target_games": [
+        "7 Days to Die"
+      ],
+      "anchor_review_ids": [
+        "616941"
+      ],
+      "anchors": [
+        {
+          "review_id": "616941",
+          "review_sha256": "ffa6f91d6bafaff7d2a7a0b6ba0b955027e87f5e1fc4ad3d41b0ea4dcfaf7189"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-15-2",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about building in 7 Days to Die?",
+      "target_games": [
+        "7 Days to Die"
+      ],
+      "anchor_review_ids": [
+        "616043"
+      ],
+      "anchors": [
+        {
+          "review_id": "616043",
+          "review_sha256": "3563f0cdaa629a28ea4b6a24a68449a4f4b1446822b1b1dd1a412a1a5a7a4145"
+        }
+      ]
+    },
+    {
+      "query_id": "game-16",
+      "split": "holdout",
+      "category": "named_game",
+      "question": "What do player reviews say about Kenshi?",
+      "target_games": [
+        "Kenshi"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-16-1",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about freedom in Kenshi?",
+      "target_games": [
+        "Kenshi"
+      ],
+      "anchor_review_ids": [
+        "802814"
+      ],
+      "anchors": [
+        {
+          "review_id": "802814",
+          "review_sha256": "95770a0cc2c67e8a3fd485f6152fb20bf6dc684cc922f463365c39edf9afe3a3"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-16-2",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about difficulty in Kenshi?",
+      "target_games": [
+        "Kenshi"
+      ],
+      "anchor_review_ids": [
+        "803200"
+      ],
+      "anchors": [
+        {
+          "review_id": "803200",
+          "review_sha256": "b86cb310aa1c232d857ed3431496c735294a62e64c9138446845ab460eea0e6b"
+        }
+      ]
+    },
+    {
+      "query_id": "game-17",
+      "split": "holdout",
+      "category": "named_game",
+      "question": "What do player reviews say about Hogwarts Legacy?",
+      "target_games": [
+        "Hogwarts Legacy"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-17-1",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about open-world exploration in Hogwarts Legacy?",
+      "target_games": [
+        "Hogwarts Legacy"
+      ],
+      "anchor_review_ids": [
+        "359837"
+      ],
+      "anchors": [
+        {
+          "review_id": "359837",
+          "review_sha256": "1b0cc29876f2b99044e1d3be31016e3806e6b066952021acb63a4f85ffe34be3"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-17-2",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about combat in Hogwarts Legacy?",
+      "target_games": [
+        "Hogwarts Legacy"
+      ],
+      "anchor_review_ids": [
+        "360386"
+      ],
+      "anchors": [
+        {
+          "review_id": "360386",
+          "review_sha256": "7ab343e57dd32381bc5513df573b761286645e532310cd4a784e4264cf95d27a"
+        }
+      ]
+    },
+    {
+      "query_id": "game-18",
+      "split": "holdout",
+      "category": "named_game",
+      "question": "What do player reviews say about Manor Lords?",
+      "target_games": [
+        "Manor Lords"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-18-1",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about city building in Manor Lords?",
+      "target_games": [
+        "Manor Lords"
+      ],
+      "anchor_review_ids": [
+        "759544"
+      ],
+      "anchors": [
+        {
+          "review_id": "759544",
+          "review_sha256": "a3c19a64405eddc460be67609e80377fed258c14455fa163b84fa94c10329fb8"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-18-2",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about early-access limitations in Manor Lords?",
+      "target_games": [
+        "Manor Lords"
+      ],
+      "anchor_review_ids": [
+        "760658"
+      ],
+      "anchors": [
+        {
+          "review_id": "760658",
+          "review_sha256": "f85a76c253f729c895387ea71862670c4f3fb4f3551d76a5c426e742820dc3e1"
+        }
+      ]
+    },
+    {
+      "query_id": "game-19",
+      "split": "holdout",
+      "category": "named_game",
+      "question": "What do player reviews say about Monster Hunter: World?",
+      "target_games": [
+        "Monster Hunter: World"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-19-1",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about combat in Monster Hunter: World?",
+      "target_games": [
+        "Monster Hunter: World"
+      ],
+      "anchor_review_ids": [
+        "233643"
+      ],
+      "anchors": [
+        {
+          "review_id": "233643",
+          "review_sha256": "80f7ed29b53b859929374370668878d284b9e66a121c5ba8d1da757474f99525"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-19-2",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about grinding in Monster Hunter: World?",
+      "target_games": [
+        "Monster Hunter: World"
+      ],
+      "anchor_review_ids": [
+        "233643"
+      ],
+      "anchors": [
+        {
+          "review_id": "233643",
+          "review_sha256": "80f7ed29b53b859929374370668878d284b9e66a121c5ba8d1da757474f99525"
+        }
+      ]
+    },
+    {
+      "query_id": "game-20",
+      "split": "holdout",
+      "category": "named_game",
+      "question": "What do player reviews say about Company of Heroes 3?",
+      "target_games": [
+        "Company of Heroes 3"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "topic-20-1",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about campaign in Company of Heroes 3?",
+      "target_games": [
+        "Company of Heroes 3"
+      ],
+      "anchor_review_ids": [
+        "742440"
+      ],
+      "anchors": [
+        {
+          "review_id": "742440",
+          "review_sha256": "c11a12923dc9b0e5404cdbfe920c9d7ee69ca967d132175997b364159c459d75"
+        }
+      ]
+    },
+    {
+      "query_id": "topic-20-2",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about multiplayer in Company of Heroes 3?",
+      "target_games": [
+        "Company of Heroes 3"
+      ],
+      "anchor_review_ids": [
+        "740062"
+      ],
+      "anchors": [
+        {
+          "review_id": "740062",
+          "review_sha256": "06eee25a034e72ca5759a6d4956cad47e0625875ab96775e7003baf731ce0cbe"
+        }
+      ]
+    },
+    {
+      "query_id": "compare-01",
+      "split": "development",
+      "category": "comparison",
+      "question": "Compare player feedback on Portal 2 and Hades. Give evidence for both games.",
+      "target_games": [
+        "Portal 2",
+        "Hades"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "compare-02",
+      "split": "development",
+      "category": "comparison",
+      "question": "Compare player feedback on Terraria and Stardew Valley. Give evidence for both games.",
+      "target_games": [
+        "Terraria",
+        "Stardew Valley"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "compare-03",
+      "split": "development",
+      "category": "comparison",
+      "question": "Compare player feedback on Slay the Spire and ELDEN RING. Give evidence for both games.",
+      "target_games": [
+        "Slay the Spire",
+        "ELDEN RING"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "compare-04",
+      "split": "development",
+      "category": "comparison",
+      "question": "Compare player feedback on Valheim and Stellaris. Give evidence for both games.",
+      "target_games": [
+        "Valheim",
+        "Stellaris"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "compare-05",
+      "split": "development",
+      "category": "comparison",
+      "question": "Compare player feedback on Subnautica and Warframe. Give evidence for both games.",
+      "target_games": [
+        "Subnautica",
+        "Warframe"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "compare-06",
+      "split": "holdout",
+      "category": "comparison",
+      "question": "Compare player feedback on Cities: Skylines II and Dragon's Dogma 2. Give evidence for both games.",
+      "target_games": [
+        "Cities: Skylines II",
+        "Dragon's Dogma 2"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "compare-07",
+      "split": "holdout",
+      "category": "comparison",
+      "question": "Compare player feedback on Fallout 76 and Frostpunk. Give evidence for both games.",
+      "target_games": [
+        "Fallout 76",
+        "Frostpunk"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "compare-08",
+      "split": "holdout",
+      "category": "comparison",
+      "question": "Compare player feedback on 7 Days to Die and Kenshi. Give evidence for both games.",
+      "target_games": [
+        "7 Days to Die",
+        "Kenshi"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "compare-09",
+      "split": "holdout",
+      "category": "comparison",
+      "question": "Compare player feedback on Hogwarts Legacy and Manor Lords. Give evidence for both games.",
+      "target_games": [
+        "Hogwarts Legacy",
+        "Manor Lords"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "compare-10",
+      "split": "holdout",
+      "category": "comparison",
+      "question": "Compare player feedback on Monster Hunter: World and Company of Heroes 3. Give evidence for both games.",
+      "target_games": [
+        "Monster Hunter: World",
+        "Company of Heroes 3"
+      ],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "unsupported-01",
+      "split": "development",
+      "category": "unsupported",
+      "question": "What is the exact current Steam price of Portal 2 in Greece?",
+      "target_games": [],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "unsupported-02",
+      "split": "development",
+      "category": "unsupported",
+      "question": "How many copies will Hades sell next year?",
+      "target_games": [],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "unsupported-03",
+      "split": "development",
+      "category": "unsupported",
+      "question": "What is the verified average FPS of Valheim on every RTX 5090 configuration?",
+      "target_games": [],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "unsupported-04",
+      "split": "development",
+      "category": "unsupported",
+      "question": "List the private email addresses of players who reviewed Terraria.",
+      "target_games": [],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "unsupported-05",
+      "split": "development",
+      "category": "unsupported",
+      "question": "What is the official release date of the next Stardew Valley update?",
+      "target_games": [],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "unsupported-06",
+      "split": "holdout",
+      "category": "unsupported",
+      "question": "What is the current server uptime percentage for Fallout 76?",
+      "target_games": [],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "unsupported-07",
+      "split": "holdout",
+      "category": "unsupported",
+      "question": "Give the exact development budget and net profit of Manor Lords.",
+      "target_games": [],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "unsupported-08",
+      "split": "holdout",
+      "category": "unsupported",
+      "question": "Which Company of Heroes 3 reviewer received a refund yesterday?",
+      "target_games": [],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "unsupported-09",
+      "split": "holdout",
+      "category": "unsupported",
+      "question": "What is the official medical evidence that Kenshi treats depression?",
+      "target_games": [],
+      "anchor_review_ids": [],
+      "anchors": []
+    },
+    {
+      "query_id": "unsupported-10",
+      "split": "holdout",
+      "category": "unsupported",
+      "question": "What do reviews say about the fictional game Quantum Teapot Accountant 2099?",
+      "target_games": [],
+      "anchor_review_ids": [],
+      "anchors": []
+    }
+  ]
+}

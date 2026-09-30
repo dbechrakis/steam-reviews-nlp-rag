@@ -65,11 +65,13 @@ class SteamReviewRAG:
     def _load_models(self) -> None:
         if self.embedding_model is None:
             self.embedding_model = SentenceTransformer(
-                self.config["embedding_model"], device=self.device
+                self.config["embedding_model"], device=self.device,
+                revision=self.config.get("embedding_revision"),
             )
         if self.reranker is None:
             self.reranker = CrossEncoder(
-                self.config["reranker_model"], device=self.device
+                self.config["reranker_model"], device=self.device,
+                revision=self.config.get("reranker_revision"),
             )
 
     def retrieve_and_rerank(
@@ -78,27 +80,42 @@ class SteamReviewRAG:
         evidence_count: int | None = None,
     ) -> pd.DataFrame:
         """Retrieve semantic candidates and rerank them for the user question."""
+        candidates = self.retrieve_candidates(question)
+        return self.rerank_candidates(question, candidates, evidence_count)
+
+    def retrieve_candidates(self, question: str) -> pd.DataFrame:
+        """Expose the unchanged bi-encoder stage and stable corpus row identifiers."""
         question = question.strip()
         if not question:
             return self.corpus.iloc[0:0].copy()
-
         self._load_models()
-        assert self.embedding_model is not None and self.reranker is not None
-
+        assert self.embedding_model is not None
         retrieve_k = min(int(self.config.get("retrieve_k", 20)), len(self.corpus))
-        final_k = evidence_count or int(self.config.get("final_k", 5))
-        final_k = max(1, min(final_k, retrieve_k))
-
+        if retrieve_k < 1:
+            raise ValueError("retrieve_k must be positive")
         query_vector = self.embedding_model.encode(
-            [question],
-            normalize_embeddings=True,
-            convert_to_numpy=True,
+            [question], normalize_embeddings=True, convert_to_numpy=True,
         ).astype("float32")
         scores, row_ids = self.index.search(query_vector, retrieve_k)
+        if (row_ids[0] < 0).any() or (row_ids[0] >= len(self.corpus)).any():
+            raise ValueError("FAISS returned an invalid corpus row identifier")
         candidates = self.corpus.iloc[row_ids[0]].copy().reset_index(drop=True)
-        candidates.insert(0, "bi_score", scores[0])
+        candidates.insert(0, "corpus_row_id", row_ids[0])
+        candidates.insert(1, "bi_score", scores[0])
+        return candidates
 
-        pairs = list(zip([question] * len(candidates), candidates["review"].tolist()))
+    def rerank_candidates(
+        self, question: str, candidates: pd.DataFrame, evidence_count: int | None = None,
+    ) -> pd.DataFrame:
+        """Rerank the same candidate pool so evaluation isolates the second stage."""
+        if candidates.empty:
+            return candidates.copy()
+        self._load_models()
+        assert self.reranker is not None
+        final_k = evidence_count or int(self.config.get("final_k", 5))
+        final_k = max(1, min(final_k, len(candidates)))
+        candidates = candidates.copy()
+        pairs = list(zip([question.strip()] * len(candidates), candidates["review"].tolist()))
         candidates["rerank_score"] = self.reranker.predict(
             pairs,
             batch_size=32,
