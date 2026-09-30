@@ -10,3 +10,7 @@ outputs/rag/*.csv
 .venv/
 .streamlit/secrets.toml
 outputs/rag/
+
+outputs/evaluation-run.log
+outputs/evaluation/*/retrieval_judgments.csv
+outputs/evaluation/*/answer_judgments.csv

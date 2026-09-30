@@ -79,6 +79,8 @@ The original representation comparison used different preprocessing for TF-IDF/W
 
 ### RAG evaluation
 
+**New executed retrieval benchmark:** [80 source-backed questions](evaluation/README.md) compare bi-encoder retrieval with reranking, using disjoint development/holdout game sets and pinned model revisions. [Inspect measured results and failure cases](outputs/evaluation/baseline-v1/summary.md). These are target-game and source-anchor diagnostics; GPT-OSS claim support and appropriate abstention remain unmeasured until generation and human adjudication are completed.
+
 The recorded Llama evaluation found **17 of 18 recognized game-name mentions in retrieved evidence** across five prompts. This is a limited name-presence check, not claim-level factuality. It cannot prove that every statement about a correctly named game is supported.
 
 [Generator counts](outputs/tables/rag_model_comparison.csv) · [Retrieval evaluation](outputs/tables/rag_retrieval_eval.csv) · [Evaluation notebook](notebooks/05_RAG_System.ipynb)
@@ -165,4 +167,4 @@ Business Analyst | Commercial Analytics · Data Products · Applied Data Science
 
 ## Licensing
 
-See [LICENSING.md](LICENSING.md) for the MIT-licensed verification code and separately governed project materials.
+See the root [MIT license](LICENSE) and [LICENSING.md](LICENSING.md) for covered supplemental code and separately governed team materials/data.
