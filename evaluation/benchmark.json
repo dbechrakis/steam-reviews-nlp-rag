@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "authoring": "Portfolio evaluation questions authored with AI assistance from the pinned review corpus; not real user queries. Topic anchors selected by explicit game/topic matching and are incomplete relevance labels. Human relevance judgments remain pending.",
+  "authoring": "Portfolio evaluation questions authored from the pinned review corpus; not real user queries. Topic anchors selected by explicit game/topic matching and are incomplete relevance labels. Human relevance judgments remain pending.",
   "corpus_sha256": "0cd69805eac314790744c1baa611d54fe879f6e78db4ea221e9cfe5db55395b4",
   "model_revisions": {
     "embedding_revision": "1110a243fdf4706b3f48f1d95db1a4f5529b4d41",
