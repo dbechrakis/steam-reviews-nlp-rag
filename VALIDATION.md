@@ -46,3 +46,7 @@ Review date: 2026-09-06 (UTC).
 Executed the live retrieval design on 80 versioned questions: 40 development and 40 holdout, with disjoint named-game sets. The run used the pinned original 41,170-review corpus and FAISS index, pinned embedding/reranker revisions and CPU inference. Every question ran through the original 20-candidate stage and reranking of that same pool. Committed per-query records, aggregate manifest and summary show measured game-coverage proxies, incomplete source-anchor recovery and warm latency. No generator request was made; citation correctness, claim support and abstention remain unjudged. Full source review text and credentials are not committed in the new benchmark output.
 
 Eight new dependency-free tests distinguish correct game labels from source-anchor recovery, check two-game coverage, absent evidence slots, unsupported-query missing metrics, valid citation numbers versus factual support, latency interpolation and disjoint benchmark splits. Existing artifact, prompt and diagnostics tests also pass. CI recomputes aggregate proxy metrics from the per-query evidence and checks benchmark/corpus/model metadata without downloading models or calling a provider.
+
+## Benchmark metadata edit — 2026-10-05
+
+Edited the free-text `authoring` description in `evaluation/benchmark.json`. All other fields (80 questions, splits, source anchors, corpus hash and model revisions) were verified unchanged, and `benchmark_sha256` in the baseline manifest was updated to the edited file. The recorded retrieval results are unaffected.

@@ -2,7 +2,7 @@
 
 **Decision:** how reliably does the live retrieval design supply evidence for the games and questions a visitor requests?
 
-The [versioned benchmark](benchmark.json) contains **80 AI-assisted evaluation questions**, not production user logs: 20 named-game questions, 40 game/topic questions, 10 two-game comparisons and 10 questions whose requested facts are unavailable from this review snapshot. It uses 20 games from the pinned 41,170-review corpus. Each topic question has a traceable source-review ID and text hash. Seed anchors were inspected during authoring, including corrections where a keyword occurred incidentally rather than supporting the requested theme.
+The [versioned benchmark](benchmark.json) contains **80 authored evaluation questions**, not production user logs: 20 named-game questions, 40 game/topic questions, 10 two-game comparisons and 10 questions whose requested facts are unavailable from this review snapshot. It uses 20 games from the pinned 41,170-review corpus. Each topic question has a traceable source-review ID and text hash. Seed anchors were inspected during authoring, including corrections where a keyword occurred incidentally rather than supporting the requested theme.
 
 The 40 development questions and 40 holdout questions use disjoint game sets. Comparisons stay within their assigned split. The baseline is descriptive, with no retrieval tuning performed. Future tuning should use development questions and a fresh benchmark for final evaluation after holdout results have been inspected.
 
