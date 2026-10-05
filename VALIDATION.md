@@ -4,7 +4,7 @@ Latest structural review: 2026-09-22 (UTC).
 
 Checked saved CSV arithmetic, sample sizes and evaluation implementation; no retraining or live generation.
 
-Changes were prepared with AI assistance and should be understood and reviewed by the repository owner. Historical records are not labelled as freshly reproduced results.
+Historical records are not labelled as freshly reproduced results.
 
 ## September 2026 product-structure verification
 
