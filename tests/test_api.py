@@ -61,6 +61,11 @@ class ApiTests(unittest.TestCase):
     def tearDown(self):
         self.context.__exit__(None, None, None)
 
+    def test_root_redirects_to_the_interactive_docs(self):
+        response = self.client.get("/", follow_redirects=False)
+        self.assertIn(response.status_code, (302, 307))
+        self.assertEqual(response.headers["location"], "/docs")
+
     def test_health_reports_corpus(self):
         body = self.client.get("/health").json()
         self.assertEqual(body["corpus_reviews"], 6)

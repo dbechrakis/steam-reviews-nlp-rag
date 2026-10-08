@@ -17,6 +17,7 @@ import time
 from typing import Literal, Protocol
 
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import RedirectResponse
 import pandas as pd
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
@@ -190,6 +191,11 @@ def create_app(backend_factory=load_default_backend) -> FastAPI:
             )
             for position, row in enumerate(evidence.to_dict("records"), start=1)
         ]
+
+    @app.get("/", include_in_schema=False)
+    def root() -> RedirectResponse:
+        """Send visitors, and the Hugging Face Space preview, to the interactive docs."""
+        return RedirectResponse(url="/docs")
 
     @app.get("/health")
     def health(request: Request) -> dict:
