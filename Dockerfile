@@ -22,7 +22,10 @@ RUN pip install --no-cache-dir --no-deps .
 
 COPY evaluation/benchmark.json ./evaluation/benchmark.json
 # Download and verify the pinned artifacts and model revisions once, at build time.
-RUN python -c "from steam_review_rag.api import load_default_backend; load_default_backend()"
+# ensure_artifacts writes through NamedTemporaryFile (mode 0600), so open read access
+# for the non-root runtime user afterwards.
+RUN python -c "from steam_review_rag.api import load_default_backend; load_default_backend()" \
+    && chmod -R a+rX /app/outputs /app/hf-cache
 
 RUN useradd --create-home --uid 1000 api
 USER api
