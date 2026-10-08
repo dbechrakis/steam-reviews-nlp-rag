@@ -1,7 +1,7 @@
 # Run the same checks as CI: `make check`. Override the interpreter with `make check PYTHON=python3.12`.
 PYTHON ?= python
 
-.PHONY: install check lint evidence test
+.PHONY: install check lint evidence test serve docker
 
 install:
 	$(PYTHON) -m pip install -r requirements.txt
@@ -17,3 +17,9 @@ test:
 	PYTHONPATH=src $(PYTHON) -m unittest discover -s tests -v
 
 check: lint evidence test
+
+serve:
+	PYTHONPATH=src $(PYTHON) -m uvicorn steam_review_rag.api:app --reload
+
+docker:
+	docker build -t steam-review-api .

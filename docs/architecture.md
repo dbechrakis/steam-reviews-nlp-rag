@@ -13,6 +13,13 @@ flowchart TD
     G --> H["Answer with prompted citations"]
 ```
 
+## Serving surfaces
+
+| Surface | Entry point | Shares |
+|---|---|---|
+| Streamlit app | `deploy/streamlit_app.py` | `SteamReviewRAG`, prompting, diagnostics |
+| REST API | `steam_review_rag.api:app` (Docker image) | the same backend object, plus pinned benchmark model revisions and an LRU result cache |
+
 ## Runtime contracts
 
 | Boundary | Contract |
