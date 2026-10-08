@@ -23,12 +23,12 @@ jobs:
     env:
       TOKENIZERS_PARALLELISM: 'false'
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
-      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: '3.12'
       - name: Cache pinned artifacts and models
-        uses: actions/cache@v4
+        uses: actions/cache@caa296126883cff596d87d8935842f9db880ef25 # v5.1.0
         with:
           path: |
             outputs/rag
@@ -39,7 +39,7 @@ jobs:
         run: python scripts/evaluate_retrieval.py --output outputs/evaluation/ci-run
       - name: Compare with the committed baseline
         run: python scripts/check_retrieval_regression.py --run outputs/evaluation/ci-run
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         if: always()
         with:
           name: retrieval-ci-run
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
       - name: Build image with baked artifacts and models
         run: docker build -t steam-review-api .
       - name: Query the running container
