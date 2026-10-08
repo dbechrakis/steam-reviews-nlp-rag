@@ -50,3 +50,9 @@ Eight new dependency-free tests distinguish correct game labels from source-anch
 ## Benchmark metadata edit — 2026-10-05
 
 Edited the free-text `authoring` description in `evaluation/benchmark.json`. All other fields (80 questions, splits, source anchors, corpus hash and model revisions) were verified unchanged, and `benchmark_sha256` in the baseline manifest was updated to the edited file. The recorded retrieval results are unaffected.
+
+## Retrieval API and regression gate — 2026-10-08
+
+- Added a FastAPI service (`/health`, `/games`, `/search`, `/answer`) that wraps the unchanged `SteamReviewRAG` backend. `retrieval.py`, `prompting.py`, `evaluation.py` and the benchmark runner are byte-identical to the evidence baseline, so `verify_retrieval_evidence.py` still passes.
+- 9 API contract tests use a deterministic in-memory backend. They cover input validation, rejection of unknown fields, cache hits, evidence-only mode, out-of-range citation detection, safe provider diagnostics and 503 on backend failure. 4 tests cover the regression gate itself.
+- This environment could not reach Hugging Face, so the real-model benchmark rerun, the Docker build and the container queries run in the `Retrieval gate` workflow, not here. Their results are recorded below once that workflow has run.

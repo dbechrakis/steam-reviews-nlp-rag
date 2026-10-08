@@ -1,0 +1,12 @@
+.git
+.github
+.venv
+.devcontainer
+notebooks
+outputs
+docs
+tests
+deploy
+**/__pycache__
+*.egg-info
+.env

@@ -4,7 +4,7 @@
 
 An end-to-end NLP product that transforms large-scale Steam player feedback into sentiment signals, semantic retrieval, explainability, topic analysis, and evidence-grounded answers.
 
-**Stack:** Python · PyTorch · Transformers · Sentence-Transformers · FAISS · SHAP · Groq · Streamlit
+**Stack:** Python · PyTorch · Transformers · Sentence-Transformers · FAISS · SHAP · Groq · FastAPI · Docker · Streamlit
 
 ## Live product
 
@@ -105,6 +105,7 @@ Generation is deliberately optional. Retrieval evidence remains available after 
 steam-reviews-nlp-rag/
 ├── notebooks/                  # Ordered research and modelling workflow
 ├── src/steam_review_rag/
+│   ├── api.py                  # FastAPI retrieval/answer service
 │   ├── app.py                  # Streamlit product UI
 │   ├── artifacts.py            # Pinned download + integrity checks
 │   ├── diagnostics.py          # Safe provider-failure handling
@@ -114,9 +115,12 @@ steam-reviews-nlp-rag/
 ├── outputs/
 │   ├── figures/                # Recorded visual evidence
 │   └── tables/                 # Inspectable evaluation results
-├── tests/                      # Artifact, prompt, and diagnostic tests
+├── scripts/                    # Benchmark runner, evidence checks, regression gate
+├── tests/                      # Artifact, prompt, diagnostic, API and gate tests
 ├── ci/                         # Evidence/syntax validation
 ├── app.py                      # Backward-compatible local entry point
+├── Dockerfile                  # API image with pinned artifacts and models baked in
+├── requirements-api.txt        # Lean CPU serving environment
 ├── pyproject.toml              # Installable package metadata
 └── requirements.txt            # Full notebook environment
 ```
@@ -136,6 +140,40 @@ python -m streamlit run deploy/streamlit_app.py
 Add `GROQ_API_KEY` through the environment or an untracked `.env` to enable generated answers. Without a key, retrieval and evidence inspection still work.
 
 For the complete notebook environment and required source files, follow [REPRODUCING.md](REPRODUCING.md). Deployment details and operational limitations are documented in [DEPLOYMENT.md](DEPLOYMENT.md).
+
+## Retrieval API
+
+The same two-stage retriever is also served over REST with FastAPI. The service wraps the app's `SteamReviewRAG` backend unchanged, so the API and the Streamlit app cannot drift apart.
+
+```bash
+docker build -t steam-review-api .          # bakes the verified corpus, index and pinned model revisions
+docker run -p 8000:8000 steam-review-api    # add -e GROQ_API_KEY=... to enable /answer generation
+# OpenAPI docs: http://localhost:8000/docs
+```
+
+| Endpoint | Purpose |
+|---|---|
+| `GET /health` | Corpus size, games, device, start-up time, cache hits and misses, whether answers are enabled |
+| `GET /games` | The 241 games and their review counts |
+| `POST /search` | Question → up to 8 reranked reviews with IDs, verdicts, bi-encoder and cross-encoder scores |
+| `POST /answer` | The same evidence plus a grounded GPT-OSS answer. Reports `generation_status` and checks that every `[n]` citation points at supplied evidence |
+
+Design choices:
+
+- **Pinned and offline.** The image verifies the pinned artifacts at build time and serves the model revisions the benchmark measured. At runtime it runs with `HF_HUB_OFFLINE=1`, so it never pulls a different model.
+- **Bounded LRU cache.** Repeated questions are cached (keyed on the normalised question and evidence count). This is safe because the corpus and models are fixed.
+- **One inference at a time per process.** CPU inference is serialised, which keeps latency predictable.
+- **The key never leaves the server.** Unknown request fields are rejected, so a client cannot pass a key. Provider errors become allow-listed diagnostics, and evidence is returned even when generation fails.
+
+### Retrieval regression gate
+
+[`retrieval-gate.yml`](.github/workflows/retrieval-gate.yml) runs on pull requests that touch retrieval code, on a weekly schedule, and on demand:
+
+1. It reruns the 80-question benchmark with the real models.
+2. [`check_retrieval_regression.py`](scripts/check_retrieval_regression.py) fails the build if any split/category's target-game precision@5 or coverage@5 falls more than 0.02 below the committed baseline, or if the reranked top-5 sets drift too far (mean Jaccard below 0.8).
+3. It builds the Docker image and queries `/search` and `/answer` in the running container.
+
+A change that makes search worse cannot merge silently.
 
 ## Validation and guardrails
 
