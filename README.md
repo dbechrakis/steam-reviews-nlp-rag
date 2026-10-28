@@ -85,6 +85,8 @@ The recorded Llama evaluation found **17 of 18 recognized game-name mentions in 
 
 [Generator counts](outputs/tables/rag_model_comparison.csv) · [Retrieval evaluation](outputs/tables/rag_retrieval_eval.csv) · [Evaluation notebook](notebooks/05_RAG_System.ipynb)
 
+**Claim-level answer evaluation:** a harness now judges generated answers sentence by sentence against the reviews the generator saw, and reports supported rate, citation correctness and abstention on the unsupported questions. [Method and limits](evaluation/README.md#claim-level-answer-evaluation-with-an-llm-judge). It has not been run yet, so no result is claimed. When it runs, the numbers are LLM-judged until a person audits a sample.
+
 These are recorded historical results. The September 2026 review checked saved evidence and evaluation code but did not retrain the transformer or regenerate historical answers.
 
 ## Runtime flow

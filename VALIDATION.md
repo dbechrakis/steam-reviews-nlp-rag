@@ -59,3 +59,10 @@ Edited the free-text `authoring` description in `evaluation/benchmark.json`. All
 - `Retrieval gate` run 37812438834 (GitHub Actions, CPU) reran all 80 questions with the real models. Every split/category metric matched the committed baseline exactly. The reranked top-5 reviews were identical for all 80 questions (mean Jaccard 1.000), and the maximum group warm-latency p95 was 1.75 s.
 - In the same run the container failed at startup: artifacts written via `NamedTemporaryFile` are mode 0600, so the non-root user could not read them. The Dockerfile now opens read access.
 - In run 37813089090 both jobs passed. The container started in 5.0 s and `/health` reported 41,170 reviews and 241 games. `/search` for "A relaxing farming game to play after work" returned Stardew Valley, Stardew Valley and Age of Empires II (Retired), and `/answer` returned evidence in evidence-only mode.
+
+## Claim-level answer evaluation harness, 2026-10-28
+
+- Added `src/steam_review_rag/answer_eval.py`, `scripts/evaluate_answers.py`, `tests/test_answer_eval.py` and the manual `Answer evaluation` workflow. No existing retrieval, prompting or benchmark file changed, so the recorded retrieval evidence is untouched.
+- 20 tests cover claim splitting, strict validation of the judge reply, the rule that a valid citation number does not make an unsupported claim correct, answer-level bootstrap intervals, judge failures being counted, the evidence hash check, and agreement and kappa for the audit.
+- The tests use a stub in place of the judge. They passed in an environment without model downloads or a Groq key.
+- **No generated answer has been judged yet.** The workflow has not run, so this repository still has no measured claim support, citation correctness or abstention rate. The README keeps saying so until a run is committed.

@@ -49,6 +49,27 @@ Each run writes two local adjudication templates, excluded from git to avoid acc
 
 Second-review a sample and adjudicate disagreements before presenting an aggregate claim-support score. Do not turn empty judgments into zeros or treat a valid citation number as factual correctness.
 
+## Claim-level answer evaluation with an LLM judge
+
+[`scripts/evaluate_answers.py`](../scripts/evaluate_answers.py) judges the generated answers of a run made with `--generate`. It splits each answer into sentence-level claims, shows a second model the claims next to the exact five reviews the generator saw, and records one label per claim: supported, partially supported, unsupported or contradicted. The judge also says whether the answer abstains, meaning it states that the reviews lack what the question asks for.
+
+The [Answer evaluation workflow](../.github/workflows/answer-eval.yml) runs both steps in GitHub Actions. It needs a repository secret named `GROQ_API_KEY` and is started by hand because it spends tokens. Nothing runs locally.
+
+| Reported measure | Meaning |
+|---|---|
+| Supported rate | Claims labelled supported over all claims, with a bootstrap interval that resamples answers |
+| Cited claims correct | Among claims that carry a citation, the share that are supported and cite at least one review the judge named as support |
+| Abstain rate | Answers that say the evidence is missing. This is the headline for the 10 unsupported questions, where higher is better |
+| Answers with an unsupported claim | Count of answers with at least one unsupported or contradicted claim |
+
+Limits that stay attached to every number from this path:
+
+- The labels come from a language model. The default judge is `openai/gpt-oss-20b`, which shares a family with the generator, so errors may be correlated. A different family can be passed with `--judge-model`.
+- Each claim is a sentence, not an atomic fact. A sentence with two facts gets one label.
+- Judge stability is measured by judging every answer twice with the claims in a different order. High agreement shows consistency, not correctness.
+- Correctness needs a person. Every run writes `claim_audit_sample.csv`, 40 claims stratified by judge label with the evidence text. After a reviewer fills `reviewer_label`, `python scripts/evaluate_answers.py --score-audit <file>` reports agreement and kappa with the judge. The file contains review text, so it stays out of git.
+- The 80 questions are authored and the unsupported category has 10 questions, so its intervals are wide.
+
 ## Small ownership exercise
 
 Start with `compare-02`, `compare-06`, and three topic questions. Reconstruct the returned reviews using their `review_id`, grade relevance, and explain whether each failure originates in candidate retrieval, reranking or insufficient coverage. Those judgments are more useful than guessing from similarity scores.
