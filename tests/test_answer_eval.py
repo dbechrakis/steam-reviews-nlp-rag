@@ -182,6 +182,58 @@ class RunnerTests(unittest.TestCase):
         self.assertIsNone(failed["verdict"])
         self.assertEqual(failed["error"], "RuntimeError")
 
+    def test_backoff_waits_the_advised_time_then_succeeds(self):
+        class Limited(Exception):
+            status_code = 429
+            response = type("R", (), {"headers": {"retry-after": "7"}})()
+
+        sleeps, outcomes = [], [Limited(), "ok"]
+
+        def call():
+            result = outcomes.pop(0)
+            if isinstance(result, Exception):
+                raise result
+            return result
+
+        self.assertEqual(runner.call_with_backoff(call, sleep=sleeps.append), "ok")
+        self.assertEqual(sleeps, [8])
+
+    def test_backoff_gives_up_on_a_daily_limit_and_ignores_other_errors(self):
+        class Daily(Exception):
+            status_code = 429
+            response = type("R", (), {"headers": {"retry-after": "7200"}})()
+
+        def daily():
+            raise Daily()
+
+        with self.assertRaises(runner.RateLimitExhausted):
+            runner.call_with_backoff(daily, sleep=lambda s: None)
+        calls = []
+
+        def broken():
+            calls.append(1)
+            raise ValueError("bad request")
+
+        with self.assertRaises(ValueError):
+            runner.call_with_backoff(broken, sleep=lambda s: None)
+        self.assertEqual(len(calls), 1)
+
+    def test_pending_work_keeps_finished_verdicts(self):
+        per_query = [{"query_id": "a", "generation_status": "generated"},
+                     {"query_id": "b", "generation_status": "generated"},
+                     {"query_id": "c", "generation_status": "failed"}]
+        prior = {"a": {"verdict": {"claims": {}, "abstains": False}}, "b": {"verdict": None}}
+        self.assertEqual(runner.pending_work(per_query, prior, True), (["c"], ["b", "c"]))
+        self.assertEqual(runner.pending_work(per_query, prior, False), ([], ["b"]))
+
+    def test_stability_uses_only_answers_judged_twice(self):
+        first = ae.parse_judge_response(verdict_json(["supported"]), ["C1"], 5)
+        second = ae.parse_judge_response(verdict_json(["unsupported"], abstains=True), ["C1"], 5)
+        twice = {"verdict": first, "second": second}
+        once = {"verdict": first, "second": None}
+        claims, abstains = runner.stability([twice, once, {"verdict": None, "second": None}])
+        self.assertEqual((claims["n"], claims["agreement"], abstains["n"]), (1, 0.0, 1))
+
     def test_audit_scoring_ignores_unlabelled_rows_and_rejects_unknown_labels(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "claim_audit_sample.csv"

@@ -7,6 +7,10 @@ on:
       judge_model:
         description: Groq model that judges the claims
         default: openai/gpt-oss-20b
+      resume:
+        description: Keep finished work in the committed run, regenerate failed answers and judge what is missing
+        type: boolean
+        default: false
       commit_results:
         description: Commit the result files to the branch this run was started from
         type: boolean
@@ -16,7 +20,7 @@ permissions:
 jobs:
   answers:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 180
     env:
       TOKENIZERS_PARALLELISM: 'false'
       GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
@@ -39,9 +43,10 @@ jobs:
       - name: Unit tests
         run: python -m unittest tests.test_answer_eval -v
       - name: Generate answers with the production model
+        if: "!inputs.resume"
         run: python scripts/evaluate_retrieval.py --generate --output outputs/evaluation/generated-v1
       - name: Judge the claims
-        run: python scripts/evaluate_answers.py --run outputs/evaluation/generated-v1 --judge-model "${{ inputs.judge_model }}"
+        run: python scripts/evaluate_answers.py --run outputs/evaluation/generated-v1 --judge-model "${{ inputs.judge_model }}" ${{ inputs.resume && '--resume --regenerate-failed' || '' }}
       - name: Show the summary
         run: cat outputs/evaluation/generated-v1/answer_eval_summary.md | tee -a "$GITHUB_STEP_SUMMARY"
       - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
@@ -56,5 +61,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -f outputs/evaluation/generated-v1/per_query.json outputs/evaluation/generated-v1/manifest.json \
             outputs/evaluation/generated-v1/answer_eval.json outputs/evaluation/generated-v1/answer_eval_summary.md
+          git diff --cached --quiet && { echo "No changes to commit"; exit 0; }
           git commit -m "Record the generated-answer evaluation run"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
           git push origin "HEAD:${GITHUB_REF_NAME}"
