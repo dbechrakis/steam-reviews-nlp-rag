@@ -1,4 +1,4 @@
-# Steam Review Intelligence — NLP, Explainability & RAG
+# Steam Review Intelligence: NLP, Explainability & RAG
 
 [![Code, tests and evidence](https://github.com/dbechrakis/steam-reviews-nlp-rag/actions/workflows/evidence.yml/badge.svg)](https://github.com/dbechrakis/steam-reviews-nlp-rag/actions/workflows/evidence.yml)
 
@@ -71,7 +71,7 @@ The canonical modelling sample contains 120,000 reviews. DistilBERT was fitted o
 | Sentence-BERT | 85.0% | 0.786 |
 | **Fine-tuned DistilBERT** | **92.9%** | **0.887** |
 
-The original representation comparison used different preprocessing for TF-IDF/Word2Vec and Sentence-BERT. A saved same-text TF-IDF control reached **90.12% accuracy / 0.8484 macro F1**. The table therefore compares complete pipelines; it does not isolate architecture alone.
+The original representation comparison used different preprocessing for TF-IDF/Word2Vec and Sentence-BERT. A saved same-text TF-IDF control reached **90.12% accuracy / 0.8484 macro F1**. The table therefore compares complete pipelines. It does not isolate architecture alone.
 
 [Sample accounting](outputs/tables/full_data_and_sample_summary.csv) · [Controlled comparison](outputs/tables/embedding_comparison_controlled.csv)
 
@@ -79,7 +79,7 @@ The original representation comparison used different preprocessing for TF-IDF/W
 
 ### RAG evaluation
 
-**New executed retrieval benchmark:** [80 source-backed questions](evaluation/README.md) compare bi-encoder retrieval with reranking, using disjoint development/holdout game sets and pinned model revisions. [Inspect measured results and failure cases](outputs/evaluation/baseline-v1/summary.md). These are target-game and source-anchor diagnostics; GPT-OSS claim support and appropriate abstention remain unmeasured until generation and human adjudication are completed.
+**New executed retrieval benchmark:** [80 source-backed questions](evaluation/README.md) compare bi-encoder retrieval with reranking, using disjoint development/holdout game sets and pinned model revisions. [Inspect measured results and failure cases](outputs/evaluation/baseline-v1/summary.md). These are target-game and source-anchor diagnostics. GPT-OSS claim support and appropriate abstention remain unmeasured until generation and human adjudication are completed.
 
 The recorded Llama evaluation found **17 of 18 recognized game-name mentions in retrieved evidence** across five prompts. This is a limited name-presence check, not claim-level factuality. It cannot prove that every statement about a correctly named game is supported.
 
