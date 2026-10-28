@@ -1,6 +1,6 @@
 # Serving environment for the REST API (src/steam_review_rag/api.py), CPU-only.
 --extra-index-url https://download.pytorch.org/whl/cpu
-torch==2.6.0+cpu
+torch==2.12.1+cpu
 sentence-transformers==4.1.0
 transformers==4.51.3
 faiss-cpu==1.10.0
