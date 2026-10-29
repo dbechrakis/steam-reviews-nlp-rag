@@ -15,8 +15,8 @@ from typing import Callable, Iterable, Mapping
 LABELS = ("supported", "partially_supported", "unsupported", "contradicted")
 SUPPORT_LABELS = ("supported", "partially_supported")
 REVIEW_CHARACTER_LIMIT = 900
-CITATION = re.compile(r"\[(\d+)\]")
-LEADING_CITATIONS = re.compile(r"^((?:\[\d+\][\s,;]*)+)(.*)$", re.DOTALL)
+CITATION = re.compile(r"[\[\u3010](\d+)[\]\u3011]")
+LEADING_CITATIONS = re.compile(r"^((?:[\[\u3010]\d+[\]\u3011][\s,;]*)+)(.*)$", re.DOTALL)
 SENTENCE_BOUNDARY = re.compile(r"(?<=[.!?])\s+(?=[A-Z0-9\[\"'(*])")
 LIST_MARKER = re.compile(r"^\s*(?:[-*•]|\d+[.)])\s+")
 TABLE_SEPARATOR = re.compile(r"^\s*\|?[\s:|-]+\|?\s*$")
@@ -41,6 +41,13 @@ def evidence_block(number: int, row: Mapping[str, object]) -> str:
     )
 
 
+def is_heading(text: str) -> bool:
+    """A short uncited fragment with no closing punctuation is a title, not a statement."""
+    words = CITATION.sub("", text).strip()
+    return (not CITATION.search(text) and len(words.split()) <= 3
+            and not re.search(r"[.!?\"\u201d)]$", words))
+
+
 def split_claims(answer: str) -> list[dict]:
     """Split an answer into sentence-level claims and attach their citation numbers."""
     segments: list[str] = []
@@ -63,7 +70,7 @@ def split_claims(answer: str) -> list[dict]:
             merged.append(segment)
     claims = []
     for text in merged:
-        if not re.search(r"[A-Za-z]", CITATION.sub("", text)):
+        if not re.search(r"[A-Za-z]", CITATION.sub("", text)) or is_heading(text):
             continue
         citations = sorted({int(number) for number in CITATION.findall(text)})
         claims.append({"claim_id": f"C{len(claims) + 1}", "text": text, "citations": citations})
@@ -152,6 +159,22 @@ def judged_claims(claims: list[dict], verdict: dict) -> list[dict]:
         rows.append({**claim, "label": result["label"], "supporting": result["supporting"],
                      "cited": cited, "citation_ok": citation_ok})
     return rows
+
+
+def refresh_record(record: dict) -> dict:
+    """Re-apply the current claim rules to a stored record without asking the judge again."""
+    if record["verdict"] is None:
+        return record
+    kept = [claim for claim in record["claims"] if not is_heading(claim["text"])]
+    verdict_claims = {claim["claim_id"]: record["verdict"]["claims"][claim["claim_id"]] for claim in kept}
+    claims = []
+    for claim in kept:
+        citations = sorted({int(number) for number in CITATION.findall(claim["text"])})
+        result = verdict_claims[claim["claim_id"]]
+        cited = bool(citations)
+        citation_ok = cited and result["label"] in SUPPORT_LABELS and bool(set(citations) & set(result["supporting"]))
+        claims.append({**claim, "citations": citations, "cited": cited, "citation_ok": citation_ok})
+    return {**record, "claims": claims, "verdict": {**record["verdict"], "claims": verdict_claims}}
 
 
 def bootstrap_ratio(pairs: list[tuple[int, int]], resamples: int = 2000, seed: int = 42,

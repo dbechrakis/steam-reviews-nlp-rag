@@ -246,6 +246,8 @@ def run(run_dir: Path, judge_model: str, audit_size: int, pause: float, resume: 
         if item["generation_status"] != "generated":
             continue
         record = prior.get(query_id)
+        if record is not None:
+            record = ae.refresh_record(record)
         if record is None or (record["verdict"] is None and query_id in to_judge):
             if time.monotonic() > deadline:
                 record = record or {"query_id": query_id, "split": item["split"], "category": item["category"],
