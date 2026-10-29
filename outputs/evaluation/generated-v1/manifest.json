@@ -161,5 +161,22 @@
       "generated_answers": 5
     }
   ],
-  "claim_support_status": "unjudged"
+  "claim_support_status": "unjudged",
+  "regenerated_questions": [
+    "game-06",
+    "game-09",
+    "game-13",
+    "game-17",
+    "game-18",
+    "game-20",
+    "topic-03-1",
+    "topic-04-2",
+    "topic-06-2",
+    "topic-10-1",
+    "topic-11-2",
+    "topic-13-2",
+    "topic-15-1",
+    "topic-20-2",
+    "unsupported-01"
+  ]
 }

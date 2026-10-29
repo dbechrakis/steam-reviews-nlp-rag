@@ -1,85 +1,104 @@
 {
   "info": {
-    "date": "2026-10-28",
+    "date": "2026-10-29",
     "generator": "openai/gpt-oss-120b",
     "judge": "openai/gpt-oss-20b",
-    "answers": 65,
-    "generation_failures": 15,
-    "stability": "178 claims judged twice with the claims in a different order. Label agreement 88.8%, kappa 0.42. Abstain agreement 100.0% over 32 answers.",
+    "questions": 80,
+    "answers": 80,
+    "unanswered": 0,
+    "unjudged": 38,
+    "regenerated_questions": [
+      "game-06",
+      "game-09",
+      "game-13",
+      "game-17",
+      "game-18",
+      "game-20",
+      "topic-03-1",
+      "topic-04-2",
+      "topic-06-2",
+      "topic-10-1",
+      "topic-11-2",
+      "topic-13-2",
+      "topic-15-1",
+      "topic-20-2",
+      "unsupported-01"
+    ],
+    "stability": "0 claims in 0 answers judged twice with the claims in a different order. Label agreement unmeasured. Abstain agreement unmeasured.",
     "audit": "Human audit: not yet done. `claim_audit_sample.csv` holds 40 claims stratified by judge label for a reviewer to fill in."
   },
   "summary": [
     {
       "category": "all",
-      "answers": 65,
-      "answers_judged": 36,
-      "judge_failures": 29,
-      "claims": 195,
-      "supported_share": 0.8615384615384616,
-      "partially_supported_share": 0.13333333333333333,
+      "answers": 80,
+      "answers_judged": 42,
+      "judge_failures": 38,
+      "claims": 204,
+      "supported_share": 0.8578431372549019,
+      "partially_supported_share": 0.12745098039215685,
       "unsupported_share": 0.0,
-      "contradicted_share": 0.005128205128205128,
-      "supported_rate": 0.8615384615384616,
-      "supported_ci_low": 0.8031088082901554,
-      "supported_ci_high": 0.9157894736842105,
-      "cited_claim_share": 0.49743589743589745,
+      "contradicted_share": 0.014705882352941176,
+      "supported_rate": 0.8578431372549019,
+      "supported_ci_low": 0.7948717948717948,
+      "supported_ci_high": 0.910377358490566,
+      "cited_claim_share": 0.4852941176470588,
       "citation_correct_rate": 1.0,
       "citation_ci_low": 1.0,
       "citation_ci_high": 1.0,
       "abstain_rate": 0.0,
       "abstain_ci_low": 0.0,
-      "abstain_ci_high": 0.09642183044857634,
-      "answers_with_unsupported_claim": 1
+      "abstain_ci_high": 0.08380161250916197,
+      "answers_with_unsupported_claim": 2
     },
     {
       "category": "comparison",
       "answers": 10,
-      "answers_judged": 0,
-      "judge_failures": 10,
-      "claims": 0,
-      "supported_share": null,
-      "partially_supported_share": null,
-      "unsupported_share": null,
-      "contradicted_share": null,
-      "supported_rate": null,
-      "supported_ci_low": null,
-      "supported_ci_high": null,
-      "cited_claim_share": null,
+      "answers_judged": 1,
+      "judge_failures": 9,
+      "claims": 2,
+      "supported_share": 0.0,
+      "partially_supported_share": 0.0,
+      "unsupported_share": 0.0,
+      "contradicted_share": 1.0,
+      "supported_rate": 0.0,
+      "supported_ci_low": 0.0,
+      "supported_ci_high": 0.0,
+      "cited_claim_share": 0.0,
       "citation_correct_rate": null,
       "citation_ci_low": null,
       "citation_ci_high": null,
-      "abstain_rate": null,
-      "abstain_ci_low": null,
-      "abstain_ci_high": null,
-      "answers_with_unsupported_claim": 0
+      "abstain_rate": 0.0,
+      "abstain_ci_low": 0.0,
+      "abstain_ci_high": 0.7934567085261071,
+      "answers_with_unsupported_claim": 1
     },
     {
       "category": "game_topic",
-      "answers": 32,
-      "answers_judged": 23,
-      "judge_failures": 9,
-      "claims": 120,
-      "supported_share": 0.8416666666666667,
-      "partially_supported_share": 0.15,
+      "answers": 40,
+      "answers_judged": 24,
+      "judge_failures": 16,
+      "claims": 123,
+      "supported_share": 0.8455284552845529,
+      "partially_supported_share": 0.14634146341463414,
       "unsupported_share": 0.0,
-      "contradicted_share": 0.008333333333333333,
-      "supported_rate": 0.8416666666666667,
-      "supported_ci_low": 0.753968253968254,
-      "supported_ci_high": 0.9142857142857143,
-      "cited_claim_share": 0.4166666666666667,
+      "contradicted_share": 0.008130081300813009,
+      "supported_rate": 0.8455284552845529,
+      "supported_ci_low": 0.7627118644067796,
+      "supported_ci_high": 0.9193548387096774,
+      "cited_claim_share": 0.42276422764227645,
       "citation_correct_rate": 1.0,
       "citation_ci_low": 1.0,
       "citation_ci_high": 1.0,
       "abstain_rate": 0.0,
       "abstain_ci_low": 0.0,
-      "abstain_ci_high": 0.14312112541726274,
+      "abstain_ci_high": 0.13798057582897535,
       "answers_with_unsupported_claim": 1
     },
     {
       "category": "named_game",
-      "answers": 14,
+      "answers": 20,
       "answers_judged": 12,
-      "judge_failures": 2,
+      "judge_failures": 8,
       "claims": 73,
       "supported_share": 0.8904109589041096,
       "partially_supported_share": 0.1095890410958904,
@@ -99,10 +118,10 @@
     },
     {
       "category": "unsupported",
-      "answers": 9,
-      "answers_judged": 1,
-      "judge_failures": 8,
-      "claims": 2,
+      "answers": 10,
+      "answers_judged": 5,
+      "judge_failures": 5,
+      "claims": 6,
       "supported_share": 1.0,
       "partially_supported_share": 0.0,
       "unsupported_share": 0.0,
@@ -116,23 +135,23 @@
       "citation_ci_high": null,
       "abstain_rate": 0.0,
       "abstain_ci_low": 0.0,
-      "abstain_ci_high": 0.7934567085261071,
+      "abstain_ci_high": 0.43449149475208104,
       "answers_with_unsupported_claim": 0
     }
   ],
   "claim_agreement": {
-    "n": 178,
-    "agreement": 0.8876404494382022,
-    "kappa": 0.4169669177857843
-  },
-  "abstain_agreement": {
-    "n": 32,
-    "agreement": 1.0,
+    "n": 0,
+    "agreement": null,
     "kappa": null
   },
-  "source_run_manifest_sha256": "d3d09fac3be4e39d0672855e0e53ff2366e402d53da7c79ff0e5a741adfc19db",
+  "abstain_agreement": {
+    "n": 0,
+    "agreement": null,
+    "kappa": null
+  },
+  "source_run_manifest_sha256": "9564836c32cc7b82231d280872f5a05c5b63a7d45821f0913860606ca51937a2",
   "code_sha256": {
-    "scripts/evaluate_answers.py": "e296758aa99c604bdd3551ef26ff5c1c999e530a85e762b7cdef4c3343a1ec90",
+    "scripts/evaluate_answers.py": "6e5fd4c19e5c841d5bd25a30a802bd6cae0566ee32eaa22e848701e191e26091",
     "src/steam_review_rag/answer_eval.py": "65bf3c1c9036927985a6a767f2ff7fe121fbfa03d4dd8651ce928f21285b4fb5"
   },
   "records": [
@@ -1085,6 +1104,86 @@
       "judge_error": null
     },
     {
+      "query_id": "topic-03-1",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about building in Terraria?",
+      "answer": "Players note that building is a core part of Terraria\u2019s progression. You\u2019re encouraged to construct houses to attract NPCs, and the game supplies \u201chundreds of blocks and thousands of items to decorate with\u201d as well as vanity gear, giving plenty of options to personalize your structures\u202f[1][3][5].\n\nAt the same time, reviewers point out that the 2\u2011D layout limits creativity compared with a 3\u2011D sandbox like Minecraft, so the construction experience isn\u2019t as expansive, though it can still be fun and even \u201chorrible houses\u201d are appreciated by the NPCs\u202f[4][5].",
+      "claims": [
+        {
+          "claim_id": "C1",
+          "text": "Players note that building is a core part of Terraria\u2019s progression.",
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1
+          ],
+          "cited": false,
+          "citation_ok": false
+        },
+        {
+          "claim_id": "C2",
+          "text": "You\u2019re encouraged to construct houses to attract NPCs, and the game supplies \u201chundreds of blocks and thousands of items to decorate with\u201d as well as vanity gear, giving plenty of options to personalize your structures\u202f[1][3][5].",
+          "citations": [
+            1,
+            3,
+            5
+          ],
+          "label": "supported",
+          "supporting": [
+            1,
+            3,
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
+        },
+        {
+          "claim_id": "C3",
+          "text": "At the same time, reviewers point out that the 2\u2011D layout limits creativity compared with a 3\u2011D sandbox like Minecraft, so the construction experience isn\u2019t as expansive, though it can still be fun and even \u201chorrible houses\u201d are appreciated by the NPCs\u202f[4][5].",
+          "citations": [
+            4,
+            5
+          ],
+          "label": "supported",
+          "supporting": [
+            4,
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
+        }
+      ],
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              1,
+              3,
+              5
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              4,
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "second": null,
+      "judge_error": null
+    },
+    {
       "query_id": "topic-03-2",
       "split": "development",
       "category": "game_topic",
@@ -1119,8 +1218,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "game-04",
@@ -1344,6 +1443,60 @@
       },
       "second_pass_ok": true,
       "judge_error": null
+    },
+    {
+      "query_id": "topic-04-2",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about farming in Stardew Valley?",
+      "answer": "Players describe the farming in **Stardew Valley** as a deep, open\u2011ended experience that lets them shape their farm without strict limits.  The game\u2019s \u201ccaptivating and immersive\u201d simulation lets you plant and tend crops, raise livestock, mine, and fish, while the seasonal cycle constantly refreshes the activities you need to plan for\u202f[1][5].  Its \u201ccharming pixel art\u201d and \u201cengaging gameplay mechanics\u201d make the hours feel rewarding, and the abundance of content\u2014multiple farm layouts, dozens of NPCs, and a variety of quests\u2014keeps the experience fresh\u202f[5][2].\n\nPlayers also note that farming requires thoughtful planning and resource management.  Early gameplay forces you to balance time, gold, and stamina, encouraging careful scheduling of watering, gathering, and social interactions\u202f[4][5].  As you progress you unlock shortcuts, better tools, and teleportation, which smooths the grind while still preserving the satisfying sense of growth and achievement\u202f[4][1].",
+      "claims": [
+        {
+          "claim_id": "C1",
+          "text": "Players describe the farming in Stardew Valley as a deep, open\u2011ended experience that lets them shape their farm without strict limits.",
+          "citations": []
+        },
+        {
+          "claim_id": "C2",
+          "text": "The game\u2019s \u201ccaptivating and immersive\u201d simulation lets you plant and tend crops, raise livestock, mine, and fish, while the seasonal cycle constantly refreshes the activities you need to plan for\u202f[1][5].",
+          "citations": [
+            1,
+            5
+          ]
+        },
+        {
+          "claim_id": "C3",
+          "text": "Its \u201ccharming pixel art\u201d and \u201cengaging gameplay mechanics\u201d make the hours feel rewarding, and the abundance of content\u2014multiple farm layouts, dozens of NPCs, and a variety of quests\u2014keeps the experience fresh\u202f[5][2].",
+          "citations": [
+            2,
+            5
+          ]
+        },
+        {
+          "claim_id": "C4",
+          "text": "Players also note that farming requires thoughtful planning and resource management.",
+          "citations": []
+        },
+        {
+          "claim_id": "C5",
+          "text": "Early gameplay forces you to balance time, gold, and stamina, encouraging careful scheduling of watering, gathering, and social interactions\u202f[4][5].",
+          "citations": [
+            4,
+            5
+          ]
+        },
+        {
+          "claim_id": "C6",
+          "text": "As you progress you unlock shortcuts, better tools, and teleportation, which smooths the grind while still preserving the satisfying sense of growth and achievement\u202f[4][1].",
+          "citations": [
+            1,
+            4
+          ]
+        }
+      ],
+      "verdict": null,
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "game-05",
@@ -1766,6 +1919,55 @@
       "judge_error": null
     },
     {
+      "query_id": "game-06",
+      "split": "development",
+      "category": "named_game",
+      "question": "What do player reviews say about ELDEN RING?",
+      "answer": "Player reviews overwhelmingly recommend **Elden\u202fRing**, praising its unprecedented freedom and richly crafted open world. Reviewers highlight how the game lets you choose any path or playstyle from the start, rewarding exploration over hand\u2011holding, and note its stunning art direction, deep lore, and challenging yet balanced combat that keep every encounter feeling meaningful\u202f[1][3][5].\n\nSeveral reviewers also commend the game\u2019s quality\u2011of\u2011life upgrades and accessibility compared to earlier FromSoftware titles, noting that these improvements make the experience smoother for a broader audience\u202f[2]. At the same time, a few players point out persistent performance hiccups\u2014frame drops and occasional \u201cfreeze\u201d frames\u2014though recent patches have mitigated many of these issues\u202f[2][3].\n\nBeyond gameplay, the title is described as a cultural milestone, with some reviewers completing 100\u202f% of the game (including all achievements) in under a hundred hours and calling it a \u201cRenaissance\u201d for the industry, suggesting it sets a new standard for future releases\u202f[4][5].",
+      "claims": [
+        {
+          "claim_id": "C1",
+          "text": "Player reviews overwhelmingly recommend Elden\u202fRing, praising its unprecedented freedom and richly crafted open world.",
+          "citations": []
+        },
+        {
+          "claim_id": "C2",
+          "text": "Reviewers highlight how the game lets you choose any path or playstyle from the start, rewarding exploration over hand\u2011holding, and note its stunning art direction, deep lore, and challenging yet balanced combat that keep every encounter feeling meaningful\u202f[1][3][5].",
+          "citations": [
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "claim_id": "C3",
+          "text": "Several reviewers also commend the game\u2019s quality\u2011of\u2011life upgrades and accessibility compared to earlier FromSoftware titles, noting that these improvements make the experience smoother for a broader audience\u202f[2].",
+          "citations": [
+            2
+          ]
+        },
+        {
+          "claim_id": "C4",
+          "text": "At the same time, a few players point out persistent performance hiccups\u2014frame drops and occasional \u201cfreeze\u201d frames\u2014though recent patches have mitigated many of these issues\u202f[2][3].",
+          "citations": [
+            2,
+            3
+          ]
+        },
+        {
+          "claim_id": "C5",
+          "text": "Beyond gameplay, the title is described as a cultural milestone, with some reviewers completing 100\u202f% of the game (including all achievements) in under a hundred hours and calling it a \u201cRenaissance\u201d for the industry, suggesting it sets a new standard for future releases\u202f[4][5].",
+          "citations": [
+            4,
+            5
+          ]
+        }
+      ],
+      "verdict": null,
+      "second": null,
+      "judge_error": "RateLimitExhausted"
+    },
+    {
       "query_id": "topic-06-1",
       "split": "development",
       "category": "game_topic",
@@ -1888,6 +2090,28 @@
       },
       "second_pass_ok": true,
       "judge_error": null
+    },
+    {
+      "query_id": "topic-06-2",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about boss fights in ELDEN RING?",
+      "answer": "Players note that Elden\u202fRing\u2019s boss encounters can feel repetitive, and the game\u2019s abundance of easily accessible items often lets players trivialize them, sometimes defeating a boss on the first try and making the challenge feel \u201ctoo easy\u201d\u30101\u3011. At the same time, the open\u2011world design gives a lot of flexibility\u2014players can choose whether to engage every boss, skip certain fights, or use alternative routes, which leads to very different experiences of the same encounters\u30101\u3011.",
+      "claims": [
+        {
+          "claim_id": "C1",
+          "text": "Players note that Elden\u202fRing\u2019s boss encounters can feel repetitive, and the game\u2019s abundance of easily accessible items often lets players trivialize them, sometimes defeating a boss on the first try and making the challenge feel \u201ctoo easy\u201d\u30101\u3011.",
+          "citations": []
+        },
+        {
+          "claim_id": "C2",
+          "text": "At the same time, the open\u2011world design gives a lot of flexibility\u2014players can choose whether to engage every boss, skip certain fights, or use alternative routes, which leads to very different experiences of the same encounters\u30101\u3011.",
+          "citations": []
+        }
+      ],
+      "verdict": null,
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "game-07",
@@ -2525,8 +2749,58 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "unparseable_verdict"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
+    },
+    {
+      "query_id": "game-09",
+      "split": "development",
+      "category": "named_game",
+      "question": "What do player reviews say about Subnautica?",
+      "answer": "Player reviews consistently recommend **Subnautica**, praising it as a solid single\u2011player exploration and survival experience. Reviewers highlight the fun and excitement of navigating the underwater world, noting the game\u2019s beautiful colors, neon\u2011lit marine life, and a deep ocean to explore\u202f[1][3]. The crafting, building, and vehicle\u2011upgrade systems give players freedom to play at their own pace without forced time limits\u202f[3][5], though the inventory and building mechanics can feel a bit wonky at times\u202f[1].\n\nThe game\u2019s storyline and multiple endings add depth, while occasional terrifying moments increase tension without detracting from overall enjoyment\u202f[5]. Reviewers describe it as addictive, \u201cawesome and exciting,\u201d and recommend it for anyone who enjoys immersive, open\u2011ended survival gameplay\u202f[5][2][4].",
+      "claims": [
+        {
+          "claim_id": "C1",
+          "text": "Player reviews consistently recommend Subnautica, praising it as a solid single\u2011player exploration and survival experience.",
+          "citations": []
+        },
+        {
+          "claim_id": "C2",
+          "text": "Reviewers highlight the fun and excitement of navigating the underwater world, noting the game\u2019s beautiful colors, neon\u2011lit marine life, and a deep ocean to explore\u202f[1][3].",
+          "citations": [
+            1,
+            3
+          ]
+        },
+        {
+          "claim_id": "C3",
+          "text": "The crafting, building, and vehicle\u2011upgrade systems give players freedom to play at their own pace without forced time limits\u202f[3][5], though the inventory and building mechanics can feel a bit wonky at times\u202f[1].",
+          "citations": [
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "claim_id": "C4",
+          "text": "The game\u2019s storyline and multiple endings add depth, while occasional terrifying moments increase tension without detracting from overall enjoyment\u202f[5].",
+          "citations": [
+            5
+          ]
+        },
+        {
+          "claim_id": "C5",
+          "text": "Reviewers describe it as addictive, \u201cawesome and exciting,\u201d and recommend it for anyone who enjoys immersive, open\u2011ended survival gameplay\u202f[5][2][4].",
+          "citations": [
+            2,
+            4,
+            5
+          ]
+        }
+      ],
+      "verdict": null,
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "topic-09-1",
@@ -2889,6 +3163,57 @@
       },
       "second_pass_ok": true,
       "judge_error": null
+    },
+    {
+      "query_id": "topic-10-1",
+      "split": "development",
+      "category": "game_topic",
+      "question": "What feedback do players give about grinding in Warframe?",
+      "answer": "Players repeatedly mention that grinding is a central part of Warframe\u2019s experience. Several reviewers note that the game \u201crelies on grinding\u201d and can feel \u201coverwhelming for new players\u201d because many activities must be repeated to earn resources and gear\u202f[1]. Others describe the grind as \u201crepetitive\u201d and \u201cpointless\u201d at times, especially in the end\u2011game where progress often means \u201cgrinding for gear you don\u2019t need\u201d\u202f[3][2].\n\nAt the same time, many players see the grind as a worthwhile trade\u2011off for the game\u2019s rewards. One reviewer points out that despite the repetition, the \u201ccomfortable and varied gunplay mechanics\u201d and \u201ccomplicated damage system\u201d keep the loop interesting\u202f[4]. Another notes that the market and trading system can lessen the grind by letting players exchange valuable items, and that frequent content updates help offset the feeling of repetitiveness\u202f[5].",
+      "claims": [
+        {
+          "claim_id": "C1",
+          "text": "Players repeatedly mention that grinding is a central part of Warframe\u2019s experience.",
+          "citations": []
+        },
+        {
+          "claim_id": "C2",
+          "text": "Several reviewers note that the game \u201crelies on grinding\u201d and can feel \u201coverwhelming for new players\u201d because many activities must be repeated to earn resources and gear\u202f[1].",
+          "citations": [
+            1
+          ]
+        },
+        {
+          "claim_id": "C3",
+          "text": "Others describe the grind as \u201crepetitive\u201d and \u201cpointless\u201d at times, especially in the end\u2011game where progress often means \u201cgrinding for gear you don\u2019t need\u201d\u202f[3][2].",
+          "citations": [
+            2,
+            3
+          ]
+        },
+        {
+          "claim_id": "C4",
+          "text": "At the same time, many players see the grind as a worthwhile trade\u2011off for the game\u2019s rewards.",
+          "citations": []
+        },
+        {
+          "claim_id": "C5",
+          "text": "One reviewer points out that despite the repetition, the \u201ccomfortable and varied gunplay mechanics\u201d and \u201ccomplicated damage system\u201d keep the loop interesting\u202f[4].",
+          "citations": [
+            4
+          ]
+        },
+        {
+          "claim_id": "C6",
+          "text": "Another notes that the market and trading system can lessen the grind by letting players exchange valuable items, and that frequent content updates help offset the feeling of repetitiveness\u202f[5].",
+          "citations": [
+            5
+          ]
+        }
+      ],
+      "verdict": null,
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "topic-10-2",
@@ -3328,6 +3653,59 @@
       "judge_error": null
     },
     {
+      "query_id": "topic-11-2",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about simulation in Cities: Skylines II?",
+      "answer": "Players consistently criticize the simulation in **Cities: Skylines\u202fII** as fundamentally broken and superficial. Reviewers note that the game \u201cdoesn't actually simulate a city in any meaningful way\u201d and that many systems\u2014economy, garbage handling, commercial and industrial growth\u2014are \u201cFAKE\u2026smoke and mirrors\u201d that give an illusion of control rather than real cause\u2011and\u2011effect\u202f[1]. The traffic AI, touted as an improvement, instead \u201cmakes cars teleport to their destination if they're being too slow,\u201d and upgrades to larger roads often fail to improve flow, with vehicles sticking to a few lanes\u202f[5].\n\nTechnical flaws further undermine the simulation. Multiple reviewers report frequent crashes, frame\u2011rate drops, and bugs that cause the simulation to behave erratically, such as water taking six in\u2011game days to flow down a hill and paradoxical situations where the game \u201ccontinues eating itself\u201d\u202f[2][3][4]. The overall experience is described as \u201cdeeply flawed,\u201d \u201chorrendous,\u201d and \u201ca disaster\u201d due to these persistent simulation and performance issues\u202f[4][5].",
+      "claims": [
+        {
+          "claim_id": "C1",
+          "text": "Players consistently criticize the simulation in Cities: Skylines\u202fII as fundamentally broken and superficial.",
+          "citations": []
+        },
+        {
+          "claim_id": "C2",
+          "text": "Reviewers note that the game \u201cdoesn't actually simulate a city in any meaningful way\u201d and that many systems\u2014economy, garbage handling, commercial and industrial growth\u2014are \u201cFAKE\u2026smoke and mirrors\u201d that give an illusion of control rather than real cause\u2011and\u2011effect\u202f[1].",
+          "citations": [
+            1
+          ]
+        },
+        {
+          "claim_id": "C3",
+          "text": "The traffic AI, touted as an improvement, instead \u201cmakes cars teleport to their destination if they're being too slow,\u201d and upgrades to larger roads often fail to improve flow, with vehicles sticking to a few lanes\u202f[5].",
+          "citations": [
+            5
+          ]
+        },
+        {
+          "claim_id": "C4",
+          "text": "Technical flaws further undermine the simulation.",
+          "citations": []
+        },
+        {
+          "claim_id": "C5",
+          "text": "Multiple reviewers report frequent crashes, frame\u2011rate drops, and bugs that cause the simulation to behave erratically, such as water taking six in\u2011game days to flow down a hill and paradoxical situations where the game \u201ccontinues eating itself\u201d\u202f[2][3][4].",
+          "citations": [
+            2,
+            3,
+            4
+          ]
+        },
+        {
+          "claim_id": "C6",
+          "text": "The overall experience is described as \u201cdeeply flawed,\u201d \u201chorrendous,\u201d and \u201ca disaster\u201d due to these persistent simulation and performance issues\u202f[4][5].",
+          "citations": [
+            4,
+            5
+          ]
+        }
+      ],
+      "verdict": null,
+      "second": null,
+      "judge_error": "RateLimitExhausted"
+    },
+    {
       "query_id": "game-12",
       "split": "holdout",
       "category": "named_game",
@@ -3682,6 +4060,57 @@
       "judge_error": null
     },
     {
+      "query_id": "game-13",
+      "split": "holdout",
+      "category": "named_game",
+      "question": "What do player reviews say about Fallout 76?",
+      "answer": "Player reviews of **Fallout\u202f76** are mixed but lean toward recommendation. Several long\u2011time players praise the game\u2019s massive open world, extensive weapon and armor selection, deep character and CAMP customization, and the addition of multiplayer base\u2011building that makes the experience feel like a true \u201conline Fallout\u201d\u202f[1][2][5]. They also note that post\u2011launch updates and a supportive community have turned a disastrous launch into a \u201ccomeback\u201d that many find enjoyable, especially for those who want to explore the Fallout universe with friends\u202f[5].\n\nAt the same time, reviewers point out persistent problems. Bugs that have lingered for years, broken quests, and occasional map issues are frequently mentioned\u202f[3][4]. Critics",
+      "claims": [
+        {
+          "claim_id": "C1",
+          "text": "Player reviews of Fallout\u202f76 are mixed but lean toward recommendation.",
+          "citations": []
+        },
+        {
+          "claim_id": "C2",
+          "text": "Several long\u2011time players praise the game\u2019s massive open world, extensive weapon and armor selection, deep character and CAMP customization, and the addition of multiplayer base\u2011building that makes the experience feel like a true \u201conline Fallout\u201d\u202f[1][2][5].",
+          "citations": [
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "claim_id": "C3",
+          "text": "They also note that post\u2011launch updates and a supportive community have turned a disastrous launch into a \u201ccomeback\u201d that many find enjoyable, especially for those who want to explore the Fallout universe with friends\u202f[5].",
+          "citations": [
+            5
+          ]
+        },
+        {
+          "claim_id": "C4",
+          "text": "At the same time, reviewers point out persistent problems.",
+          "citations": []
+        },
+        {
+          "claim_id": "C5",
+          "text": "Bugs that have lingered for years, broken quests, and occasional map issues are frequently mentioned\u202f[3][4].",
+          "citations": [
+            3,
+            4
+          ]
+        },
+        {
+          "claim_id": "C6",
+          "text": "Critics",
+          "citations": []
+        }
+      ],
+      "verdict": null,
+      "second": null,
+      "judge_error": "RateLimitExhausted"
+    },
+    {
       "query_id": "topic-13-1",
       "split": "holdout",
       "category": "game_topic",
@@ -3809,6 +4238,43 @@
       },
       "second_pass_ok": true,
       "judge_error": null
+    },
+    {
+      "query_id": "topic-13-2",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about playing with friends in Fallout 76?",
+      "answer": "Players consistently highlight that teaming up with friends makes Fallout\u202f76 far more enjoyable. Reviewers note that the game is \u201cvery enjoyable online RPG\u2026 you can have fun playing with friends or solo\u201d and that the multiplayer focus lets you \u201cjump in to the world of Fallout with friends and have a good time\u201d\u30101\u2020L1-L4\u3011\u30102\u2020L4-L7\u3011. The community is praised as especially friendly, and playing with people you know (or meet in\u2011game) is described as when the game \u201cis at its best\u201d\u30104\u2020L5-L8\u3011.\n\nSpecific moments with friends are called out as especially fun: taking on groups of enemies with family members feels like a \u201check of a lot of fun\u201d and evokes the excitement of old LAN parties\u30103\u2020L1-L3\u3011, while group activities such as public events, building camps, and chaotic combat are described as \u201calways welcomed\u2026 with a group of friends or absolute strangers\u201d\u30105\u2020L1-L4\u3011. Overall, the consensus is that co\u2011op play amplifies the game\u2019s fun and community spirit.",
+      "claims": [
+        {
+          "claim_id": "C1",
+          "text": "Players consistently highlight that teaming up with friends makes Fallout\u202f76 far more enjoyable.",
+          "citations": []
+        },
+        {
+          "claim_id": "C2",
+          "text": "Reviewers note that the game is \u201cvery enjoyable online RPG\u2026 you can have fun playing with friends or solo\u201d and that the multiplayer focus lets you \u201cjump in to the world of Fallout with friends and have a good time\u201d\u30101\u2020L1-L4\u3011\u30102\u2020L4-L7\u3011.",
+          "citations": []
+        },
+        {
+          "claim_id": "C3",
+          "text": "The community is praised as especially friendly, and playing with people you know (or meet in\u2011game) is described as when the game \u201cis at its best\u201d\u30104\u2020L5-L8\u3011.",
+          "citations": []
+        },
+        {
+          "claim_id": "C4",
+          "text": "Specific moments with friends are called out as especially fun: taking on groups of enemies with family members feels like a \u201check of a lot of fun\u201d and evokes the excitement of old LAN parties\u30103\u2020L1-L3\u3011, while group activities such as public events, building camps, and chaotic combat are described as \u201calways welcomed\u2026 with a group of friends or absolute strangers\u201d\u30105\u2020L1-L4\u3011.",
+          "citations": []
+        },
+        {
+          "claim_id": "C5",
+          "text": "Overall, the consensus is that co\u2011op play amplifies the game\u2019s fun and community spirit.",
+          "citations": []
+        }
+      ],
+      "verdict": null,
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "game-14",
@@ -4392,6 +4858,44 @@
       "judge_error": null
     },
     {
+      "query_id": "topic-15-1",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about survival in 7 Days to Die?",
+      "answer": "Players highlight that survival in **7\u202fDays\u202fto\u202fDie** revolves around scavenging resources, crafting gear, and constantly fortifying a base to withstand ever\u2011harder zombie hordes.\u202fThe game forces you to build shelters and improve defenses before the \u201cblood\u2011moon\u201d or the 7th\u2011night wave, and even when you die you keep your items, so death isn\u2019t a hard reset\u202f[1][2][3].\u202fThe difficulty can be tuned, making it approachable for solo adventurers or cooperative groups, and the weekly progression keeps the challenge fresh\u202f[2].\n\nBeyond the core loop, reviewers praise the freedom to explore diverse biomes, loot almost every building,",
+      "claims": [
+        {
+          "claim_id": "C1",
+          "text": "Players highlight that survival in 7\u202fDays\u202fto\u202fDie revolves around scavenging resources, crafting gear, and constantly fortifying a base to withstand ever\u2011harder zombie hordes.",
+          "citations": []
+        },
+        {
+          "claim_id": "C2",
+          "text": "The game forces you to build shelters and improve defenses before the \u201cblood\u2011moon\u201d or the 7th\u2011night wave, and even when you die you keep your items, so death isn\u2019t a hard reset\u202f[1][2][3].",
+          "citations": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "claim_id": "C3",
+          "text": "The difficulty can be tuned, making it approachable for solo adventurers or cooperative groups, and the weekly progression keeps the challenge fresh\u202f[2].",
+          "citations": [
+            2
+          ]
+        },
+        {
+          "claim_id": "C4",
+          "text": "Beyond the core loop, reviewers praise the freedom to explore diverse biomes, loot almost every building,",
+          "citations": []
+        }
+      ],
+      "verdict": null,
+      "second": null,
+      "judge_error": "RateLimitExhausted"
+    },
+    {
       "query_id": "topic-15-2",
       "split": "holdout",
       "category": "game_topic",
@@ -4571,8 +5075,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "unparseable_verdict"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "topic-16-1",
@@ -4831,6 +5335,70 @@
       "judge_error": null
     },
     {
+      "query_id": "game-17",
+      "split": "holdout",
+      "category": "named_game",
+      "question": "What do player reviews say about Hogwarts Legacy?",
+      "answer": "Player reviews of **Hogwarts Legacy** are overwhelmingly positive, highlighting its richly detailed recreation of the wizarding world. Reviewers praise the immersive open\u2011world Hogwarts environment, the high\u2011quality graphics, and the depth of character customization that lets players craft their own wizard or witch\u202f[1][2]. The game\u2019s story, gameplay mechanics, and variety of abilities are described as \u201cunique,\u201d \u201cdiverse,\u201d and \u201cunforgettable,\u201d with intuitive controls that enhance exploration and combat\u202f[4]. Many consider it a must\u2011have title for fans of the franchise and for gamers who enjoy action\u2011RPGs\u202f[1][4].\n\nSome players note shortcomings. One reviewer felt the overall design was dated and would only appeal because of the Harry\u202fPotter branding\u202f[3]. Another expressed mixed feelings, finding the main storyline underwhelming and certain NPCs unimpactful, though still enjoying the relationship quests and overall experience\u202f[5]. These critiques suggest that while the game excels in atmosphere and mechanics, its narrative elements may not satisfy every player.",
+      "claims": [
+        {
+          "claim_id": "C1",
+          "text": "Player reviews of Hogwarts Legacy are overwhelmingly positive, highlighting its richly detailed recreation of the wizarding world.",
+          "citations": []
+        },
+        {
+          "claim_id": "C2",
+          "text": "Reviewers praise the immersive open\u2011world Hogwarts environment, the high\u2011quality graphics, and the depth of character customization that lets players craft their own wizard or witch\u202f[1][2].",
+          "citations": [
+            1,
+            2
+          ]
+        },
+        {
+          "claim_id": "C3",
+          "text": "The game\u2019s story, gameplay mechanics, and variety of abilities are described as \u201cunique,\u201d \u201cdiverse,\u201d and \u201cunforgettable,\u201d with intuitive controls that enhance exploration and combat\u202f[4].",
+          "citations": [
+            4
+          ]
+        },
+        {
+          "claim_id": "C4",
+          "text": "Many consider it a must\u2011have title for fans of the franchise and for gamers who enjoy action\u2011RPGs\u202f[1][4].",
+          "citations": [
+            1,
+            4
+          ]
+        },
+        {
+          "claim_id": "C5",
+          "text": "Some players note shortcomings.",
+          "citations": []
+        },
+        {
+          "claim_id": "C6",
+          "text": "One reviewer felt the overall design was dated and would only appeal because of the Harry\u202fPotter branding\u202f[3].",
+          "citations": [
+            3
+          ]
+        },
+        {
+          "claim_id": "C7",
+          "text": "Another expressed mixed feelings, finding the main storyline underwhelming and certain NPCs unimpactful, though still enjoying the relationship quests and overall experience\u202f[5].",
+          "citations": [
+            5
+          ]
+        },
+        {
+          "claim_id": "C8",
+          "text": "These critiques suggest that while the game excels in atmosphere and mechanics, its narrative elements may not satisfy every player.",
+          "citations": []
+        }
+      ],
+      "verdict": null,
+      "second": null,
+      "judge_error": "RateLimitExhausted"
+    },
+    {
       "query_id": "topic-17-1",
       "split": "holdout",
       "category": "game_topic",
@@ -4874,8 +5442,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "topic-17-2",
@@ -4917,8 +5485,73 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
+    },
+    {
+      "query_id": "game-18",
+      "split": "holdout",
+      "category": "named_game",
+      "question": "What do player reviews say about Manor Lords?",
+      "answer": "Player reviews consistently recommend **Manor Lords**, praising its deep integration of city\u2011building and real\u2011time strategy set in a richly detailed medieval world. Reviewers highlight the strong, ongoing dialogue between the developers and the community, which they expect will shape future updates\u202f[1]. The game\u2019s blend of intricate settlement planning, resource management, and large\u2011scale battles is described as \u201can absolute gem\u201d that delivers an immersive and unforgettable experience\u202f[2].\n\nThe visuals receive particular acclaim, with \u201cbreathtaking\u201d graphics, realistic weather, and seasonal changes that both look beautiful and affect gameplay\u202f[4]. Controls are noted as familiar and intuitive, allowing players to jump straight into building and strategizing\u202f[3]. The gameplay loop is called compelling and balanced, offering depth in economic simulation and tactical combat while remaining accessible\u202f[3][5].\n\nWhile a few reviewers mention occasional frustrations\u2014such as AI quirks and some trial\u2011and\u2011error in marketplace placement\u2014these issues are presented as minor drawbacks within an overall positive assessment\u202f[3]. The consensus is that Manor Lords provides a promising, highly recommended medieval strategy experience.",
+      "claims": [
+        {
+          "claim_id": "C1",
+          "text": "Player reviews consistently recommend Manor Lords, praising its deep integration of city\u2011building and real\u2011time strategy set in a richly detailed medieval world.",
+          "citations": []
+        },
+        {
+          "claim_id": "C2",
+          "text": "Reviewers highlight the strong, ongoing dialogue between the developers and the community, which they expect will shape future updates\u202f[1].",
+          "citations": [
+            1
+          ]
+        },
+        {
+          "claim_id": "C3",
+          "text": "The game\u2019s blend of intricate settlement planning, resource management, and large\u2011scale battles is described as \u201can absolute gem\u201d that delivers an immersive and unforgettable experience\u202f[2].",
+          "citations": [
+            2
+          ]
+        },
+        {
+          "claim_id": "C4",
+          "text": "The visuals receive particular acclaim, with \u201cbreathtaking\u201d graphics, realistic weather, and seasonal changes that both look beautiful and affect gameplay\u202f[4].",
+          "citations": [
+            4
+          ]
+        },
+        {
+          "claim_id": "C5",
+          "text": "Controls are noted as familiar and intuitive, allowing players to jump straight into building and strategizing\u202f[3].",
+          "citations": [
+            3
+          ]
+        },
+        {
+          "claim_id": "C6",
+          "text": "The gameplay loop is called compelling and balanced, offering depth in economic simulation and tactical combat while remaining accessible\u202f[3][5].",
+          "citations": [
+            3,
+            5
+          ]
+        },
+        {
+          "claim_id": "C7",
+          "text": "While a few reviewers mention occasional frustrations\u2014such as AI quirks and some trial\u2011and\u2011error in marketplace placement\u2014these issues are presented as minor drawbacks within an overall positive assessment\u202f[3].",
+          "citations": [
+            3
+          ]
+        },
+        {
+          "claim_id": "C8",
+          "text": "The consensus is that Manor Lords provides a promising, highly recommended medieval strategy experience.",
+          "citations": []
+        }
+      ],
+      "verdict": null,
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "topic-18-1",
@@ -4973,8 +5606,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "topic-18-2",
@@ -5009,8 +5642,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "game-19",
@@ -5065,8 +5698,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "topic-19-1",
@@ -5102,8 +5735,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "topic-19-2",
@@ -5165,8 +5798,50 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
+    },
+    {
+      "query_id": "game-20",
+      "split": "holdout",
+      "category": "named_game",
+      "question": "What do player reviews say about Company of Heroes 3?",
+      "answer": "Player reviews of **Company of Heroes\u202f3** are split.\u202fSeveral long\u2011time fans recommend the game, highlighting its solid foundations, excellent FPS performance, and engaging mechanics. One reviewer calls it \u201can absolute blast\u201d with great visuals and a \u201cwonderful\u201d modern RTS experience, noting the large campaign map and lack of game\u2011breaking bugs\u30101\u2020L1-L7\u3011\u30103\u2020L1-L6\u3011.  \n\nOther reviewers advise against it, pointing to a focus on microtransactions over fixing bugs, missing or unfinished content, and a campaign that feels short and uninspired. Concerns also include faction homogenisation, poor AI and path\u2011finding, and numerous inaccuracies in the German language, which together make the experience feel \u201cdull\u201d and \u201ctedious\u201d\u30102\u2020L1-L5\u3011\u30104\u2020L1-L5\u3011\u30105\u2020L1-L5\u3011.  \n\nOverall, while some players enjoy the core gameplay and performance, many criticize the game\u2019s unfinished state, monetisation practices, and quality\u2011of\u2011life issues, leading to mixed recommendations.",
+      "claims": [
+        {
+          "claim_id": "C1",
+          "text": "Player reviews of Company of Heroes\u202f3 are split.",
+          "citations": []
+        },
+        {
+          "claim_id": "C2",
+          "text": "Several long\u2011time fans recommend the game, highlighting its solid foundations, excellent FPS performance, and engaging mechanics.",
+          "citations": []
+        },
+        {
+          "claim_id": "C3",
+          "text": "One reviewer calls it \u201can absolute blast\u201d with great visuals and a \u201cwonderful\u201d modern RTS experience, noting the large campaign map and lack of game\u2011breaking bugs\u30101\u2020L1-L7\u3011\u30103\u2020L1-L6\u3011.",
+          "citations": []
+        },
+        {
+          "claim_id": "C4",
+          "text": "Other reviewers advise against it, pointing to a focus on microtransactions over fixing bugs, missing or unfinished content, and a campaign that feels short and uninspired.",
+          "citations": []
+        },
+        {
+          "claim_id": "C5",
+          "text": "Concerns also include faction homogenisation, poor AI and path\u2011finding, and numerous inaccuracies in the German language, which together make the experience feel \u201cdull\u201d and \u201ctedious\u201d\u30102\u2020L1-L5\u3011\u30104\u2020L1-L5\u3011\u30105\u2020L1-L5\u3011.",
+          "citations": []
+        },
+        {
+          "claim_id": "C6",
+          "text": "Overall, while some players enjoy the core gameplay and performance, many criticize the game\u2019s unfinished state, monetisation practices, and quality\u2011of\u2011life issues, leading to mixed recommendations.",
+          "citations": []
+        }
+      ],
+      "verdict": null,
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "topic-20-1",
@@ -5209,8 +5884,55 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
+    },
+    {
+      "query_id": "topic-20-2",
+      "split": "holdout",
+      "category": "game_topic",
+      "question": "What feedback do players give about multiplayer in Company of Heroes 3?",
+      "answer": "Players repeatedly point to balance problems in CoH\u202f3\u2019s multiplayer. One reviewer notes that \u201cBritish players spamming Stuart tanks and American players employing a similar tactic\u2026 leads to a barrage of 7 or 8 British Stuarts\u2026 Additionally, the American air support\u2026 seems overly powerful\u201d and calls it a \u201cbalance problem\u201d\u30101\u3011. Another mentions that the game\u2019s factions feel \u201chomogenised\u201d and that \u201cbalance sweats are such a small percentage of the playerbase\u201d making competitive play difficult\u30103\u3011. A fourth reviewer adds that \u201cmultiplayer seems still going through some balancing so it is hard to have too much of an opinion on it yet\u201d\u30104\u3011.\n\nBeyond balance, players comment on matchmaking and skill gaps. One reviewer says co\u2011op multiplayer is \u201chit\u2011and\u2011miss,\u201d often encountering \u201csignificant skill disparities amongst players, and the waiting times for matches can be lengthy\u201d\u30102\u3011. Overall, the feedback highlights that while the core multiplayer experience is promising, it currently suffers from overpowered units, insufficient faction distinction, and matchmaking issues that need further tuning",
+      "claims": [
+        {
+          "claim_id": "C1",
+          "text": "Players repeatedly point to balance problems in CoH\u202f3\u2019s multiplayer.",
+          "citations": []
+        },
+        {
+          "claim_id": "C2",
+          "text": "One reviewer notes that \u201cBritish players spamming Stuart tanks and American players employing a similar tactic\u2026 leads to a barrage of 7 or 8 British Stuarts\u2026 Additionally, the American air support\u2026 seems overly powerful\u201d and calls it a \u201cbalance problem\u201d\u30101\u3011.",
+          "citations": []
+        },
+        {
+          "claim_id": "C3",
+          "text": "Another mentions that the game\u2019s factions feel \u201chomogenised\u201d and that \u201cbalance sweats are such a small percentage of the playerbase\u201d making competitive play difficult\u30103\u3011.",
+          "citations": []
+        },
+        {
+          "claim_id": "C4",
+          "text": "A fourth reviewer adds that \u201cmultiplayer seems still going through some balancing so it is hard to have too much of an opinion on it yet\u201d\u30104\u3011.",
+          "citations": []
+        },
+        {
+          "claim_id": "C5",
+          "text": "Beyond balance, players comment on matchmaking and skill gaps.",
+          "citations": []
+        },
+        {
+          "claim_id": "C6",
+          "text": "One reviewer says co\u2011op multiplayer is \u201chit\u2011and\u2011miss,\u201d often encountering \u201csignificant skill disparities amongst players, and the waiting times for matches can be lengthy\u201d\u30102\u3011.",
+          "citations": []
+        },
+        {
+          "claim_id": "C7",
+          "text": "Overall, the feedback highlights that while the core multiplayer experience is promising, it currently suffers from overpowered units, insufficient faction distinction, and matchmaking issues that need further tuning",
+          "citations": []
+        }
+      ],
+      "verdict": null,
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "compare-01",
@@ -5251,8 +5973,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "compare-02",
@@ -5264,17 +5986,45 @@
         {
           "claim_id": "C1",
           "text": "The provided reviews only discuss Core Keeper and compare it to Terraria and Stardew\u202fValley; they do not contain any direct player feedback about Terraria or Stardew\u202fValley themselves.",
-          "citations": []
+          "citations": [],
+          "label": "contradicted",
+          "supporting": [
+            2
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C2",
           "text": "Therefore, there is insufficient evidence to compare player opinions on those two games.",
-          "citations": []
+          "citations": [],
+          "label": "contradicted",
+          "supporting": [
+            2
+          ],
+          "cited": false,
+          "citation_ok": false
         }
       ],
-      "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "contradicted",
+            "supporting": [
+              2
+            ]
+          },
+          "C2": {
+            "label": "contradicted",
+            "supporting": [
+              2
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "second": null,
+      "judge_error": null
     },
     {
       "query_id": "compare-03",
@@ -5319,8 +6069,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "compare-04",
@@ -5374,8 +6124,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "compare-05",
@@ -5423,8 +6173,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "compare-06",
@@ -5462,8 +6212,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "compare-07",
@@ -5511,8 +6261,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "compare-08",
@@ -5559,8 +6309,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "compare-09",
@@ -5604,8 +6354,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "compare-10",
@@ -5649,8 +6399,30 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
+    },
+    {
+      "query_id": "unsupported-01",
+      "split": "development",
+      "category": "unsupported",
+      "question": "What is the exact current Steam price of Portal 2 in Greece?",
+      "answer": "The provided player\u2011review evidence does not contain any information about the current Steam price of **Portal\u202f2** in Greece. Therefore, I cannot give that price based on the available data.",
+      "claims": [
+        {
+          "claim_id": "C1",
+          "text": "The provided player\u2011review evidence does not contain any information about the current Steam price of Portal\u202f2 in Greece.",
+          "citations": []
+        },
+        {
+          "claim_id": "C2",
+          "text": "Therefore, I cannot give that price based on the available data.",
+          "citations": []
+        }
+      ],
+      "verdict": null,
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "unsupported-02",
@@ -5671,8 +6443,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "unsupported-03",
@@ -5688,8 +6460,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "unsupported-04",
@@ -5701,12 +6473,32 @@
         {
           "claim_id": "C1",
           "text": "The provided evidence contains no private email addresses for any of the Terraria reviewers.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            3,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         }
       ],
-      "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              3,
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "second": null,
+      "judge_error": null
     },
     {
       "query_id": "unsupported-05",
@@ -5718,12 +6510,24 @@
         {
           "claim_id": "C1",
           "text": "The provided reviews do not contain any information about an official release date for the next Stardew Valley update.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [],
+          "cited": false,
+          "citation_ok": false
         }
       ],
-      "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": []
+          }
+        },
+        "abstains": false
+      },
+      "second": null,
+      "judge_error": null
     },
     {
       "query_id": "unsupported-06",
@@ -5806,8 +6610,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "unsupported-08",
@@ -5819,12 +6623,28 @@
         {
           "claim_id": "C1",
           "text": "The provided evidence does not specify that any Company of Heroes\u202f3 reviewer received a refund yesterday.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1
+          ],
+          "cited": false,
+          "citation_ok": false
         }
       ],
-      "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "second": null,
+      "judge_error": null
     },
     {
       "query_id": "unsupported-09",
@@ -5850,8 +6670,8 @@
         }
       ],
       "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "second": null,
+      "judge_error": "RateLimitExhausted"
     },
     {
       "query_id": "unsupported-10",
@@ -5863,12 +6683,24 @@
         {
           "claim_id": "C1",
           "text": "The provided player\u2011review evidence does not mention the fictional title Quantum Teapot Accountant\u202f2099, so there are no reviews or opinions to report about it.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [],
+          "cited": false,
+          "citation_ok": false
         }
       ],
-      "verdict": null,
-      "second_pass_ok": false,
-      "judge_error": "RateLimitError"
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": []
+          }
+        },
+        "abstains": false
+      },
+      "second": null,
+      "judge_error": null
     }
   ]
 }
