@@ -70,6 +70,25 @@ Limits that stay attached to every number from this path:
 - Correctness needs a person. Every run writes `claim_audit_sample.csv`, 40 claims stratified by judge label with the evidence text. After a reviewer fills `reviewer_label`, `python scripts/evaluate_answers.py --score-audit <file>` reports agreement and kappa with the judge. The file contains review text, so it stays out of git.
 - The 80 questions are authored and the unsupported category has 10 questions, so its intervals are wide.
 
+## Audit of the judge by a second model, 2026-10-29
+
+A language model other than the judge read 40 claims against the five reviews each answer saw and labelled them with the same four labels. The sample was stratified by judge label, so it over-represents rare labels and its agreement figures do not describe all claims. Labels, reasons and the agreement file are in [`audit/`](audit/claim_audit_v1.csv). The reviewer was Claude, not a person, so this is a cross-check and not the human audit.
+
+| Judge label | Claims audited | Reviewer agreed |
+|---|---:|---:|
+| supported | 18 | 17 |
+| partially supported | 18 | 10 |
+| contradicted | 3 | 0 |
+| unsupported | 1 | not a claim |
+
+- Agreement on the 39 claims both labelled was 69.2% with kappa 0.43.
+- 11 of the 12 disagreements are the judge being stricter than the reviewer. Eight partially supported labels the reviewer called supported, and all three contradicted labels were wrong: two were correct abstentions and one was a claim that most reviews supported.
+- The one claim the judge called unsupported was a title fragment, not a claim.
+- The reviewer was lenient on summaries that combine facts from several reviews when each fact appears somewhere in the five. A stricter reading would move some supported labels to partially supported.
+- One reviewer, one pass, no second opinion, and 18 supported claims out of 283. Treat the judge as conservative and noisy.
+
+The audit also exposed two bugs in this harness that are now fixed. Citations written with fullwidth brackets were read as uncited, which affected 53 of 324 claims. A title fragment was counted as a claim.
+
 ## Small ownership exercise
 
 Start with `compare-02`, `compare-06`, and three topic questions. Reconstruct the returned reviews using their `review_id`, grade relevance, and explain whether each failure originates in candidate retrieval, reranking or insufficient coverage. Those judgments are more useful than guessing from similarity scores.

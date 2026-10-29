@@ -37,8 +37,19 @@ class SplitClaimsTests(unittest.TestCase):
     def test_bullets_markdown_and_table_separators_are_removed(self):
         answer = "**Summary**\n- Great co-op [1]\n- Bugs on launch [2]\n| a | b |\n|---|---|"
         claims = ae.split_claims(answer)
-        self.assertEqual([c["text"] for c in claims][:3], ["Summary", "Great co-op [1]", "Bugs on launch [2]"])
+        self.assertEqual([c["text"] for c in claims][:2], ["Great co-op [1]", "Bugs on launch [2]"])
         self.assertNotIn("---", " ".join(c["text"] for c in claims))
+
+    def test_fullwidth_bracket_citations_are_recognised(self):
+        claims = ae.split_claims("Players enjoy the soundtrack and the art style \u30102\u3011.")
+        self.assertEqual(claims[0]["citations"], [2])
+
+    def test_a_title_fragment_is_not_a_claim(self):
+        claims = ae.split_claims("**Critics**\nSome players found the story short and the combat repetitive. [2]")
+        self.assertEqual([c["citations"] for c in claims], [[2]])
+
+    def test_a_short_complete_sentence_is_still_a_claim(self):
+        self.assertEqual(len(ae.split_claims("It is great.")), 1)
 
     def test_citation_only_text_is_not_a_claim(self):
         self.assertEqual(ae.split_claims("[1][2]"), [])
@@ -127,6 +138,23 @@ class MetricTests(unittest.TestCase):
         self.assertEqual(point, 1.0)
         self.assertTrue(0 <= low < 1 and high <= 1)
         self.assertEqual(ae.wilson(0, 0), (None, None, None))
+
+
+class RefreshTests(unittest.TestCase):
+    def test_stored_record_gets_new_citations_and_loses_its_heading(self):
+        claims = [{"claim_id": "C1", "text": "Critics", "citations": []},
+                  {"claim_id": "C2", "text": "The soundtrack is praised \u30102\u3011.", "citations": []}]
+        verdict = ae.parse_judge_response(
+            verdict_json(["unsupported", "supported"], supporting={2: [2]}), ["C1", "C2"], 5)
+        stored = {"query_id": "q", "category": "game_topic", "verdict": verdict,
+                  "claims": [{**c, **verdict["claims"][c["claim_id"]], "cited": False, "citation_ok": False}
+                             for c in claims]}
+        record = ae.refresh_record(stored)
+        self.assertEqual([c["claim_id"] for c in record["claims"]], ["C2"])
+        self.assertEqual(record["claims"][0]["citations"], [2])
+        self.assertTrue(record["claims"][0]["citation_ok"])
+        self.assertNotIn("C1", record["verdict"]["claims"])
+        self.assertEqual(ae.refresh_record({"verdict": None, "claims": []})["claims"], [])
 
 
 class AgreementTests(unittest.TestCase):
