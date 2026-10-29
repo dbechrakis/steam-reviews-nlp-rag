@@ -85,7 +85,7 @@ The recorded Llama evaluation found **17 of 18 recognized game-name mentions in 
 
 [Generator counts](outputs/tables/rag_model_comparison.csv) · [Retrieval evaluation](outputs/tables/rag_retrieval_eval.csv) · [Evaluation notebook](notebooks/05_RAG_System.ipynb)
 
-**Claim-level answer evaluation:** a harness now judges generated answers sentence by sentence against the reviews the generator saw, and reports supported rate, citation correctness and abstention on the unsupported questions. [Method and limits](evaluation/README.md#claim-level-answer-evaluation-with-an-llm-judge). The first run on 2026-10-28 was cut short by provider rate limits, so 15 questions have no answer and most others have no verdict. Those rates are not claimed anywhere. A resumed run fills the gaps. The numbers are LLM-judged until a person audits a sample.
+**Claim-level answer evaluation:** a harness now judges generated answers sentence by sentence against the reviews the generator saw, and reports supported rate, citation correctness and abstention on the unsupported questions. [Method and limits](evaluation/README.md#claim-level-answer-evaluation-with-an-llm-judge). All 80 benchmark questions now have a generated answer. Only 42 have a judged verdict, because the judge model hit the provider's usage limit. The missing 38 are not a random sample, so no rate is claimed anywhere. A resumed run fills the gaps once the limit resets. The numbers will be LLM-judged until a person audits a sample.
 
 These are recorded historical results. The September 2026 review checked saved evidence and evaluation code but did not retrain the transformer or regenerate historical answers.
 
