@@ -262,6 +262,20 @@ class RunnerTests(unittest.TestCase):
         claims, abstains = runner.stability([twice, once, {"verdict": None, "second": None}])
         self.assertEqual((claims["n"], claims["agreement"], abstains["n"]), (1, 0.0, 1))
 
+    def test_summary_flags_incomplete_coverage_and_the_unreliable_abstain_flag(self):
+        record = {"query_id": "q", "category": "unsupported",
+                  "claims": [], "verdict": {"claims": {}, "abstains": False}}
+        rows = ae.summarize([record, {**record, "verdict": None}])
+        info = {"date": "2026-10-30", "generator": "g", "judge": "j", "questions": 2, "unanswered": 0,
+                "unjudged": 1, "stability": "s", "audit": "a"}
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "summary.md"
+            runner.write_summary(path, rows, info)
+            text = path.read_text()
+        self.assertIn("**Incomplete.**", text)
+        self.assertIn("Judge abstain flag", text)
+        self.assertIn("wrong when checked by hand", text)
+
     def test_audit_scoring_ignores_unlabelled_rows_and_rejects_unknown_labels(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "claim_audit_sample.csv"

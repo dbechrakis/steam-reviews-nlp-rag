@@ -164,7 +164,7 @@ def write_summary(path: Path, rows: list[dict], info: dict) -> None:
         ]
     lines += [
         "| Category | Answers judged | Claims | Supported (95% CI) | Cited claims correct (95% CI) | "
-        "Abstains (95% CI) | Answers with an unsupported or contradicted claim |",
+        "Judge abstain flag (95% CI) | Answers with an unsupported or contradicted claim |",
         "|---|---:|---:|---|---|---|---:|",
     ]
     for row in rows:
@@ -179,9 +179,9 @@ def write_summary(path: Path, rows: list[dict], info: dict) -> None:
         "",
         "Supported counts only the label supported. Partially supported claims are reported in the JSON. "
         "A cited claim is correct when it is supported and at least one cited review is among the reviews the "
-        "judge named as support. Intervals resample answers, not claims. For the unsupported category the "
-        "abstain rate is the headline and higher is better. For the other categories a high abstain rate means "
-        "the answer refused although evidence was available.",
+        "judge named as support. Intervals resample answers, not claims. The abstain column is the judge's own "
+        "flag and it has been wrong when checked by hand, so it is not the generator's abstention rate. "
+        "See evaluation/README.md.",
         "",
         f"Judge stability: {info['stability']}",
         "",
@@ -346,12 +346,16 @@ if __name__ == "__main__":
     parser.add_argument("--stability-every", type=int, default=3,
                         help="Judge every Nth answer a second time to measure stability")
     parser.add_argument("--budget-minutes", type=float, default=150)
+    parser.add_argument("--render", type=Path, help="Rewrite answer_eval_summary.md from a stored answer_eval.json")
     parser.add_argument("--score-audit", type=Path, help="Compare a filled claim_audit_sample.csv with the judge")
     args = parser.parse_args()
-    if args.score_audit:
+    if args.render:
+        stored = json.loads(args.render.read_text())
+        write_summary(args.render.with_name("answer_eval_summary.md"), stored["summary"], stored["info"])
+    elif args.score_audit:
         print(json.dumps(score_audit(args.score_audit), indent=2))
     elif args.run:
         print(json.dumps(run(args.run, args.judge_model, args.audit_size, args.pause, args.resume,
                              args.regenerate_failed, args.stability_every, args.budget_minutes)["summary"], indent=2))
     else:
-        parser.error("pass --run or --score-audit")
+        parser.error("pass --run, --render or --score-audit")

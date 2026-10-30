@@ -59,7 +59,7 @@ The [Answer evaluation workflow](../.github/workflows/answer-eval.yml) runs both
 |---|---|
 | Supported rate | Claims labelled supported over all claims, with a bootstrap interval that resamples answers |
 | Cited claims correct | Among claims that carry a citation, the share that are supported and cite at least one review the judge named as support |
-| Abstain rate | Answers that say the evidence is missing. This is the headline for the 10 unsupported questions, where higher is better |
+| Judge abstain flag | The judge's own call on whether an answer declines. It has been wrong when checked by hand, so it is not reported as an abstention rate |
 | Answers with an unsupported claim | Count of answers with at least one unsupported or contradicted claim |
 
 Limits that stay attached to every number from this path:
@@ -69,6 +69,24 @@ Limits that stay attached to every number from this path:
 - Judge stability is measured by judging every answer twice with the claims in a different order. High agreement shows consistency, not correctness.
 - Correctness needs a person. Every run writes `claim_audit_sample.csv`, 40 claims stratified by judge label with the evidence text. After a reviewer fills `reviewer_label`, `python scripts/evaluate_answers.py --score-audit <file>` reports agreement and kappa with the judge. The file contains review text, so it stays out of git.
 - The 80 questions are authored and the unsupported category has 10 questions, so its intervals are wide.
+
+## Answer evaluation results, 2026-10-30
+
+Generator `openai/gpt-oss-120b` with the production prompt. Judge `openai/gpt-oss-20b`. All 80 benchmark questions have an answer. 77 have a judged verdict. The other 3 (two game-topic, one named-game) got judge replies that were not valid JSON after two attempts, so they are missing for a format reason and not a rate limit. [Summary](../outputs/evaluation/generated-v1/answer_eval_summary.md) · [Per-claim records](../outputs/evaluation/generated-v1/answer_eval.json).
+
+| Category | Answers judged | Claims | Supported (95% CI) | Cited claims |
+|---|---:|---:|---|---:|
+| game_topic | 38 of 40 | 198 | 87.9% (82 to 93) | 61% |
+| named_game | 19 of 20 | 116 | 88.8% (83 to 94) | 64% |
+| comparison | 10 of 10 | 51 | 86.3% (73 to 96) | 59% |
+| unsupported | 10 of 10 | 16 | see below | 0% |
+| all | 77 of 80 | 381 | 88.5% (85 to 92) | 59% |
+
+- **Claim support.** 88.5% supported, 10.8% partially supported, 0% unsupported, 0.8% contradicted. The 3 contradicted claims were read against the evidence by hand. Two are a correct statement that every retrieved review is about Core Keeper, and one is a statement that most reviews support. None is a contradiction.
+- **Citations.** 59% of claims carry a citation. The other 41% are summary sentences with no marker, which is the generator's behaviour and the largest weakness in this evaluation. Among cited claims, 100% were supported and overlapped the reviews the judge named as support. That rate says the cited reviews are the right ones. It does not say that every sentence is cited.
+- **Unanswerable questions.** All 10 answers decline without inventing the requested fact (a price, a sales forecast, an FPS figure, email addresses, a release date, an uptime percentage, a budget, a refund, a medical claim, a fictional game). This is a hand reading of the 10 answers by Claude, not the judge. The judge's abstain flag was true for 1 of 10 and is wrong on the other 9, so the harness no longer calls it an abstention rate. Ten questions is a small sample, so a 10 of 10 rate has a wide interval.
+- **Judge stability.** 12 answers were judged twice with the claims in a different order. Label agreement was 89.2% with kappa 0.31. Agreement is high because almost every label is supported, and kappa shows how little the judge disagrees with itself beyond that.
+- **What this does not show.** Whether a supported claim is a fair summary of the whole corpus. Whether the judge, which shares a family with the generator, favours the generator's phrasing. Any human judgment. The model audit below found the judge stricter than a second reader, which suggests 88.5% is conservative, but it was one reviewer on 40 claims.
 
 ## Audit of the judge by a second model, 2026-10-29
 
