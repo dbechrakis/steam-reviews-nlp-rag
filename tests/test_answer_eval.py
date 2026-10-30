@@ -87,8 +87,23 @@ class ParseTests(unittest.TestCase):
             return "oops"
 
         claims = ae.split_claims("A claim. [1]")
-        self.assertIsNone(ae.judge_answer("q", ["[1] e"], claims, broken))
-        self.assertEqual(len(calls), 2)
+        failures = []
+        self.assertIsNone(ae.judge_answer("q", ["[1] e"], claims, broken, failures=failures))
+        self.assertEqual(len(calls), 3)
+        self.assertEqual([f["attempt"] for f in failures], [1, 2, 3])
+        self.assertEqual(failures[0]["tail"], "oops")
+
+    def test_only_the_retries_carry_the_reminder_note(self):
+        prompts = []
+
+        def reply(system, user):
+            prompts.append(user)
+            return "not json" if len(prompts) == 1 else verdict_json(["supported"], supporting={1: [1]})
+
+        claims = ae.split_claims("A claim. [1]")
+        self.assertIsNotNone(ae.judge_answer("q", ["[1] e"], claims, reply))
+        self.assertNotIn(ae.RETRY_NOTE, prompts[0])
+        self.assertTrue(prompts[1].endswith(ae.RETRY_NOTE))
 
 
 class MetricTests(unittest.TestCase):

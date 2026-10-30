@@ -73,7 +73,7 @@ def groq_completer(model: str, api_key: str, pause: float):
             model=model,
             messages=[{"role": "system", "content": system}, {"role": "user", "content": user}],
             temperature=0,
-            max_tokens=2000,
+            max_tokens=6000,
         ))
         return response.choices[0].message.content or ""
 
@@ -102,16 +102,19 @@ def pending_work(per_query: list[dict], prior: dict[str, dict], regenerate: bool
 def judge_item(item, rows, complete, rng, second_pass=True):
     blocks = [ae.evidence_block(i, row) for i, row in enumerate(rows, start=1)]
     claims = ae.split_claims(item["answer"])
-    outcome = {"claims": claims, "verdict": None, "second": None, "error": None, "blocks": blocks}
+    outcome = {"claims": claims, "verdict": None, "second": None, "error": None, "blocks": blocks,
+               "failures": []}
     if not claims:
         outcome["error"] = "no_claims"
         return outcome
     try:
-        outcome["verdict"] = ae.judge_answer(item["question"], blocks, claims, complete)
+        outcome["verdict"] = ae.judge_answer(item["question"], blocks, claims, complete,
+                                             failures=outcome["failures"])
         if outcome["verdict"] is not None and second_pass:
             shuffled = claims[:]
             rng.shuffle(shuffled)
-            outcome["second"] = ae.judge_answer(item["question"], blocks, shuffled, complete)
+            outcome["second"] = ae.judge_answer(item["question"], blocks, shuffled, complete,
+                                                failures=outcome["failures"])
     except Exception as error:
         outcome["error"] = type(error).__name__
     if outcome["verdict"] is None and outcome["error"] is None:
@@ -265,6 +268,7 @@ def run(run_dir: Path, judge_model: str, audit_size: int, pause: float, resume: 
                     "question": item["question"], "answer": item["answer"],
                     "claims": ae.judged_claims(outcome["claims"], verdict) if verdict else outcome["claims"],
                     "verdict": verdict, "second": second, "judge_error": outcome["error"],
+                    "judge_diagnostics": outcome["failures"],
                 }
                 print(query_id, "judged" if verdict else f"failed:{outcome['error']}", flush=True)
         records.append(record)
