@@ -1,12 +1,12 @@
 {
   "info": {
-    "date": "2026-10-29",
+    "date": "2026-10-30",
     "generator": "openai/gpt-oss-120b",
     "judge": "openai/gpt-oss-20b",
     "questions": 80,
     "answers": 80,
     "unanswered": 0,
-    "unjudged": 17,
+    "unjudged": 3,
     "regenerated_questions": [
       "game-06",
       "game-09",
@@ -24,52 +24,52 @@
       "topic-20-2",
       "unsupported-01"
     ],
-    "stability": "39 claims in 6 answers judged twice with the claims in a different order. Label agreement 84.6%, kappa 0.33. Abstain agreement 100.0%.",
+    "stability": "65 claims in 12 answers judged twice with the claims in a different order. Label agreement 89.2%, kappa 0.31. Abstain agreement 100.0%.",
     "audit": "Human audit: not yet done. `claim_audit_sample.csv` holds 40 claims stratified by judge label for a reviewer to fill in."
   },
   "summary": [
     {
       "category": "all",
       "answers": 80,
-      "answers_judged": 63,
-      "judge_failures": 17,
-      "claims": 324,
-      "supported_share": 0.8734567901234568,
-      "partially_supported_share": 0.11419753086419752,
-      "unsupported_share": 0.0030864197530864196,
-      "contradicted_share": 0.009259259259259259,
-      "supported_rate": 0.8734567901234568,
-      "supported_ci_low": 0.8327974276527331,
-      "supported_ci_high": 0.9113149847094801,
-      "cited_claim_share": 0.4691358024691358,
+      "answers_judged": 77,
+      "judge_failures": 3,
+      "claims": 381,
+      "supported_share": 0.884514435695538,
+      "partially_supported_share": 0.10761154855643044,
+      "unsupported_share": 0.0,
+      "contradicted_share": 0.007874015748031496,
+      "supported_rate": 0.884514435695538,
+      "supported_ci_low": 0.8494318181818182,
+      "supported_ci_high": 0.9196891191709845,
+      "cited_claim_share": 0.5905511811023622,
+      "citation_correct_rate": 1.0,
+      "citation_ci_low": 1.0,
+      "citation_ci_high": 1.0,
+      "abstain_rate": 0.012987012987012988,
+      "abstain_ci_low": 0.0022961581721549496,
+      "abstain_ci_high": 0.06996366845176145,
+      "answers_with_unsupported_claim": 2
+    },
+    {
+      "category": "comparison",
+      "answers": 10,
+      "answers_judged": 10,
+      "judge_failures": 0,
+      "claims": 51,
+      "supported_share": 0.8627450980392157,
+      "partially_supported_share": 0.09803921568627451,
+      "unsupported_share": 0.0,
+      "contradicted_share": 0.0392156862745098,
+      "supported_rate": 0.8627450980392157,
+      "supported_ci_low": 0.7317073170731707,
+      "supported_ci_high": 0.9615384615384616,
+      "cited_claim_share": 0.5882352941176471,
       "citation_correct_rate": 1.0,
       "citation_ci_low": 1.0,
       "citation_ci_high": 1.0,
       "abstain_rate": 0.0,
       "abstain_ci_low": 0.0,
-      "abstain_ci_high": 0.057473190348525466,
-      "answers_with_unsupported_claim": 3
-    },
-    {
-      "category": "comparison",
-      "answers": 10,
-      "answers_judged": 2,
-      "judge_failures": 8,
-      "claims": 8,
-      "supported_share": 0.625,
-      "partially_supported_share": 0.125,
-      "unsupported_share": 0.0,
-      "contradicted_share": 0.25,
-      "supported_rate": 0.625,
-      "supported_ci_low": 0.0,
-      "supported_ci_high": 0.8333333333333334,
-      "cited_claim_share": 0.0,
-      "citation_correct_rate": null,
-      "citation_ci_low": null,
-      "citation_ci_high": null,
-      "abstain_rate": 0.0,
-      "abstain_ci_low": 0.0,
-      "abstain_ci_high": 0.6576280471103807,
+      "abstain_ci_high": 0.2775401687666166,
       "answers_with_unsupported_claim": 1
     },
     {
@@ -85,7 +85,7 @@
       "supported_rate": 0.8787878787878788,
       "supported_ci_low": 0.8159203980099502,
       "supported_ci_high": 0.9303482587064676,
-      "cited_claim_share": 0.41414141414141414,
+      "cited_claim_share": 0.6111111111111112,
       "citation_correct_rate": 1.0,
       "citation_ci_low": 1.0,
       "citation_ci_high": 1.0,
@@ -97,31 +97,31 @@
     {
       "category": "named_game",
       "answers": 20,
-      "answers_judged": 18,
-      "judge_failures": 2,
-      "claims": 112,
-      "supported_share": 0.875,
-      "partially_supported_share": 0.11607142857142858,
-      "unsupported_share": 0.008928571428571428,
+      "answers_judged": 19,
+      "judge_failures": 1,
+      "claims": 116,
+      "supported_share": 0.8879310344827587,
+      "partially_supported_share": 0.11206896551724138,
+      "unsupported_share": 0.0,
       "contradicted_share": 0.0,
-      "supported_rate": 0.875,
-      "supported_ci_low": 0.8189655172413793,
-      "supported_ci_high": 0.9320388349514563,
-      "cited_claim_share": 0.625,
+      "supported_rate": 0.8879310344827587,
+      "supported_ci_low": 0.8347826086956521,
+      "supported_ci_high": 0.9385964912280702,
+      "cited_claim_share": 0.6379310344827587,
       "citation_correct_rate": 1.0,
       "citation_ci_low": 1.0,
       "citation_ci_high": 1.0,
       "abstain_rate": 0.0,
       "abstain_ci_low": 0.0,
-      "abstain_ci_high": 0.1758845505823749,
-      "answers_with_unsupported_claim": 1
+      "abstain_ci_high": 0.16818436536845052,
+      "answers_with_unsupported_claim": 0
     },
     {
       "category": "unsupported",
       "answers": 10,
-      "answers_judged": 5,
-      "judge_failures": 5,
-      "claims": 6,
+      "answers_judged": 10,
+      "judge_failures": 0,
+      "claims": 16,
       "supported_share": 1.0,
       "partially_supported_share": 0.0,
       "unsupported_share": 0.0,
@@ -133,26 +133,26 @@
       "citation_correct_rate": null,
       "citation_ci_low": null,
       "citation_ci_high": null,
-      "abstain_rate": 0.0,
-      "abstain_ci_low": 0.0,
-      "abstain_ci_high": 0.43449149475208104,
+      "abstain_rate": 0.1,
+      "abstain_ci_low": 0.01787574951572113,
+      "abstain_ci_high": 0.4041563854975721,
       "answers_with_unsupported_claim": 0
     }
   ],
   "claim_agreement": {
-    "n": 39,
-    "agreement": 0.8461538461538461,
-    "kappa": 0.33142857142857146
+    "n": 65,
+    "agreement": 0.8923076923076924,
+    "kappa": 0.30534351145038185
   },
   "abstain_agreement": {
-    "n": 6,
+    "n": 12,
     "agreement": 1.0,
     "kappa": null
   },
   "source_run_manifest_sha256": "9564836c32cc7b82231d280872f5a05c5b63a7d45821f0913860606ca51937a2",
   "code_sha256": {
-    "scripts/evaluate_answers.py": "6e5fd4c19e5c841d5bd25a30a802bd6cae0566ee32eaa22e848701e191e26091",
-    "src/steam_review_rag/answer_eval.py": "65bf3c1c9036927985a6a767f2ff7fe121fbfa03d4dd8651ce928f21285b4fb5"
+    "scripts/evaluate_answers.py": "f2f31463900ef1a9c47ca84eac15869aa84a560e4669ed40b8f40564779e67cc",
+    "src/steam_review_rag/answer_eval.py": "d6eb9801f21c2f056b093e6e03bef0fd9b1db0addc65000417e623d65912ed82"
   },
   "records": [
     {
@@ -303,24 +303,28 @@
         {
           "claim_id": "C2",
           "text": "Reviewers note that the game \u201crevolutionizes puzzle\u2011solving with its innovative gameplay mechanics,\u201d letting players create portals, exploit momentum and gravity to tackle \u201cintricate test chambers\u201d that demand logical thinking and creative problem\u2011solving\u30101\u3011.",
-          "citations": [],
+          "citations": [
+            1
+          ],
           "label": "supported",
           "supporting": [
             1
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
           "text": "The individual mechanics are described as \u201csimple enough to grasp on its own but serve as the building blocks of larger, more complex puzzles,\u201d and solving them never feels dependent on fast\u2011twitch reflexes\u30103\u3011.",
-          "citations": [],
+          "citations": [
+            3
+          ],
           "label": "supported",
           "supporting": [
             3
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
@@ -337,24 +341,28 @@
         {
           "claim_id": "C5",
           "text": "Critics highlight a \u201cbalanced\u201d progression where \u201cthe difficulty and level design progress in a balanced way,\u201d guiding players linearly while still leaving the puzzles to be solved independently\u30105\u3011.",
-          "citations": [],
+          "citations": [
+            5
+          ],
           "label": "supported",
           "supporting": [
             5
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C6",
           "text": "The overall level design is called \u201cmasterful,\u201d with \u201ctop\u2011notch\u201d graphics and sound complementing \u201cincredibly fun and challenging\u201d puzzles that keep players engaged and entertained\u30104\u3011.",
-          "citations": [],
+          "citations": [
+            4
+          ],
           "label": "supported",
           "supporting": [
             4
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         }
       ],
       "verdict": {
@@ -739,38 +747,46 @@
         {
           "claim_id": "C2",
           "text": "Reviewers describe it as \u201cpunchy and satisfying\u201d with \u201cdiverse move\u2011sets\u201d that adapt to any situation\u30101\u3011, and note that the combat feels \u201cpolished and snappy\u201d\u30102\u3011.",
-          "citations": [],
+          "citations": [
+            1,
+            2
+          ],
           "label": "supported",
           "supporting": [
             1,
             2
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
           "text": "The system is also called \u201cdynamic\u201d and \u201csimple yet rich,\u201d offering a variety of weapons, abilities, and boons that keep each run feeling fresh\u30105\u3011.",
-          "citations": [],
+          "citations": [
+            5
+          ],
           "label": "supported",
           "supporting": [
             3,
             5
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
           "text": "The depth of the combat is highlighted as a major strength: the variety of weapons and Olympus\u2011granted boons creates \u201cgreat variety in technical combat such that no run is ever the same\u201d\u30104\u3011, while the \u201cdynamic\u201d nature and \u201crich\u201d build options prevent the gameplay from becoming stale\u30105\u3011.",
-          "citations": [],
+          "citations": [
+            4,
+            5
+          ],
           "label": "supported",
           "supporting": [
             4,
             5
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C5",
@@ -1418,35 +1434,41 @@
         {
           "claim_id": "C2",
           "text": "One reviewer calls it \u201ca journey through a relaxing landscape of farming, relationships, fishing, and any other mundane activity a game could posses,\u201d noting that the gratification and relaxation it provides are \u201cunparalleled in any other gaming experience\u201d\u30102\u3011.",
-          "citations": [],
+          "citations": [
+            2
+          ],
           "label": "supported",
           "supporting": [
             2
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
           "text": "Another highlights the game\u2019s calming nature, saying it lets you \u201csink several hours\u201d into its \u201ccaptivating and immersive\u201d world while still feeling \u201crelaxing\u201d and \u201cchill\u201d\u30101\u3011.",
-          "citations": [],
+          "citations": [
+            1
+          ],
           "label": "partially_supported",
           "supporting": [
             1
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
           "text": "The soothing atmosphere is reinforced by the game\u2019s soundtrack and visuals, which reviewers praise as \u201cone of the better composed soundtracks in any medium\u201d and \u201cmagic for the eyes,\u201d further contributing to the overall sense of relaxation\u30102\u3011.",
-          "citations": [],
+          "citations": [
+            2
+          ],
           "label": "supported",
           "supporting": [
             2
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C5",
@@ -2279,25 +2301,29 @@
         {
           "claim_id": "C1",
           "text": "Players note that Elden\u202fRing\u2019s boss encounters can feel repetitive, and the game\u2019s abundance of easily accessible items often lets players trivialize them, sometimes defeating a boss on the first try and making the challenge feel \u201ctoo easy\u201d\u30101\u3011.",
-          "citations": [],
+          "citations": [
+            1
+          ],
           "label": "supported",
           "supporting": [
             1
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C2",
           "text": "At the same time, the open\u2011world design gives a lot of flexibility\u2014players can choose whether to engage every boss, skip certain fights, or use alternative routes, which leads to very different experiences of the same encounters\u30101\u3011.",
-          "citations": [],
+          "citations": [
+            1
+          ],
           "label": "supported",
           "supporting": [
             1,
             4
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         }
       ],
       "verdict": {
@@ -2502,24 +2528,28 @@
         {
           "claim_id": "C2",
           "text": "One reviewer notes that \u201cbase building is actually useful and a necessary thing to do in order to advance through the game,\u201d highlighting the \u201ctons of variety\u201d that lets them \u201cspend many hours building\u201d\u30101\u3011.",
-          "citations": [],
+          "citations": [
+            1
+          ],
           "label": "supported",
           "supporting": [
             1
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
           "text": "Another reviewer adds that the system \u201cdeserves lots of praise,\u201d pointing out that despite a limited set of wall, support and roof options, \u201cit\u2019s impressive all the different ways people have been able to put them together\u201d\u30104\u3011.",
-          "citations": [],
+          "citations": [
+            4
+          ],
           "label": "supported",
           "supporting": [
             4
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         }
       ],
       "verdict": {
@@ -2970,7 +3000,17 @@
         {
           "claim_id": "C1",
           "text": "Player reviews consistently recommend Subnautica, praising it as a solid single\u2011player exploration and survival experience.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C2",
@@ -2978,7 +3018,14 @@
           "citations": [
             1,
             3
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            1,
+            3
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
@@ -2987,14 +3034,28 @@
             1,
             3,
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            1,
+            3,
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
           "text": "The game\u2019s storyline and multiple endings add depth, while occasional terrifying moments increase tension without detracting from overall enjoyment\u202f[5].",
           "citations": [
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C5",
@@ -3003,12 +3064,101 @@
             2,
             4,
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         }
       ],
-      "verdict": null,
-      "second": null,
-      "judge_error": "unparseable_verdict"
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              1,
+              3
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              1,
+              3,
+              5
+            ]
+          },
+          "C4": {
+            "label": "supported",
+            "supporting": [
+              5
+            ]
+          },
+          "C5": {
+            "label": "supported",
+            "supporting": [
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "second": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              1,
+              3
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              1,
+              3,
+              5
+            ]
+          },
+          "C4": {
+            "label": "supported",
+            "supporting": [
+              5
+            ]
+          },
+          "C5": {
+            "label": "partially_supported",
+            "supporting": [
+              2,
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "judge_error": null
     },
     {
       "query_id": "topic-09-1",
@@ -3161,35 +3311,41 @@
         {
           "claim_id": "C2",
           "text": "One reviewer highlights how the game \u201cblends atmosphere, subtle story\u2011telling, remarkable visuals\u201d to create a world that feels both \u201copen and infinite\u201d yet can become \u201cclaustrophobic and terrifying\u201d in its deeper regions\u30101\u3011.",
-          "citations": [],
+          "citations": [
+            1
+          ],
           "label": "supported",
           "supporting": [
             1
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
           "text": "Another notes that \u201cthe atmosphere, a combination of the art and sound design, is one of the most immersive experiences\u201d they\u2019ve encountered, even making their heart race as they explore unknown areas\u30102\u3011.",
-          "citations": [],
+          "citations": [
+            2
+          ],
           "label": "supported",
           "supporting": [
             2
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
           "text": "The atmosphere is also described as \u201cvibrant, breathing\u201d and a \u201ctestament to the wonders and terrors of oceanic exploration,\u201d with \u201clush, colorful underwater landscapes\u201d that remain breathtaking years after release\u30104\u3011.",
-          "citations": [],
+          "citations": [
+            4
+          ],
           "label": "supported",
           "supporting": [
             4
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C5",
@@ -4352,35 +4508,41 @@
         {
           "claim_id": "C2",
           "text": "Reviewers highlight its visceral feel, weighty swings, and the way attacks can knock enemies and even the environment around (\u201ccharacters are knocked back or thrown about\u2026 rocks and debris fly around\u201d)\u30101\u3011.",
-          "citations": [],
+          "citations": [
+            1
+          ],
           "label": "supported",
           "supporting": [
             1
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
           "text": "They also note that the system has been significantly improved over the first game, offering a \u201cmassive improvement\u201d and allowing different playstyles\u2014such as a lightly\u2011armoured thief who can zip around and hit critical spots\u2014to shine\u30102\u3011.",
-          "citations": [],
+          "citations": [
+            2
+          ],
           "label": "supported",
           "supporting": [
             2
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
           "text": "Several reviewers call it \u201camong the best combat systems I\u2019ve seen in any game\u201d and a core reason the title feels unique and enjoyable\u30105\u3011.",
-          "citations": [],
+          "citations": [
+            5
+          ],
           "label": "supported",
           "supporting": [
             5
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C5",
@@ -4396,13 +4558,15 @@
         {
           "claim_id": "C6",
           "text": "One reviewer finds the combat \u201cabsurdly easy\u201d and repetitive after about twenty hours, describing it as a drawback despite the game\u2019s low price point\u30103\u3011.",
-          "citations": [],
+          "citations": [
+            3
+          ],
           "label": "supported",
           "supporting": [
             3
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         }
       ],
       "verdict": {
@@ -4527,15 +4691,6 @@
           ],
           "cited": true,
           "citation_ok": true
-        },
-        {
-          "claim_id": "C6",
-          "text": "Critics",
-          "citations": [],
-          "label": "unsupported",
-          "supporting": [],
-          "cited": false,
-          "citation_ok": false
         }
       ],
       "verdict": {
@@ -4579,10 +4734,6 @@
               3,
               4
             ]
-          },
-          "C6": {
-            "label": "unsupported",
-            "supporting": []
           }
         },
         "abstains": false
@@ -5070,13 +5221,15 @@
         {
           "claim_id": "C2",
           "text": "One reviewer calls it \u201cartificial difficulty,\u201d describing it as heavy trial\u2011and\u2011error that forces you onto a narrow path and feels more like punishment than challenge\u30101\u3011.",
-          "citations": [],
+          "citations": [
+            1
+          ],
           "label": "supported",
           "supporting": [
             1
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
@@ -5092,24 +5245,28 @@
         {
           "claim_id": "C4",
           "text": "Several reviews highlight that the harsh weather, limited resources, and \u201ctough to play but even tougher to stop\u201d mechanics create a \u201cbleak and often stressful\u201d experience that is nonetheless addictive and rewarding when the colony survives\u30104\u3011.",
-          "citations": [],
+          "citations": [
+            4
+          ],
           "label": "partially_supported",
           "supporting": [
             4
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C5",
           "text": "The difficulty ramps up with each storm, and the game\u2019s pacing can become \u201ctougher and tougher\u201d if you use the speed\u2011up button, prompting some players to slow down deliberately to stay engaged without overwhelming frustration\u30105\u3011.",
-          "citations": [],
+          "citations": [
+            5
+          ],
           "label": "supported",
           "supporting": [
             5
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C6",
@@ -5767,13 +5924,15 @@
         {
           "claim_id": "C2",
           "text": "One reviewer calls it \u201cthe best feature\u2026 you have in game\u202f\u2014\u202fdo whatever you like, kill whoever you like, be a thief, a killer, a wanderer or whatever else you like\u201d\u30102\u3011.",
-          "citations": [],
+          "citations": [
+            2
+          ],
           "label": "supported",
           "supporting": [
             2
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
@@ -5789,25 +5948,29 @@
         {
           "claim_id": "C4",
           "text": "It\u2019s up to you to become a merchant, lone wanderer, army leader or city ruler,\u201d emphasizing that \u201cthe possibilities\u2026 are many\u201d\u30103\u3011.",
-          "citations": [],
+          "citations": [
+            3
+          ],
           "label": "supported",
           "supporting": [
             3
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C5",
           "text": "The sense of unrestricted choice is highlighted as a core attraction, with players describing the game as \u201ca truly unique charm\u2026 with the amount of freedom it allows the player\u201d and noting that \u201cno one is holding your hand\u201d while you carve your own path\u30101\u3011.",
-          "citations": [],
+          "citations": [
+            1
+          ],
           "label": "supported",
           "supporting": [
             1,
             3
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C6",
@@ -6254,25 +6417,29 @@
         {
           "claim_id": "C2",
           "text": "Reviewers note that the game recreates Hogwarts and its surrounding areas with \u201castonishing love to details\u201d and a \u201cstunning masterpiece\u201d that encourages players to explore every corner of the castle and the wider magical landscape\u30101\u3011.",
-          "citations": [],
+          "citations": [
+            1
+          ],
           "label": "supported",
           "supporting": [
             1,
             3
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
           "text": "The world is described as \u201cpretty large and absolutely beautiful,\u201d with music and sound that make the environment feel immersive, while side quests and hidden locations keep the exploration \u201cextremely fun\u201d and constantly rewarding\u30104\u3011.",
-          "citations": [],
+          "citations": [
+            4
+          ],
           "label": "supported",
           "supporting": [
             4
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
@@ -6289,24 +6456,28 @@
         {
           "claim_id": "C5",
           "text": "One player likens the experience to \u201cRDR2, Skyrim and Deus\u202fEx flashbacks,\u201d highlighting how the scale and atmosphere set a high bar for immersion\u30103\u3011.",
-          "citations": [],
+          "citations": [
+            3
+          ],
           "label": "supported",
           "supporting": [
             3
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C6",
           "text": "Even players who are not fans of the franchise find the exploration compelling, calling it \u201ca great open world game\u201d that offers \u201cso much fun\u201d and a \u201chigh\u201d level of immersion\u30103\u3011.",
-          "citations": [],
+          "citations": [
+            3
+          ],
           "label": "supported",
           "supporting": [
             3
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C7",
@@ -7199,48 +7370,56 @@
         {
           "claim_id": "C2",
           "text": "Reviewers highlight the game\u2019s unique combat mechanics and the \u201cincredibly tight combat mechanics\u201d that make each encounter feel precise and rewarding\u30102\u3011.",
-          "citations": [],
+          "citations": [
+            2
+          ],
           "label": "supported",
           "supporting": [
             2,
             4
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
           "text": "The variety of 14 weapon types is noted as \u201camong the most satisfying\u201d in a third\u2011person action game, with each weapon feeling highly unique\u30103\u3011.",
-          "citations": [],
+          "citations": [
+            3
+          ],
           "label": "supported",
           "supporting": [
             3
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
           "text": "The combat is also described as boss\u2011fight centric, with many players comparing the intensity of monster battles to the challenging boss fights of games like Dark\u202fSouls\u30103\u3011.",
-          "citations": [],
+          "citations": [
+            3
+          ],
           "label": "supported",
           "supporting": [
             3
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C5",
           "text": "This focus on large, strategic monster encounters, combined with the \u201ctight combat mechanics\u201d praised across reviews, is seen as the core strength of the game\u2019s combat system\u30104\u3011.",
-          "citations": [],
+          "citations": [
+            4
+          ],
           "label": "supported",
           "supporting": [
             1,
             4
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         }
       ],
       "verdict": {
@@ -7791,35 +7970,41 @@
         {
           "claim_id": "C2",
           "text": "One reviewer notes that \u201cBritish players spamming Stuart tanks and American players employing a similar tactic\u2026 leads to a barrage of 7 or 8 British Stuarts\u2026 Additionally, the American air support\u2026 seems overly powerful\u201d and calls it a \u201cbalance problem\u201d\u30101\u3011.",
-          "citations": [],
+          "citations": [
+            1
+          ],
           "label": "supported",
           "supporting": [
             1
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
           "text": "Another mentions that the game\u2019s factions feel \u201chomogenised\u201d and that \u201cbalance sweats are such a small percentage of the playerbase\u201d making competitive play difficult\u30103\u3011.",
-          "citations": [],
+          "citations": [
+            3
+          ],
           "label": "supported",
           "supporting": [
             3
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
           "text": "A fourth reviewer adds that \u201cmultiplayer seems still going through some balancing so it is hard to have too much of an opinion on it yet\u201d\u30104\u3011.",
-          "citations": [],
+          "citations": [
+            4
+          ],
           "label": "supported",
           "supporting": [
             4
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C5",
@@ -7835,13 +8020,15 @@
         {
           "claim_id": "C6",
           "text": "One reviewer says co\u2011op multiplayer is \u201chit\u2011and\u2011miss,\u201d often encountering \u201csignificant skill disparities amongst players, and the waiting times for matches can be lengthy\u201d\u30102\u3011.",
-          "citations": [],
+          "citations": [
+            2
+          ],
           "label": "supported",
           "supporting": [
             2
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C7",
@@ -7921,13 +8108,15 @@
         {
           "claim_id": "C1",
           "text": "The sole review for Portal\u202f2 is negative: the player finds the sequel\u2019s atmosphere inferior to the original, criticizing the constant chatter from GLaDOS, Wheatley and Johnson and saying the \u201cobnoxious and ham\u2011fisted cake and companion cube\u201d references detract from the game\u2019s mood\u30102\u3011.",
-          "citations": [],
+          "citations": [
+            2
+          ],
           "label": "supported",
           "supporting": [
             2
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C2",
@@ -7957,36 +8146,43 @@
         {
           "claim_id": "C4",
           "text": "Reviewers praise its action\u2011packed, fast\u2011paced combat, deep and fully voiced characters, compelling story, and high replayability\u30101\u3011.",
-          "citations": [],
+          "citations": [
+            1
+          ],
           "label": "supported",
           "supporting": [
             1
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C5",
           "text": "They also highlight Supergiant\u2019s art, music, and community support, calling it a \u201cmasterpiece\u201d with \u201cincredible replayability\u201d and \u201cgreat variety in technical combat\u201d that makes each run feel fresh\u30104\u3011.",
-          "citations": [],
+          "citations": [
+            4
+          ],
           "label": "supported",
           "supporting": [
             4
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C6",
           "text": "Additional reviewers note the smooth performance, tight gameplay, and satisfying rogue\u2011lite design that rivals titles like Dead Cells\u30105\u3011, and one even calls it \u201ceasily my favourite game of\u202f2020\u201d and \u201cmy all\u2011time favourite\u201d\u30103\u3011.",
-          "citations": [],
+          "citations": [
+            3,
+            5
+          ],
           "label": "supported",
           "supporting": [
             3,
             5
           ],
-          "cited": false,
-          "citation_ok": false
+          "cited": true,
+          "citation_ok": true
         }
       ],
       "verdict": {
@@ -8097,28 +8293,56 @@
         {
           "claim_id": "C1",
           "text": "Both titles receive strong, positive recommendations.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C2",
           "text": "Slay the\u202fSpire is praised for its strategic depth and replayability, blending roguelike and deck\u2011building mechanics into a \u201cmasterclass\u201d that keeps each run fresh and demanding\u202f[2].",
           "citations": [
             2
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            2
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
           "text": "Reviewers also call it the \u201cgold standard\u201d for rogue\u2011like deck\u2011builders, noting its balanced design, high replay value, and the ability to craft multiple viable play\u2011styles even with the same characters\u202f[5].",
           "citations": [
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
           "text": "Elden\u202fRing is similarly lauded, with reviewers highlighting its unprecedented freedom of choice and exploration in an open world, allowing players to tackle the main quest or wander indefinitely without imposed direction\u202f[3].",
           "citations": [
             3
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            3
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C5",
@@ -8126,12 +8350,58 @@
           "citations": [
             1,
             4
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            1,
+            4
+          ],
+          "cited": true,
+          "citation_ok": true
         }
       ],
-      "verdict": null,
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              2
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              5
+            ]
+          },
+          "C4": {
+            "label": "supported",
+            "supporting": [
+              3
+            ]
+          },
+          "C5": {
+            "label": "supported",
+            "supporting": [
+              1,
+              4
+            ]
+          }
+        },
+        "abstains": false
+      },
       "second": null,
-      "judge_error": "RateLimitExhausted"
+      "judge_error": null
     },
     {
       "query_id": "compare-04",
@@ -8143,50 +8413,216 @@
         {
           "claim_id": "C1",
           "text": "Both games receive overwhelmingly positive feedback.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C2",
           "text": "Valheim is praised for its \u201cexceptionally immersive and visually stunning experience,\u201d with \u201cgorgeous\u201d graphics, vibrant colors, and detailed landscapes that make exploration feel like an adventure, while its blend of survival, exploration, and combat is described as \u201cincredibly engaging\u201d\u202f[4].",
           "citations": [
             4
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            4
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
           "text": "Stellaris is similarly lauded, with reviewers calling it a \u201cmasterfully crafted space strategy game\u201d that offers deep, rewarding mechanics, extensive customization, and impressive visuals\u202f[1].",
           "citations": [
             1
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            1,
+            3
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
           "text": "Long\u2011term players note the game\u2019s continual evolution\u2014new mechanics, ethics, and balance improvements\u2014resulting in great replayability and an accessible yet strategic economic system\u202f[3].",
           "citations": [
             3
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            3
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C5",
           "text": "Even critics of recent patches defend the game, emphasizing its broad appeal to casual and hardcore players alike, with optional micromanagement and diverse role\u2011playing options\u202f[5].",
           "citations": [
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C6",
           "text": "Overall, the evidence shows Valheim is celebrated for its atmospheric world and engaging survival loop, while Stellaris is celebrated for its strategic depth, evolving content, and flexibility for different play styles.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C7",
           "text": "Both are recommended by their respective reviewers.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         }
       ],
-      "verdict": null,
-      "second": null,
-      "judge_error": "RateLimitExhausted"
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              3,
+              4,
+              5
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              4
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              1,
+              3
+            ]
+          },
+          "C4": {
+            "label": "supported",
+            "supporting": [
+              3
+            ]
+          },
+          "C5": {
+            "label": "supported",
+            "supporting": [
+              5
+            ]
+          },
+          "C6": {
+            "label": "supported",
+            "supporting": [
+              1,
+              3,
+              4,
+              5
+            ]
+          },
+          "C7": {
+            "label": "supported",
+            "supporting": [
+              1,
+              3,
+              4,
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "second": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              4
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              1
+            ]
+          },
+          "C4": {
+            "label": "supported",
+            "supporting": [
+              3
+            ]
+          },
+          "C5": {
+            "label": "supported",
+            "supporting": [
+              5
+            ]
+          },
+          "C6": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "C7": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "judge_error": null
     },
     {
       "query_id": "compare-05",
@@ -8198,26 +8634,51 @@
         {
           "claim_id": "C1",
           "text": "Subnautica receives consistently positive feedback, with reviewers highlighting its fun, immersive world and appealing visuals.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C2",
           "text": "One early\u2011access impression calls the game \u201ca lot of fun\u201d and encourages viewers to grab it after watching the gameplay\u202f[1].",
           "citations": [
             1
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            1
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
           "text": "Another review notes the game\u2019s beauty, immersive feel, and cool gadget progression, giving it a solid 4/5 rating despite a slightly uneven pacing\u202f[5].",
           "citations": [
             5
-          ]
+          ],
+          "label": "partially_supported",
+          "supporting": [
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
           "text": "Warframe is also praised by multiple players, who describe it as one of the best games they\u2019ve played in a long time.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            2
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C5",
@@ -8225,17 +8686,78 @@
           "citations": [
             2,
             3
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            2,
+            3
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C6",
           "text": "Both games therefore enjoy strong, recommendation\u2011level endorsements from the provided evidence.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            3,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         }
       ],
-      "verdict": null,
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              5
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              1
+            ]
+          },
+          "C3": {
+            "label": "partially_supported",
+            "supporting": [
+              5
+            ]
+          },
+          "C4": {
+            "label": "supported",
+            "supporting": [
+              2
+            ]
+          },
+          "C5": {
+            "label": "supported",
+            "supporting": [
+              2,
+              3
+            ]
+          },
+          "C6": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
       "second": null,
-      "judge_error": "RateLimitExhausted"
+      "judge_error": null
     },
     {
       "query_id": "compare-06",
@@ -8247,7 +8769,17 @@
         {
           "claim_id": "C1",
           "text": "The supplied reviews only cover Cities:\u202fSkylines\u202fII.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C2",
@@ -8255,7 +8787,14 @@
           "citations": [
             2,
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            2,
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
@@ -8264,17 +8803,62 @@
             1,
             3,
             4
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            1,
+            3,
+            4
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
           "text": "There is no player\u2011review evidence provided for Dragon\u2019s\u202fDogma\u202f2, so a comparison cannot be made.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [],
+          "cited": false,
+          "citation_ok": false
         }
       ],
-      "verdict": null,
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              2,
+              5
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              1,
+              3,
+              4
+            ]
+          },
+          "C4": {
+            "label": "supported",
+            "supporting": []
+          }
+        },
+        "abstains": false
+      },
       "second": null,
-      "judge_error": "RateLimitExhausted"
+      "judge_error": null
     },
     {
       "query_id": "compare-07",
@@ -8286,7 +8870,15 @@
         {
           "claim_id": "C1",
           "text": "Player feedback on Fallout\u202f76 is mixed.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            4
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C2",
@@ -8294,36 +8886,161 @@
           "citations": [
             1,
             2
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            1,
+            2
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
           "text": "In contrast, another player notes that post\u2011launch patches have improved the experience, highlighting free content updates, a stronger crafting and building system, better dialogue, and a well\u2011balanced Special system, especially when playing with friends\u202f[4].",
           "citations": [
             4
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            4
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
           "text": "The sole review for Frostpunk is uniformly positive.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C5",
           "text": "The player praises its immersive post\u2011apocalyptic atmosphere, challenging survival\u2011strategy gameplay, and demanding resource\u2011management decisions, describing it as a satisfying and well\u2011crafted experience\u202f[5].",
           "citations": [
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C6",
           "text": "Overall, Fallout\u202f76 elicits both criticism and praise depending on the reviewer\u2019s experience and the game\u2019s state of updates, whereas Frostpunk receives consistent commendation for its design and difficulty.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         }
       ],
-      "verdict": null,
-      "second": null,
-      "judge_error": "RateLimitExhausted"
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              4
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              4
+            ]
+          },
+          "C4": {
+            "label": "supported",
+            "supporting": [
+              5
+            ]
+          },
+          "C5": {
+            "label": "supported",
+            "supporting": [
+              5
+            ]
+          },
+          "C6": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              4,
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "second": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              4
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              2
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              4
+            ]
+          },
+          "C4": {
+            "label": "supported",
+            "supporting": [
+              5
+            ]
+          },
+          "C5": {
+            "label": "supported",
+            "supporting": [
+              5
+            ]
+          },
+          "C6": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              4,
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "judge_error": null
     },
     {
       "query_id": "compare-08",
@@ -8335,21 +9052,43 @@
         {
           "claim_id": "C1",
           "text": "Both titles receive strong recommendations from the reviewers.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C2",
           "text": "7\u202fDays\u202fto\u202fDie is praised for blending the farming, looting and hunting of Rust with a Minecraft\u2011style open world and zombie hordes, offering both single\u2011player and hosted multiplayer that feels \u201cchill yet challenging\u201d and has amassed a large positive Steam rating\u202f[1].",
           "citations": [
             1
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            1
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
           "text": "Another reviewer calls it \u201cby far the best FPS Zombie Survival game ever made,\u201d likening it to a love\u2011child of George\u202fA\u202fRomero, Minecraft and Rust\u202f[4].",
           "citations": [
             4
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            4
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
@@ -8358,7 +9097,15 @@
             2,
             3,
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            2,
+            3,
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C5",
@@ -8366,12 +9113,60 @@
           "citations": [
             2,
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            2,
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         }
       ],
-      "verdict": null,
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              1
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              4
+            ]
+          },
+          "C4": {
+            "label": "supported",
+            "supporting": [
+              2,
+              3,
+              5
+            ]
+          },
+          "C5": {
+            "label": "supported",
+            "supporting": [
+              2,
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
       "second": null,
-      "judge_error": "RateLimitExhausted"
+      "judge_error": null
     },
     {
       "query_id": "compare-09",
@@ -8385,12 +9180,26 @@
           "text": "Manor Lords is praised for its strong developer\u2011community communication and the promise of future updates shaped by player feedback, which many reviewers see as a path toward creating an \u201cauthentic medieval strategy game\u201d\u202f[1].",
           "citations": [
             1
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            1
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C2",
           "text": "Hogwarts Legacy receives consistently enthusiastic feedback for its immersive world, detailed castle design, rich story, and varied gameplay mechanics.",
-          "citations": []
+          "citations": [],
+          "label": "partially_supported",
+          "supporting": [
+            2,
+            3,
+            4
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C3",
@@ -8399,24 +9208,90 @@
             2,
             3,
             4
-          ]
+          ],
+          "label": "partially_supported",
+          "supporting": [
+            2,
+            3,
+            4
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
           "text": "While one reviewer notes some narrative shortcomings, the overall verdict remains strongly positive\u202f[5].",
           "citations": [
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C5",
           "text": "Both games are recommended by their players, but the focus differs: Manor Lords is lauded for its community\u2011driven development and historical authenticity, whereas Hogwarts Legacy is celebrated for its expansive, magical presentation and diverse gameplay experiences.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         }
       ],
-      "verdict": null,
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1
+            ]
+          },
+          "C2": {
+            "label": "partially_supported",
+            "supporting": [
+              2,
+              3,
+              4
+            ]
+          },
+          "C3": {
+            "label": "partially_supported",
+            "supporting": [
+              2,
+              3,
+              4
+            ]
+          },
+          "C4": {
+            "label": "supported",
+            "supporting": [
+              5
+            ]
+          },
+          "C5": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
       "second": null,
-      "judge_error": "RateLimitExhausted"
+      "judge_error": null
     },
     {
       "query_id": "compare-10",
@@ -8428,7 +9303,14 @@
         {
           "claim_id": "C1",
           "text": "Monster\u202fHunter\u202f:\u202fWorld receives consistently positive feedback.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            3
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C2",
@@ -8436,12 +9318,26 @@
           "citations": [
             1,
             3
-          ]
+          ],
+          "label": "partially_supported",
+          "supporting": [
+            1,
+            3
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
           "text": "Company\u202fof\u202fHeroes\u202f3 also garners strong praise from seasoned RTS players.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            2,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C4",
@@ -8449,19 +9345,108 @@
           "citations": [
             2,
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            2,
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C5",
           "text": "However, some players criticize CoH\u202f3 for technical and design issues, such as inaccurate German text, dull pacing, poor AI, and problematic pathing, describing the experience as miserable at times\u202f[4].",
           "citations": [
             4
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            4
+          ],
+          "cited": true,
+          "citation_ok": true
         }
       ],
-      "verdict": null,
-      "second": null,
-      "judge_error": "RateLimitExhausted"
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              3
+            ]
+          },
+          "C2": {
+            "label": "partially_supported",
+            "supporting": [
+              1,
+              3
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              2,
+              5
+            ]
+          },
+          "C4": {
+            "label": "supported",
+            "supporting": [
+              2,
+              5
+            ]
+          },
+          "C5": {
+            "label": "supported",
+            "supporting": [
+              4
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "second": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              3
+            ]
+          },
+          "C2": {
+            "label": "partially_supported",
+            "supporting": [
+              1,
+              3
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              2,
+              5
+            ]
+          },
+          "C4": {
+            "label": "supported",
+            "supporting": [
+              2,
+              5
+            ]
+          },
+          "C5": {
+            "label": "supported",
+            "supporting": [
+              4
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "judge_error": null
     },
     {
       "query_id": "unsupported-01",
@@ -8473,17 +9458,37 @@
         {
           "claim_id": "C1",
           "text": "The provided player\u2011review evidence does not contain any information about the current Steam price of Portal\u202f2 in Greece.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C2",
           "text": "Therefore, I cannot give that price based on the available data.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [],
+          "cited": false,
+          "citation_ok": false
         }
       ],
-      "verdict": null,
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": []
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": []
+          }
+        },
+        "abstains": false
+      },
       "second": null,
-      "judge_error": "RateLimitExhausted"
+      "judge_error": null
     },
     {
       "query_id": "unsupported-02",
@@ -8495,17 +9500,61 @@
         {
           "claim_id": "C1",
           "text": "The provided reviews praise Hades but contain no information about sales figures or forecasts.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C2",
           "text": "Therefore, there is insufficient evidence to determine how many copies Hades will sell next year.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         }
       ],
-      "verdict": null,
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        },
+        "abstains": true
+      },
       "second": null,
-      "judge_error": "RateLimitExhausted"
+      "judge_error": null
     },
     {
       "query_id": "unsupported-03",
@@ -8517,12 +9566,44 @@
         {
           "claim_id": "C1",
           "text": "The provided evidence does not contain any information about Valheim or any RTX\u202f5090 performance data, so a verified average FPS cannot be given.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         }
       ],
-      "verdict": null,
-      "second": null,
-      "judge_error": "RateLimitExhausted"
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "second": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": []
+          }
+        },
+        "abstains": false
+      },
+      "judge_error": null
     },
     {
       "query_id": "unsupported-04",
@@ -8662,17 +9743,61 @@
         {
           "claim_id": "C1",
           "text": "The provided reviews do not contain any information about Manor\u202fLords\u2019 development budget or its net profit.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C2",
           "text": "Consequently, I cannot supply those figures based on the available evidence.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         }
       ],
-      "verdict": null,
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
       "second": null,
-      "judge_error": "RateLimitExhausted"
+      "judge_error": null
     },
     {
       "query_id": "unsupported-08",
@@ -8717,22 +9842,120 @@
         {
           "claim_id": "C1",
           "text": "The provided player reviews do not contain any medical evidence or claims that Kenshi treats depression.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C2",
           "text": "All the excerpts focus on the game\u2019s difficulty, atmosphere, and gameplay experience, without mentioning health benefits or clinical studies.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C3",
           "text": "Therefore, there is no official medical evidence in the supplied material to support that Kenshi treats depression.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         }
       ],
-      "verdict": null,
-      "second": null,
-      "judge_error": "RateLimitExhausted"
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "second": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "judge_error": null
     },
     {
       "query_id": "unsupported-10",
