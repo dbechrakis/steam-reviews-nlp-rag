@@ -6,7 +6,7 @@
     "questions": 80,
     "answers": 80,
     "unanswered": 0,
-    "unjudged": 3,
+    "unjudged": 0,
     "regenerated_questions": [
       "game-06",
       "game-09",
@@ -24,30 +24,30 @@
       "topic-20-2",
       "unsupported-01"
     ],
-    "stability": "65 claims in 12 answers judged twice with the claims in a different order. Label agreement 89.2%, kappa 0.31. Abstain agreement 100.0%.",
+    "stability": "72 claims in 13 answers judged twice with the claims in a different order. Label agreement 87.5%, kappa 0.24. Abstain agreement 100.0%.",
     "audit": "Human audit: not yet done. `claim_audit_sample.csv` holds 40 claims stratified by judge label for a reviewer to fill in."
   },
   "summary": [
     {
       "category": "all",
       "answers": 80,
-      "answers_judged": 77,
-      "judge_failures": 3,
-      "claims": 381,
-      "supported_share": 0.884514435695538,
-      "partially_supported_share": 0.10761154855643044,
+      "answers_judged": 80,
+      "judge_failures": 0,
+      "claims": 399,
+      "supported_share": 0.8847117794486216,
+      "partially_supported_share": 0.10776942355889724,
       "unsupported_share": 0.0,
-      "contradicted_share": 0.007874015748031496,
-      "supported_rate": 0.884514435695538,
-      "supported_ci_low": 0.8494318181818182,
-      "supported_ci_high": 0.9196891191709845,
-      "cited_claim_share": 0.5905511811023622,
+      "contradicted_share": 0.007518796992481203,
+      "supported_rate": 0.8847117794486216,
+      "supported_ci_low": 0.8493506493506493,
+      "supported_ci_high": 0.9168591224018475,
+      "cited_claim_share": 0.5964912280701754,
       "citation_correct_rate": 1.0,
       "citation_ci_low": 1.0,
       "citation_ci_high": 1.0,
-      "abstain_rate": 0.012987012987012988,
-      "abstain_ci_low": 0.0022961581721549496,
-      "abstain_ci_high": 0.06996366845176145,
+      "abstain_rate": 0.0125,
+      "abstain_ci_low": 0.002209918618306224,
+      "abstain_ci_high": 0.06746432423965451,
       "answers_with_unsupported_claim": 2
     },
     {
@@ -75,45 +75,45 @@
     {
       "category": "game_topic",
       "answers": 40,
-      "answers_judged": 38,
-      "judge_failures": 2,
-      "claims": 198,
-      "supported_share": 0.8787878787878788,
-      "partially_supported_share": 0.11616161616161616,
+      "answers_judged": 40,
+      "judge_failures": 0,
+      "claims": 209,
+      "supported_share": 0.8803827751196173,
+      "partially_supported_share": 0.11483253588516747,
       "unsupported_share": 0.0,
-      "contradicted_share": 0.005050505050505051,
-      "supported_rate": 0.8787878787878788,
-      "supported_ci_low": 0.8159203980099502,
-      "supported_ci_high": 0.9303482587064676,
-      "cited_claim_share": 0.6111111111111112,
+      "contradicted_share": 0.004784688995215311,
+      "supported_rate": 0.8803827751196173,
+      "supported_ci_low": 0.8235294117647058,
+      "supported_ci_high": 0.9285714285714286,
+      "cited_claim_share": 0.6124401913875598,
       "citation_correct_rate": 1.0,
       "citation_ci_low": 1.0,
       "citation_ci_high": 1.0,
       "abstain_rate": 0.0,
       "abstain_ci_low": 0.0,
-      "abstain_ci_high": 0.09181293258383999,
+      "abstain_ci_high": 0.08762453925039232,
       "answers_with_unsupported_claim": 1
     },
     {
       "category": "named_game",
       "answers": 20,
-      "answers_judged": 19,
-      "judge_failures": 1,
-      "claims": 116,
-      "supported_share": 0.8879310344827587,
-      "partially_supported_share": 0.11206896551724138,
+      "answers_judged": 20,
+      "judge_failures": 0,
+      "claims": 123,
+      "supported_share": 0.8861788617886179,
+      "partially_supported_share": 0.11382113821138211,
       "unsupported_share": 0.0,
       "contradicted_share": 0.0,
-      "supported_rate": 0.8879310344827587,
-      "supported_ci_low": 0.8347826086956521,
-      "supported_ci_high": 0.9385964912280702,
-      "cited_claim_share": 0.6379310344827587,
+      "supported_rate": 0.8861788617886179,
+      "supported_ci_low": 0.8373983739837398,
+      "supported_ci_high": 0.9338842975206612,
+      "cited_claim_share": 0.6504065040650406,
       "citation_correct_rate": 1.0,
       "citation_ci_low": 1.0,
       "citation_ci_high": 1.0,
       "abstain_rate": 0.0,
       "abstain_ci_low": 0.0,
-      "abstain_ci_high": 0.16818436536845052,
+      "abstain_ci_high": 0.16113012549493322,
       "answers_with_unsupported_claim": 0
     },
     {
@@ -140,19 +140,19 @@
     }
   ],
   "claim_agreement": {
-    "n": 65,
-    "agreement": 0.8923076923076924,
-    "kappa": 0.30534351145038185
+    "n": 72,
+    "agreement": 0.875,
+    "kappa": 0.2394366197183099
   },
   "abstain_agreement": {
-    "n": 12,
+    "n": 13,
     "agreement": 1.0,
     "kappa": null
   },
   "source_run_manifest_sha256": "9564836c32cc7b82231d280872f5a05c5b63a7d45821f0913860606ca51937a2",
   "code_sha256": {
-    "scripts/evaluate_answers.py": "f2f31463900ef1a9c47ca84eac15869aa84a560e4669ed40b8f40564779e67cc",
-    "src/steam_review_rag/answer_eval.py": "d6eb9801f21c2f056b093e6e03bef0fd9b1db0addc65000417e623d65912ed82"
+    "scripts/evaluate_answers.py": "13079d696a583111e46b4219fc4bc3146367cd6365c5f13c1786c9573c272693",
+    "src/steam_review_rag/answer_eval.py": "f1188558e15308b09c38abe54012912073a81d295db8fdd1b4c76838dec8247a"
   },
   "records": [
     {
@@ -1532,7 +1532,13 @@
         {
           "claim_id": "C1",
           "text": "Players describe the farming in Stardew Valley as a deep, open\u2011ended experience that lets them shape their farm without strict limits.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C2",
@@ -1540,7 +1546,14 @@
           "citations": [
             1,
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            1,
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
@@ -1548,12 +1561,26 @@
           "citations": [
             2,
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            1,
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
           "text": "Players also note that farming requires thoughtful planning and resource management.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C5",
@@ -1561,7 +1588,14 @@
           "citations": [
             4,
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            4,
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C6",
@@ -1569,12 +1603,63 @@
           "citations": [
             1,
             4
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            4
+          ],
+          "cited": true,
+          "citation_ok": true
         }
       ],
-      "verdict": null,
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              1,
+              5
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              1,
+              5
+            ]
+          },
+          "C4": {
+            "label": "supported",
+            "supporting": [
+              4,
+              5
+            ]
+          },
+          "C5": {
+            "label": "supported",
+            "supporting": [
+              4,
+              5
+            ]
+          },
+          "C6": {
+            "label": "supported",
+            "supporting": [
+              4
+            ]
+          }
+        },
+        "abstains": false
+      },
       "second": null,
-      "judge_error": "unparseable_verdict"
+      "judge_error": null,
+      "judge_diagnostics": []
     },
     {
       "query_id": "game-05",
@@ -2955,7 +3040,15 @@
         {
           "claim_id": "C1",
           "text": "Players praise Stellaris for its deep, rewarding strategic systems.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            3,
+            4
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C2",
@@ -2964,31 +3057,94 @@
             1,
             3,
             4
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            3
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
           "text": "The sheer amount of content, from alien race creation to ship customization, gives both casual short\u2011term goals and long\u2011term binger ambitions, appealing to a wide range of strategic playstyles\u202f[5].",
           "citations": [
             5
-          ]
+          ],
+          "label": "partially_supported",
+          "supporting": [
+            3,
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
           "text": "At the same time, some players criticize the strategic experience as overly focused on micromanagement and less deterministic than traditional turn\u2011based titles.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            2
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C5",
           "text": "One reviewer notes that success often hinges on \u201coptimizing every facet of my empire\u201d rather than broader strategic decisions, making the real\u2011time\u2011with\u2011pause approach feel punishing for those who prefer clearer, more straightforward strategy\u202f[2].",
           "citations": [
             2
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            2
+          ],
+          "cited": true,
+          "citation_ok": true
         }
       ],
-      "verdict": null,
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              3,
+              4
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              3
+            ]
+          },
+          "C3": {
+            "label": "partially_supported",
+            "supporting": [
+              3,
+              5
+            ]
+          },
+          "C4": {
+            "label": "supported",
+            "supporting": [
+              2
+            ]
+          },
+          "C5": {
+            "label": "supported",
+            "supporting": [
+              2
+            ]
+          }
+        },
+        "abstains": false
+      },
       "second": null,
-      "judge_error": "unparseable_verdict"
+      "judge_error": null,
+      "judge_diagnostics": []
     },
     {
       "query_id": "game-09",
@@ -5845,7 +6001,17 @@
         {
           "claim_id": "C1",
           "text": "Player reviews overwhelmingly recommend Kenshi.",
-          "citations": []
+          "citations": [],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "cited": false,
+          "citation_ok": false
         },
         {
           "claim_id": "C2",
@@ -5854,7 +6020,13 @@
             1,
             2,
             3
-          ]
+          ],
+          "label": "partially_supported",
+          "supporting": [
+            1
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C3",
@@ -5862,7 +6034,14 @@
           "citations": [
             1,
             4
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            1,
+            4
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C4",
@@ -5871,21 +6050,41 @@
             1,
             2,
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            1,
+            2,
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C5",
           "text": "The community and modding scene are also praised: over 6,500 Steam mods and a vibrant online community provide additional content, fixes, and storytelling, making the game feel even richer\u202f[5].",
           "citations": [
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C6",
           "text": "Players note a steep but fair learning curve, helpful tooltips, and a steady stream of new technologies that keep strategies fresh without forcing you to discard progress\u202f[2].",
           "citations": [
             2
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            2
+          ],
+          "cited": true,
+          "citation_ok": true
         },
         {
           "claim_id": "C7",
@@ -5894,12 +6093,131 @@
             1,
             4,
             5
-          ]
+          ],
+          "label": "supported",
+          "supporting": [
+            1,
+            4,
+            5
+          ],
+          "cited": true,
+          "citation_ok": true
         }
       ],
-      "verdict": null,
-      "second": null,
-      "judge_error": "unparseable_verdict"
+      "verdict": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "C2": {
+            "label": "partially_supported",
+            "supporting": [
+              1
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              1,
+              4
+            ]
+          },
+          "C4": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              5
+            ]
+          },
+          "C5": {
+            "label": "supported",
+            "supporting": [
+              5
+            ]
+          },
+          "C6": {
+            "label": "supported",
+            "supporting": [
+              2
+            ]
+          },
+          "C7": {
+            "label": "supported",
+            "supporting": [
+              1,
+              4,
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "second": {
+        "claims": {
+          "C1": {
+            "label": "supported",
+            "supporting": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "C2": {
+            "label": "supported",
+            "supporting": [
+              1
+            ]
+          },
+          "C3": {
+            "label": "supported",
+            "supporting": [
+              1,
+              4
+            ]
+          },
+          "C4": {
+            "label": "partially_supported",
+            "supporting": [
+              1,
+              2,
+              5
+            ]
+          },
+          "C5": {
+            "label": "supported",
+            "supporting": [
+              5
+            ]
+          },
+          "C6": {
+            "label": "supported",
+            "supporting": [
+              2
+            ]
+          },
+          "C7": {
+            "label": "supported",
+            "supporting": [
+              1,
+              4,
+              5
+            ]
+          }
+        },
+        "abstains": false
+      },
+      "judge_error": null,
+      "judge_diagnostics": []
     },
     {
       "query_id": "topic-16-1",
