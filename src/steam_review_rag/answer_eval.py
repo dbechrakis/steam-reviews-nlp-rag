@@ -126,22 +126,31 @@ def parse_judge_response(text: str, claim_ids: list[str], evidence_count: int) -
     return {"claims": verdicts, "abstains": payload["abstains"]}
 
 
+RETRY_NOTE = "\n\nYour previous reply was not valid JSON in the required format. Reply with the JSON object only."
+
+
 def judge_answer(
     question: str,
     evidence_blocks: list[str],
     claims: list[dict],
     complete: Callable[[str, str], str],
-    attempts: int = 2,
+    attempts: int = 3,
+    failures: list[dict] | None = None,
 ) -> dict | None:
-    """Return the validated verdict, or None when the judge never produced one."""
+    """Return the validated verdict, or None when the judge never produced one.
+
+    The first attempt uses the plain prompt. Later attempts add a short note. When failures is given
+    it receives the reply length, the reason and the last 160 characters of each rejected reply.
+    """
     prompt = build_judge_prompt(question, evidence_blocks, claims)
-    for _ in range(attempts):
+    for attempt in range(attempts):
+        reply = complete(JUDGE_SYSTEM_PROMPT, prompt if attempt == 0 else prompt + RETRY_NOTE)
         try:
-            return parse_judge_response(
-                complete(JUDGE_SYSTEM_PROMPT, prompt), [c["claim_id"] for c in claims], len(evidence_blocks)
-            )
-        except JudgeParseError:
-            continue
+            return parse_judge_response(reply, [c["claim_id"] for c in claims], len(evidence_blocks))
+        except JudgeParseError as error:
+            if failures is not None:
+                failures.append({"attempt": attempt + 1, "chars": len(reply), "reason": str(error),
+                                 "tail": reply[-160:]})
     return None
 
 
