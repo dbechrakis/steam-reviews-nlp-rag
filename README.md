@@ -2,6 +2,8 @@
 
 [![Code, tests and evidence](https://github.com/dbechrakis/steam-reviews-nlp-rag/actions/workflows/evidence.yml/badge.svg)](https://github.com/dbechrakis/steam-reviews-nlp-rag/actions/workflows/evidence.yml)
 
+**Result:** Retrieval and reranking over 41,170 reviews across 241 games. Fine-tuned DistilBERT reaches 0.887 macro F1 on held-out games, and an LLM judge rated 88.5% of 399 generated answer claims as supported (no human audit, and 40% of claims carry no citation).
+
 An end-to-end NLP product that transforms large-scale Steam player feedback into sentiment signals, semantic retrieval, explainability, topic analysis, and evidence-grounded answers.
 
 **Stack:** Python · PyTorch · Transformers · Sentence-Transformers · FAISS · SHAP · Groq · FastAPI · Docker · Streamlit
@@ -191,7 +193,7 @@ See [VALIDATION.md](VALIDATION.md) for exactly what was and was not rerun.
 
 ## Contribution and provenance
 
-The original notebooks identify Dimitrios Bechrakis as owner of:
+The original notebooks credit me (Dimitris Bechrakis) as owner of:
 
 - **Notebook 03:** document embeddings, representation comparison, and semantic search;
 - **Notebook 04:** DistilBERT fine-tuning, held-out-game evaluation, and SHAP explanations;
@@ -203,7 +205,7 @@ Applied NLP case study developed during the MSc Data Science programme at **The 
 
 **Dimitris Bechrakis**
 
-Business Analyst | Commercial Analytics · Data Products · Applied Data Science
+Business Analyst · Commercial Analytics & Experimentation · Applied Data Science
 
 ## Licensing
 
