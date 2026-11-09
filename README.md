@@ -20,7 +20,7 @@ The application searches a curated corpus of **41,170 reviews across 241 games**
 
 | Question | Evidence | Decision supported | Boundary |
 |---|---|---|---|
-| What player feedback deserves closer product investigation? | Search and reranking expose original reviews alongside optional cited answers. Historical sentiment modelling reached **0.887 macro F1** on a held-out-game set. | Find recurring complaints or praise, inspect the underlying review excerpts, and form a product hypothesis for further validation. | The five-prompt RAG check measured game-name presence in retrieved evidence, **not** claim-level factuality. No product change or commercial impact was measured. |
+| What player feedback deserves closer product investigation? | Search and reranking expose original reviews alongside optional cited answers. Historical sentiment modelling reached **0.887 macro F1** on a held-out-game set. | Find recurring complaints or praise, inspect the underlying review excerpts, and form a product hypothesis for further validation. | Claim support was judged by a language model (88.5% of 399 claims supported), not by a person, and 40% of claims carry no citation. No product change or commercial impact was measured. |
 
 For a concrete walkthrough, open the live explorer, ask about a game's player feedback, and inspect the displayed source reviews before using any generated summary. The answer is a research aid, not a verified conclusion about all players.
 
@@ -81,19 +81,19 @@ The original representation comparison used different preprocessing for TF-IDF/W
 
 ### RAG evaluation
 
-**New executed retrieval benchmark:** [80 source-backed questions](evaluation/README.md) compare bi-encoder retrieval with reranking, using disjoint development/holdout game sets and pinned model revisions. [Inspect measured results and failure cases](outputs/evaluation/baseline-v1/summary.md). These are target-game and source-anchor diagnostics. GPT-OSS claim support and appropriate abstention remain unmeasured until generation and human adjudication are completed.
+**New executed retrieval benchmark:** [80 source-backed questions](evaluation/README.md) compare bi-encoder retrieval with reranking, using disjoint development/holdout game sets and pinned model revisions. [Inspect measured results and failure cases](outputs/evaluation/baseline-v1/summary.md). These are target-game and source-anchor diagnostics. Claim support was measured afterwards by a language-model judge (below). No person has adjudicated it yet.
 
 The recorded Llama evaluation found **17 of 18 recognized game-name mentions in retrieved evidence** across five prompts. This is a limited name-presence check, not claim-level factuality. It cannot prove that every statement about a correctly named game is supported.
 
 [Generator counts](outputs/tables/rag_model_comparison.csv) · [Retrieval evaluation](outputs/tables/rag_retrieval_eval.csv) · [Evaluation notebook](notebooks/05_RAG_System.ipynb)
 
-**Claim-level answer evaluation, LLM-judged:** GPT-OSS 120B answered all 80 benchmark questions and a second model, GPT-OSS 20B, judged all 80 answers sentence by sentence against the five reviews the generator saw. Of 399 claims, **88.5% were judged supported** (95% CI 85 to 92), 10.8% partially supported and none unsupported. The 3 claims labelled contradicted were checked by hand and are not contradictions. **40% of claims carry no citation**, and every cited claim overlapped the reviews the judge named as support. On the 10 questions the reviews cannot answer, a hand reading found a refusal in all 10 and no invented fact, but the judge's own abstain flag disagreed on 9, so no judge-based abstention rate is reported. A cross-check of 40 claims by a second model agreed with the judge on 69.2% (kappa 0.43) and found the judge usually the stricter side. No person has audited these labels. [Results, method and limits](evaluation/README.md#answer-evaluation-results-2026-10-30).
+**Claim-level answer evaluation, LLM-judged:** GPT-OSS 120B answered all 80 benchmark questions and a second model, GPT-OSS 20B, judged all 80 answers sentence by sentence against the five reviews the generator saw. Of 399 claims, **88.5% were judged supported** (95% CI 85 to 92), 10.8% partially supported and none unsupported. The 3 claims labelled contradicted were rechecked in the model cross-check and are not contradictions. **40% of claims carry no citation**, and every cited claim overlapped the reviews the judge named as support. On the 10 questions the reviews cannot answer, a reading by Claude (a model, not a person) found a refusal in all 10 and no invented fact, but the judge's own abstain flag disagreed on 9, so no judge-based abstention rate is reported. A cross-check of 40 claims by a second model agreed with the judge on 69.2% (kappa 0.43) and found the judge usually the stricter side. No person has audited these labels. [Results, method and limits](evaluation/README.md#answer-evaluation-results-2026-10-30).
 
 These are recorded historical results. The September 2026 review checked saved evidence and evaluation code but did not retrain the transformer or regenerate historical answers.
 
 ## Runtime flow
 
-1. Fixed-revision artifacts are downloaded from the original team deployment.
+1. Fixed-revision artifacts are downloaded from the original team deployment, a Hugging Face Space owned by a teammate. If it is deleted or made private, fresh installs and Docker builds fail. Mirroring the pinned files is the fix ([details](DEPLOYMENT.md#what-downloads-automatically)).
 2. File sizes and cryptographic hashes are verified before loading.
 3. A SentenceTransformer embeds the user's question.
 4. FAISS retrieves candidate reviews.
