@@ -1,4 +1,10 @@
-"""Download and integrity-check the original team's public RAG artifacts."""
+"""Download and integrity-check the original team's public RAG artifacts.
+
+The files are pinned by size and checksum, so any copy that passes the check is the same file. Set
+STEAM_ARTIFACT_MIRROR to a Hugging Face repo URL holding `outputs/rag/<name>` (for example one made with
+scripts/mirror_artifacts.py) and it is tried first, with the teammate's Space as the fallback. That keeps fresh
+installs working if the original Space is deleted or made private.
+"""
 
 import hashlib
 import os
@@ -21,6 +27,19 @@ FILES = {
     ),
     "rag_config.json": (900, "ddfec331f0a5573faa2558a542539b9e841c8dec"),
 }
+
+
+def sources() -> list[tuple[str, str]]:
+    """(repo URL, revision) pairs to try in order: an optional mirror, then the original Space."""
+    mirror = os.environ.get("STEAM_ARTIFACT_MIRROR", "").strip().rstrip("/")
+    original = [(SOURCE, REVISION)]
+    if not mirror:
+        return original
+    return [(mirror, os.environ.get("STEAM_ARTIFACT_MIRROR_REVISION", "main").strip() or "main"), *original]
+
+
+def artifact_url(base: str, revision: str, name: str) -> str:
+    return f"{base}/resolve/{revision}/outputs/rag/{name}"
 
 
 def valid_artifact(path: Path, size: int, expected_checksum: str) -> bool:
@@ -47,13 +66,13 @@ def ensure_artifacts(project_dir: Path) -> None:
         if valid_artifact(destination, size, checksum):
             continue
 
-        for attempt in range(3):
+        attempts = [(base, revision, attempt) for base, revision in sources() for attempt in range(3)]
+        for index, (base, revision, attempt) in enumerate(attempts):
             temporary: Path | None = None
             try:
                 with tempfile.NamedTemporaryFile(dir=target, delete=False) as output:
                     temporary = Path(output.name)
-                    url = f"{SOURCE}/resolve/{REVISION}/outputs/rag/{name}"
-                    with urlopen(url, timeout=90) as response:
+                    with urlopen(artifact_url(base, revision, name), timeout=90) as response:
                         downloaded = 0
                         while chunk := response.read(1024 * 1024):
                             downloaded += len(chunk)
@@ -66,7 +85,7 @@ def ensure_artifacts(project_dir: Path) -> None:
                 os.replace(temporary, destination)
                 break
             except Exception:
-                if attempt == 2:
+                if index == len(attempts) - 1:
                     raise
                 time.sleep(attempt + 1)
             finally:

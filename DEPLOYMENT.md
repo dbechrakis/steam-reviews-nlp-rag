@@ -44,7 +44,17 @@ test set, not the retrieval corpus.
 
 Pausing the source app does not remove its public repository files. However,
 deletion or access changes to the source repository would prevent a fresh
-download. This deployment is therefore not an independent data archive.
+download. This deployment is therefore not an independent data archive until it is mirrored:
+
+```bash
+pip install huggingface_hub && huggingface-cli login
+python scripts/mirror_artifacts.py your-name/steam-review-rag-artifacts
+export STEAM_ARTIFACT_MIRROR=https://huggingface.co/datasets/your-name/steam-review-rag-artifacts
+```
+
+The loader tries the mirror first and falls back to the original Space. Every file from either source must match
+the pinned size and checksum, so the mirror adds availability without adding trust. For Docker builds, pass it as a build argument:
+`docker build --build-arg STEAM_ARTIFACT_MIRROR=https://huggingface.co/datasets/your-name/steam-review-rag-artifacts .`
 
 ## Runtime behaviour and limitations
 

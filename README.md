@@ -93,7 +93,7 @@ These are recorded historical results. The September 2026 review checked saved e
 
 ## Runtime flow
 
-1. Fixed-revision artifacts are downloaded from the original team deployment, a Hugging Face Space owned by a teammate. If it is deleted or made private, fresh installs and Docker builds fail. Mirroring the pinned files is the fix ([details](DEPLOYMENT.md#what-downloads-automatically)).
+1. Fixed-revision artifacts are downloaded from the original team deployment, a Hugging Face Space owned by a teammate. If it is deleted or made private, fresh installs and Docker builds fail. `scripts/mirror_artifacts.py` copies the verified files to a Hugging Face dataset you own, and `STEAM_ARTIFACT_MIRROR` makes the loader try that copy first. The size and checksum pins apply to every source, so a mirror cannot serve a different file ([details](DEPLOYMENT.md#what-downloads-automatically)).
 2. File sizes and cryptographic hashes are verified before loading.
 3. A SentenceTransformer embeds the user's question.
 4. FAISS retrieves candidate reviews.
