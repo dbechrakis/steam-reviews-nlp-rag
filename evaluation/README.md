@@ -32,7 +32,7 @@ Source-anchor recovery is intentionally a narrow diagnostic and can be low even 
 
 ## Answer generation and human adjudication
 
-The executed baseline is retrieval-only. **GPT-OSS claim support, citation correctness and abstention have not been measured in this run.** No server-side Groq credential is available to this checkout.
+The baseline run (`baseline-v1`) is retrieval-only. **It does not measure GPT-OSS claim support, citation correctness or abstention.** The generated run and its LLM-judged results are further down. No server-side Groq credential is available to this checkout.
 
 To evaluate generation, configure `GROQ_API_KEY` in your local environment and explicitly run:
 
@@ -82,7 +82,7 @@ Generator `openai/gpt-oss-120b` with the production prompt. Judge `openai/gpt-os
 | unsupported | 10 of 10 | 16 | see below | 0% |
 | all | 80 of 80 | 399 | 88.5% (85 to 92) | 60% |
 
-- **Claim support.** 88.5% supported, 10.8% partially supported, 0% unsupported, 0.8% contradicted. The 3 contradicted claims were read against the evidence by hand. Two are a correct statement that every retrieved review is about Core Keeper, and one is a statement that most reviews support. None is a contradiction.
+- **Claim support.** 88.5% supported, 10.8% partially supported, 0% unsupported, 0.8% contradicted. The 3 contradicted claims were reread against the evidence in the model cross-check below. Two are a correct statement that every retrieved review is about Core Keeper, and one is a statement that most reviews support. None is a contradiction.
 - **Citations.** 60% of claims carry a citation. The other 40% are summary sentences with no marker, which is the generator's behaviour and the largest weakness in this evaluation. Among cited claims, 100% were supported and overlapped the reviews the judge named as support. That rate says the cited reviews are the right ones. It does not say that every sentence is cited.
 - **Unanswerable questions.** All 10 answers decline without inventing the requested fact (a price, a sales forecast, an FPS figure, email addresses, a release date, an uptime percentage, a budget, a refund, a medical claim, a fictional game). This is a hand reading of the 10 answers by Claude, not the judge. The judge's abstain flag was true for 1 of 10 and is wrong on the other 9, so the harness no longer calls it an abstention rate. Ten questions is a small sample, so a 10 of 10 rate has a wide interval.
 - **Judge stability.** 13 answers (72 claims) were judged twice with the claims in a different order. Label agreement was 87.5% with kappa 0.24. Agreement is high because almost every label is supported, and kappa shows how little the judge disagrees with itself beyond that.
