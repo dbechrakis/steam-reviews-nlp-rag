@@ -16,3 +16,4 @@ outputs/evaluation/*/retrieval_judgments.csv
 outputs/evaluation/*/answer_judgments.csv
 stage/
 outputs/evaluation/*/claim_audit_sample.csv
+evaluation/audit/human_audit_sample.csv

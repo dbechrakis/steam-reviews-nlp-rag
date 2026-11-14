@@ -80,3 +80,8 @@ Edited the free-text `authoring` description in `evaluation/benchmark.json`. All
 - `requirements.txt` listed every package without a version. The packages that `requirements-api.txt` already pins for the serving environment (torch, faiss-cpu, sentence-transformers, transformers, pandas, groq) are now pinned to the same versions, so the research and serving environments agree on them.
 - The other packages stay unpinned. The environment that produced the recorded notebook results was not saved, and a version chosen now could not be shown to reproduce them. The file says so.
 - Nothing was rerun. The evidence workflow does not install this file, so its result is unchanged by this edit.
+
+## Human audit sample built, not yet judged — 2026-11-14
+
+- `scripts/make_human_audit.py` builds a blind sample of 60 judged claims with their evidence from the pinned corpus (every review's hash is checked against the run) and a key with the judge's labels. It also scores a filled sample. Three tests cover the scoring and that the sample has no judge column.
+- No person has judged the claims. The README statements that the 88.5% is model-judged and not yet checked by a person stay true. They change only after the file is filled and scored.
