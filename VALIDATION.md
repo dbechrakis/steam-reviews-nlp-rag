@@ -1,5 +1,7 @@
 # Validation record
 
+**Scope of the latest review.** Rerun in the review of 2026-11-14: the unit tests, the evidence check, the retrieval evidence check and lint. Recorded history and not rerun in that review: the sentiment models, the retrieval benchmark, the model-judged answer evaluation and the Docker image. No person has judged any claim yet. Command: `make check`, then `python scripts/verify_retrieval_evidence.py`.
+
 Latest structural review: 2026-09-22 (UTC).
 
 Checked saved CSV arithmetic, sample sizes and evaluation implementation; no retraining or live generation.
