@@ -1,16 +1,18 @@
+# Packages pinned below match requirements-api.txt, the serving environment that the retrieval gate tests.
+# The rest of the research stack for the notebooks is not pinned because the environment that produced the recorded notebook results was not saved.
 -e .
-torch
-faiss-cpu
-sentence-transformers
-transformers
+torch==2.6.0
+faiss-cpu==1.10.0
+sentence-transformers==4.1.0
+transformers==4.51.3
 datasets
 scikit-learn
-pandas
+pandas==2.2.3
 matplotlib
 seaborn
 shap
 gensim
-groq
+groq==0.25.0
 python-dotenv
 langdetect
 accelerate
