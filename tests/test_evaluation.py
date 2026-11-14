@@ -1,11 +1,10 @@
 """Metric counterexamples and frozen benchmark contracts, no model downloads."""
 
 import json
-from pathlib import Path
 import unittest
+from pathlib import Path
 
 from steam_review_rag.evaluation import citation_metrics, percentile, retrieval_metrics
-
 
 ROOT = Path(__file__).resolve().parents[1]
 

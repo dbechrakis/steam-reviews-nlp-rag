@@ -1,5 +1,7 @@
 # Validation record
 
+**Scope of the latest review.** Rerun in the review of 2026-11-14: the unit tests, the evidence check, the retrieval evidence check and lint. Recorded history and not rerun in that review: the sentiment models, the retrieval benchmark, the model-judged answer evaluation and the Docker image. No person has judged any claim yet. Command: `make check`, then `python scripts/verify_retrieval_evidence.py`.
+
 Latest structural review: 2026-09-22 (UTC).
 
 Checked saved CSV arithmetic, sample sizes and evaluation implementation; no retraining or live generation.
@@ -74,3 +76,19 @@ Edited the free-text `authoring` description in `evaluation/benchmark.json`. All
 - **Third resume, 2026-10-30, near complete.** 77 of 80 answers have a verdict. The other 3 returned judge replies that were not valid JSON twice. Per category: comparison 10 of 10, unsupported 10 of 10, game-topic 38 of 40, named-game 19 of 20. The README now quotes the results with their limits. Claim support was 88.5% (95% CI 85 to 92) over 381 claims, 59% of claims carry a citation, and judge stability on 12 answers was 89.2% agreement with kappa 0.31.
 - **The judge's abstain flag is wrong.** It was true for 1 of the 10 unanswerable questions. A reading of the same 10 answers by Claude (a model, not a person) found a refusal that invents nothing in all 10. The summary column is renamed to "Judge abstain flag" and its text says it is unreliable. No abstention rate is derived from the flag.
 - **Fourth resume, 2026-10-30, complete.** All 80 answers have a verdict. The three that failed (`topic-04-2`, `topic-08-2`, `game-16`) were judged on the first attempt once the judge call allowed 6,000 completion tokens, so truncation is the likely cause. The earlier replies were not recorded, so that is an inference. Final figures: 399 claims, 88.5% supported (95% CI 85 to 92), 10.8% partially supported, 0.8% contradicted (3 claims, all checked by hand), 60% of claims carry a citation. Judge stability on 13 answers judged twice was 87.5% agreement with kappa 0.24. The 77 earlier verdicts used the 2,000-token allowance and the 3 new ones the 6,000-token allowance.
+
+## Research requirements partly pinned — 2026-11-14
+
+- `requirements.txt` listed every package without a version. The packages that `requirements-api.txt` already pins for the serving environment (torch, faiss-cpu, sentence-transformers, transformers, pandas, groq) are now pinned to the same versions, so the research and serving environments agree on them.
+- The other packages stay unpinned. The environment that produced the recorded notebook results was not saved, and a version chosen now could not be shown to reproduce them. The file says so.
+- Nothing was rerun. The evidence workflow does not install this file, so its result is unchanged by this edit.
+
+## Human audit sample built, not yet judged — 2026-11-14
+
+- `scripts/make_human_audit.py` builds a blind sample of 60 judged claims with their evidence from the pinned corpus (every review's hash is checked against the run) and a key with the judge's labels. It also scores a filled sample. Three tests cover the scoring and that the sample has no judge column.
+- No person has judged the claims. The README statements that the 88.5% is model-judged and not yet checked by a person stay true. They change only after the file is filled and scored.
+
+## Wider lint rules — 2026-11-14
+
+- Ruff now selects E, F, I, UP, B and SIM in `pyproject.toml`, with line length (E501), zip without strict (B905) and a loop variable used in a closure (B023, two places left as they are) ignored. The Makefile and the evidence workflow use that configuration. Before this the check selected syntax errors and unused names only.
+- Findings were fixed automatically, mostly import order, in every file except six. `scripts/evaluate_answers.py`, `scripts/evaluate_retrieval.py` and four modules under `src/steam_review_rag/` have their SHA-256 recorded in the committed evaluation runs, so changing a byte would break the provenance check. They are exempt from the import and upgrade rules in `pyproject.toml`. A first version of this change touched them and the provenance check failed. It was caught by `scripts/verify_retrieval_evidence.py` and corrected. No behaviour changed. The 72 unit tests, the evidence check and the retrieval evidence check pass. The retrieval benchmark, the Docker image and the notebooks were not rerun.

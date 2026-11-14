@@ -1,9 +1,9 @@
 import hashlib
 import io
 import os
-from pathlib import Path
 import tempfile
 import unittest
+from pathlib import Path
 
 from steam_review_rag.artifacts import valid_artifact
 
@@ -34,12 +34,14 @@ if __name__ == "__main__":
 class MirrorTests(unittest.TestCase):
     def test_without_a_mirror_only_the_original_space_is_used(self):
         from unittest import mock
+
         from steam_review_rag import artifacts
         with mock.patch.dict(os.environ, {"STEAM_ARTIFACT_MIRROR": ""}):
             self.assertEqual(artifacts.sources(), [(artifacts.SOURCE, artifacts.REVISION)])
 
     def test_a_mirror_is_tried_first_and_a_bad_copy_falls_back_to_the_original(self):
         from unittest import mock
+
         from steam_review_rag import artifacts
         good = b"x" * 10
         pins = {"rag_config.json": (10, hashlib.sha256(good).hexdigest())}

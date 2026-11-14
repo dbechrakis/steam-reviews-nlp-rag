@@ -17,7 +17,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from steam_review_rag.artifacts import FILES, ensure_artifacts, valid_artifact  # noqa: E402
+from steam_review_rag.artifacts import (  # noqa: E402
+    FILES,
+    ensure_artifacts,
+    valid_artifact,
+)
 
 
 def verified_files(project_dir: Path) -> list[Path]:

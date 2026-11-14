@@ -110,3 +110,9 @@ The audit also exposed two bugs in this harness that are now fixed. Citations wr
 ## Small ownership exercise
 
 Start with `compare-02`, `compare-06`, and three topic questions. Reconstruct the returned reviews using their `review_id`, grade relevance, and explain whether each failure originates in candidate retrieval, reranking or insufficient coverage. Those judgments are more useful than guessing from similarity scores.
+
+## Human audit sample, ready to fill (2026-11-14)
+
+`python scripts/make_human_audit.py` writes `evaluation/audit/human_audit_sample.csv`, a blind sample of 60 judged claims with the five reviews each answer saw, and `evaluation/audit/human_audit_key.csv`, which holds the judge's labels and no review text. The sample file has no judge label, so the reviewer cannot be led by it, and it stays out of git because it carries review text. The sample is stratified by judge label (29 supported, 28 partially supported, 3 contradicted, none unsupported), so its agreement does not describe all 399 claims.
+
+For each row, write one of `supported`, `partially_supported`, `unsupported` or `contradicted` in `reviewer_label`, your name in `reviewer` and, if useful, a reason in `rationale`. Judge each claim only against the five reviews shown, as the model judge did. Then run `python scripts/make_human_audit.py --score <filled file>`. It writes `evaluation/audit/human_audit_agreement.json` with the agreement, kappa and the agreement for each judge label. Until that has been done the answer evaluation above is still model-judged only.

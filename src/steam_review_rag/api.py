@@ -6,25 +6,24 @@ between the two. Heavy model imports happen at startup, not at import, which kee
 contract tests free of torch and model downloads.
 """
 
-from collections import OrderedDict
-from contextlib import asynccontextmanager
 import json
 import logging
 import os
-from pathlib import Path
 import threading
 import time
+from collections import OrderedDict
+from contextlib import asynccontextmanager
+from pathlib import Path
 from typing import Literal, Protocol
 
+import pandas as pd
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import RedirectResponse
-import pandas as pd
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from steam_review_rag import __version__
 from steam_review_rag.diagnostics import generation_diagnostic
 from steam_review_rag.evaluation import citation_metrics
-
 
 PROJECT_DIR = Path(os.environ.get("STEAM_RAG_PROJECT_DIR", Path(__file__).resolve().parents[2]))
 ANSWER_MODEL_ID = "openai/gpt-oss-120b"

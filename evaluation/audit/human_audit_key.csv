@@ -1,0 +1,61 @@
+audit_id,query_id,claim_id,judge_label,judge_supporting
+1,compare-08,C3,supported,[4]
+2,game-01,C4,partially_supported,[1]
+3,compare-02,C2,contradicted,[2]
+4,topic-05-1,C1,supported,"[1, 2, 4, 5]"
+5,game-16,C2,partially_supported,[1]
+6,compare-02,C1,contradicted,[2]
+7,game-02,C1,supported,"[1, 2, 3, 4, 5]"
+8,compare-05,C3,partially_supported,[5]
+9,topic-12-2,C1,contradicted,[]
+10,game-11,C6,supported,"[1, 4]"
+11,topic-19-2,C1,partially_supported,[4]
+12,topic-10-1,C3,supported,"[2, 3]"
+13,topic-02-1,C1,partially_supported,"[1, 2, 3, 4, 5]"
+14,topic-09-2,C1,supported,"[1, 2, 3, 4]"
+15,game-02,C3,partially_supported,"[2, 5]"
+16,topic-06-1,C1,supported,"[1, 2, 3, 4]"
+17,game-18,C6,partially_supported,"[3, 5]"
+18,game-05,C2,supported,"[1, 2, 4, 5]"
+19,game-06,C2,partially_supported,"[1, 3, 5]"
+20,game-20,C4,supported,[2]
+21,game-17,C1,partially_supported,[1]
+22,topic-04-1,C4,supported,[2]
+23,game-08,C3,partially_supported,[3]
+24,compare-03,C5,supported,"[1, 4]"
+25,topic-04-1,C1,partially_supported,[2]
+26,topic-16-1,C4,supported,[3]
+27,game-13,C1,partially_supported,"[1, 2, 3, 4, 5]"
+28,game-02,C7,supported,[2]
+29,topic-14-2,C1,partially_supported,"[1, 3, 4, 5]"
+30,game-02,C6,supported,[5]
+31,topic-01-2,C1,partially_supported,"[2, 3, 4]"
+32,topic-04-2,C3,supported,"[1, 5]"
+33,topic-16-1,C6,partially_supported,[]
+34,topic-09-1,C3,supported,"[4, 5]"
+35,topic-02-1,C5,partially_supported,"[1, 2, 3, 4, 5]"
+36,game-10,C1,supported,"[1, 2, 4]"
+37,game-05,C4,partially_supported,[2]
+38,game-19,C1,supported,"[1, 2, 4]"
+39,topic-04-1,C3,partially_supported,[1]
+40,compare-04,C6,supported,"[1, 3, 4, 5]"
+41,game-02,C4,partially_supported,"[1, 4, 5]"
+42,game-02,C2,supported,[1]
+43,topic-06-1,C5,partially_supported,"[3, 4]"
+44,topic-20-2,C2,supported,[1]
+45,topic-08-2,C3,partially_supported,"[3, 5]"
+46,topic-08-2,C2,supported,[3]
+47,topic-14-1,C3,partially_supported,[4]
+48,unsupported-06,C1,supported,"[1, 2, 3, 4]"
+49,topic-11-1,C2,partially_supported,"[3, 5]"
+50,topic-16-1,C2,supported,[2]
+51,game-17,C4,partially_supported,[4]
+52,topic-09-1,C4,supported,"[3, 4]"
+53,compare-10,C2,partially_supported,"[1, 3]"
+54,topic-17-1,C1,supported,"[1, 2, 3, 4]"
+55,topic-16-2,C4,partially_supported,[4]
+56,compare-03,C4,supported,[3]
+57,game-12,C4,partially_supported,"[2, 4, 5]"
+58,topic-11-1,C1,supported,"[1, 2, 3, 4, 5]"
+59,topic-01-2,C5,partially_supported,[3]
+60,topic-01-1,C1,supported,[1]
