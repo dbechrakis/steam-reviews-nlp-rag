@@ -13,10 +13,11 @@ import csv
 import hashlib
 import json
 import os
+from pathlib import Path
 import random
 import sys
 import time
-from pathlib import Path
+
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
@@ -196,7 +197,6 @@ def write_summary(path: Path, rows: list[dict], info: dict) -> None:
 def run(run_dir: Path, judge_model: str, audit_size: int, pause: float, resume: bool,
         regenerate: bool, stability_every: int, budget_minutes: float) -> dict:
     import pandas as pd
-
     from steam_review_rag.artifacts import ensure_artifacts
 
     api_key = os.getenv("GROQ_API_KEY")

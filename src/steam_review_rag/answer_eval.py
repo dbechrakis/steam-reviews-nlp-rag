@@ -5,12 +5,12 @@ until a person has audited a sample. The audit helpers at the bottom measure how
 reviewer and the judge agree.
 """
 
+from collections import Counter
 import json
 import math
 import random
 import re
-from collections import Counter
-from collections.abc import Callable, Iterable, Mapping
+from typing import Callable, Iterable, Mapping
 
 LABELS = ("supported", "partially_supported", "unsupported", "contradicted")
 SUPPORT_LABELS = ("supported", "partially_supported")
