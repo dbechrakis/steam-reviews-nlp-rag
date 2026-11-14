@@ -8,11 +8,10 @@ installs working if the original Space is deleted or made private.
 
 import hashlib
 import os
-from pathlib import Path
 import tempfile
 import time
+from pathlib import Path
 from urllib.request import urlopen
-
 
 REVISION = "c9a4d43b9422edde3fe85b20cc8f4645e258ac02"
 SOURCE = "https://huggingface.co/spaces/Nebuchedeser/steam-game-review-explorer"

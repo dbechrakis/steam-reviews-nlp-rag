@@ -10,8 +10,8 @@ The sample is stratified by judge label, so it over-represents the rare labels a
 import argparse
 import csv
 import json
-from pathlib import Path
 import sys
+from pathlib import Path
 
 import pandas as pd
 

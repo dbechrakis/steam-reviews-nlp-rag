@@ -8,9 +8,8 @@ Used by the retrieval-gate workflow after `scripts/evaluate_retrieval.py` has ru
 
 import argparse
 import json
-from pathlib import Path
 import sys
-
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 GATED = ["target_game_precision_at_5", "target_game_coverage_at_5"]

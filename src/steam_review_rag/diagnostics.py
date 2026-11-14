@@ -2,7 +2,6 @@
 
 import logging
 
-
 KNOWN_ERROR_TYPES = {
     "RateLimitError",
     "AuthenticationError",

@@ -1,8 +1,8 @@
 import csv
 import importlib.util
-from pathlib import Path
 import tempfile
 import unittest
+from pathlib import Path
 
 SPEC = importlib.util.spec_from_file_location("make_human_audit", Path(__file__).resolve().parents[1] / "scripts" / "make_human_audit.py")
 make_human_audit = importlib.util.module_from_spec(SPEC)

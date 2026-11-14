@@ -2,19 +2,18 @@
 
 from __future__ import annotations
 
-from html import escape
 import logging
 import os
-from pathlib import Path
 import time
+from html import escape
+from pathlib import Path
 
-from dotenv import load_dotenv
 import streamlit as st
+from dotenv import load_dotenv
 
 from steam_review_rag.artifacts import ensure_artifacts
 from steam_review_rag.diagnostics import generation_diagnostic
 from steam_review_rag.retrieval import SteamReviewRAG
-
 
 ANSWER_MODEL_LABEL = "GPT-OSS 120B"
 ANSWER_MODEL_ID = "openai/gpt-oss-120b"

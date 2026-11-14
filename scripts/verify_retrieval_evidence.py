@@ -2,15 +2,18 @@
 
 import hashlib
 import json
-from pathlib import Path
 import sys
-
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from steam_review_rag.artifacts import FILES, REVISION  # noqa: E402
-from steam_review_rag.evaluation import aggregate_results, citation_metrics, retrieval_metrics  # noqa: E402
+from steam_review_rag.evaluation import (  # noqa: E402
+    aggregate_results,
+    citation_metrics,
+    retrieval_metrics,
+)
 
 
 def verify() -> None:

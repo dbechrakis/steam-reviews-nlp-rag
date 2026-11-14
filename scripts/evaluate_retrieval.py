@@ -5,23 +5,26 @@ import csv
 import hashlib
 import json
 import os
-from pathlib import Path
 import platform
 import sys
 import time
-
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from steam_review_rag.evaluation import (  # noqa: E402
-    aggregate_results, citation_metrics, retrieval_metrics, review_hash,
+    aggregate_results,
+    citation_metrics,
+    retrieval_metrics,
+    review_hash,
 )
 
 
 def run(output: Path, generate: bool = False) -> dict:
     # Imports are lazy so CI can validate benchmark contracts without model downloads.
     import importlib.metadata
+
     from steam_review_rag.artifacts import REVISION, ensure_artifacts
     from steam_review_rag.diagnostics import generation_diagnostic
     from steam_review_rag.retrieval import SteamReviewRAG

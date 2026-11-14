@@ -85,3 +85,8 @@ Edited the free-text `authoring` description in `evaluation/benchmark.json`. All
 
 - `scripts/make_human_audit.py` builds a blind sample of 60 judged claims with their evidence from the pinned corpus (every review's hash is checked against the run) and a key with the judge's labels. It also scores a filled sample. Three tests cover the scoring and that the sample has no judge column.
 - No person has judged the claims. The README statements that the 88.5% is model-judged and not yet checked by a person stay true. They change only after the file is filled and scored.
+
+## Wider lint rules — 2026-11-14
+
+- Ruff now selects E, F, I, UP, B and SIM in `pyproject.toml`, with line length (E501), zip without strict (B905) and a loop variable used in a closure (B023, two places left as they are) ignored. The Makefile and the evidence workflow use that configuration. Before this the check selected syntax errors and unused names only.
+- 30 findings were fixed automatically, mostly import order. No behaviour changed. The 72 unit tests and the evidence check pass. The retrieval benchmark, the Docker image and the notebooks were not rerun.

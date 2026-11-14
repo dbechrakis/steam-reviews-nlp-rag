@@ -34,7 +34,7 @@ class SteamReviewRAG:
     reranker: CrossEncoder | None = None
 
     @classmethod
-    def load(cls, project_dir: Path) -> "SteamReviewRAG":
+    def load(cls, project_dir: Path) -> SteamReviewRAG:
         """Load and validate a matching configuration, corpus, and FAISS index."""
         rag_dir = project_dir / "outputs" / "rag"
         required = {
